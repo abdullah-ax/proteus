@@ -1,3 +1,5 @@
+"use node";
+
 import exifr from "exifr";
 import type { PipelineState } from "../types";
 

@@ -1,6 +1,8 @@
+"use node";
+
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { HumanMessage } from "@langchain/core/messages";
-import sharp from "sharp";
+import { Jimp } from "jimp";
 import type { ActionCtx } from "../../_generated/server";
 import type { PipelineState } from "../types";
 
@@ -56,9 +58,9 @@ Be thorough — include partially visible fish at edges. Do not include other ma
     return { ...state, fishDetections: [] };
   }
 
-  const metadata = await sharp(Buffer.from(imageBuffer)).metadata();
-  const imgWidth = metadata.width!;
-  const imgHeight = metadata.height!;
+  const image = await Jimp.read(Buffer.from(imageBuffer));
+  const imgWidth = image.bitmap.width;
+  const imgHeight = image.bitmap.height;
 
   const detections = [];
   for (const fish of parsed.fish) {
@@ -74,10 +76,11 @@ Be thorough — include partially visible fish at edges. Do not include other ma
     const width = Math.max(1, Math.round(w * imgWidth));
     const height = Math.max(1, Math.round(h * imgHeight));
 
-    const cropped = await sharp(Buffer.from(imageBuffer))
-      .extract({ left, top, width, height })
-      .jpeg()
-      .toBuffer();
+    const cropped = await image
+      .clone()
+      .crop(left, top, width, height)
+      .quality(90)
+      .getBufferAsync(Jimp.MIME_JPEG);
 
     const blob = new Blob([cropped]);
     const croppedStorageId = await ctx.storage.store(blob);

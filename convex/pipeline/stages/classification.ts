@@ -1,3 +1,5 @@
+"use node";
+
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { HumanMessage } from "@langchain/core/messages";
 import type { PipelineState } from "../types";

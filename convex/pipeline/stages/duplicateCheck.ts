@@ -1,3 +1,5 @@
+"use node";
+
 import type { ActionCtx } from "../../_generated/server";
 import type { PipelineState } from "../types";
 import { computePHash } from "../utils/phash";

@@ -59,9 +59,12 @@ export const execute = internalAction({
             `Near-duplicate detected. Similar to existing image: ${result.duplicateOfId}`
           );
         }
+        if (!result.pHashVector) {
+          throw new Error("Pipeline stage returned no pHash vector");
+        }
         await ctx.runMutation(internal.images.updatePHash, {
           imageId,
-          pHashVector: result.pHashVector!,
+          pHashVector: result.pHashVector,
         });
         return result;
       },

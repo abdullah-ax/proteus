@@ -21,8 +21,10 @@ interface PipelineStatusProps {
 }
 
 export function PipelineStatus({ status, currentStage, error }: PipelineStatusProps) {
-  const currentIndex = STATUS_ORDER.indexOf(status);
   const isFailed = status === "failed";
+  const currentIndex = isFailed
+    ? STATUS_ORDER.indexOf(currentStage ?? "")
+    : STATUS_ORDER.indexOf(status);
 
   return (
     <div>
@@ -33,7 +35,7 @@ export function PipelineStatus({ status, currentStage, error }: PipelineStatusPr
             state = "error";
           } else if (i < currentIndex || status === "completed") {
             state = "done";
-          } else if (i === currentIndex) {
+          } else if (!isFailed && i === currentIndex) {
             state = "active";
           }
 

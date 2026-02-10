@@ -91,7 +91,16 @@ export const getInternal = internalQuery({
 export const updatePipelineStatus = internalMutation({
   args: {
     imageId: v.id("images"),
-    status: v.string(),
+    status: v.union(
+      v.literal("uploaded"),
+      v.literal("metadata_extracted"),
+      v.literal("duplicate_checked"),
+      v.literal("recolored"),
+      v.literal("fish_extracted"),
+      v.literal("classified"),
+      v.literal("completed"),
+      v.literal("failed")
+    ),
     currentStage: v.optional(v.string()),
     error: v.optional(v.string()),
   },

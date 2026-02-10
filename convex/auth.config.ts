@@ -1,6 +1,9 @@
 import type { AuthConfig } from "convex/server";
 
 const clientId = process.env.WORKOS_CLIENT_ID;
+if (!clientId) {
+  throw new Error("Missing WORKOS_CLIENT_ID environment variable — JWT verification will fail");
+}
 
 export default {
   providers: [

@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: 14 165 233;
+  --color-background: 2 6 23;
+  --color-foreground: 226 232 240;
+}
+
+* {
+  border-color: color-mix(in oklab, rgb(var(--color-foreground)) 15%, transparent);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}

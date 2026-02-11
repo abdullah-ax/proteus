@@ -44,6 +44,13 @@ export async function extractMetadata(
       : undefined,
   };
 
+  // Reject images without EXIF metadata (likely downloaded, not original photos)
+  if (!exif.timestamp && !exif.camera) {
+    throw new Error(
+      "Are you sure you took this photo? No camera metadata found. Please upload an original photo taken with your camera or phone."
+    );
+  }
+
   // TODO: Re-enable GPS verification once properly configured
   // For now, accept all images regardless of location
   let isRedSeaVerified: boolean;

@@ -1844,3 +1844,70 @@ export function findRedSeaSpecies(scientificName: string): RedSeaSpecies | undef
     species => species.scientificName.toLowerCase() === scientificName.toLowerCase()
   );
 }
+
+const normalizeName = (name: string) =>
+  name.toLowerCase().replace(/[^a-z0-9]+/g, "");
+
+const normalizedIndex = (() => {
+  const map = new Map<string, RedSeaSpecies>();
+  for (const species of RED_SEA_SPECIES) {
+    map.set(normalizeName(species.scientificName), species);
+    map.set(normalizeName(species.commonName), species);
+  }
+  return map;
+})();
+
+const editDistanceAtMost = (a: string, b: string, max: number): number => {
+  if (Math.abs(a.length - b.length) > max) return max + 1;
+  const dp = new Array(b.length + 1);
+  for (let j = 0; j <= b.length; j++) dp[j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    let prev = dp[0];
+    dp[0] = i;
+    let rowMin = dp[0];
+    for (let j = 1; j <= b.length; j++) {
+      const temp = dp[j];
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      dp[j] = Math.min(
+        dp[j] + 1,
+        dp[j - 1] + 1,
+        prev + cost
+      );
+      prev = temp;
+      if (dp[j] < rowMin) rowMin = dp[j];
+    }
+    if (rowMin > max) return max + 1;
+  }
+  return dp[b.length];
+};
+
+export function findRedSeaSpeciesByAnyName(name: string): RedSeaSpecies | undefined {
+  const trimmed = name.trim();
+  if (!trimmed) return undefined;
+
+  const exact = RED_SEA_SPECIES.find(
+    species =>
+      species.scientificName.toLowerCase() === trimmed.toLowerCase() ||
+      species.commonName.toLowerCase() === trimmed.toLowerCase()
+  );
+  if (exact) return exact;
+
+  const normalized = normalizeName(trimmed);
+  const direct = normalizedIndex.get(normalized);
+  if (direct) return direct;
+
+  // Fuzzy match with max edit distance 1 on normalized names.
+  const candidates: RedSeaSpecies[] = [];
+  for (const species of RED_SEA_SPECIES) {
+    const sci = normalizeName(species.scientificName);
+    const common = normalizeName(species.commonName);
+    if (
+      editDistanceAtMost(normalized, sci, 1) <= 1 ||
+      editDistanceAtMost(normalized, common, 1) <= 1
+    ) {
+      candidates.push(species);
+    }
+  }
+  if (candidates.length === 1) return candidates[0];
+  return undefined;
+}

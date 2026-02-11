@@ -3,7 +3,7 @@
 import { ChatOpenAI } from "@langchain/openai";
 import { HumanMessage } from "@langchain/core/messages";
 import type { PipelineState } from "../types";
-import { RED_SEA_SPECIES_LIST_TEXT, isRedSeaSpecies, findRedSeaSpecies } from "../data/redSeaSpecies";
+import { RED_SEA_SPECIES_LIST_TEXT, isRedSeaSpecies, findRedSeaSpeciesByAnyName } from "../data/redSeaSpecies";
 
 const CONFIDENCE_THRESHOLD = 0.7;
 
@@ -63,6 +63,7 @@ Return ONLY valid JSON in this exact format:
 
 CRITICAL RULES:
 - ONLY identify species from the Red Sea list above
+- Return BOTH the scientific name and common name EXACTLY as they appear in the list
 - If the fish is NOT in the list, return: species="Unknown", commonName="Not in Red Sea database", confidence=0
 - Give confidence >0.7 only if you're certain it matches a Red Sea species
 - Base identification on visible features: color patterns, body shape, fin structure
@@ -82,8 +83,11 @@ CRITICAL RULES:
         const parsed = JSON.parse(jsonMatch[0]);
 
         // Validate against Red Sea species list
-        const isValid = isRedSeaSpecies(parsed.species);
         const confidence = parsed.confidence ?? 0;
+        const matched =
+          findRedSeaSpeciesByAnyName(parsed.species ?? "") ??
+          findRedSeaSpeciesByAnyName(parsed.commonName ?? "");
+        const isValid = Boolean(matched);
 
         // Apply guardrails
         if (!isValid || confidence < CONFIDENCE_THRESHOLD) {
@@ -94,6 +98,7 @@ CRITICAL RULES:
             confidence: 0,
             details: JSON.stringify({
               originalSpecies: parsed.species,
+              originalCommonName: parsed.commonName,
               originalConfidence: confidence,
               reason: !isValid
                 ? "Species not found in Red Sea database"
@@ -102,10 +107,10 @@ CRITICAL RULES:
             }),
           });
         } else {
-          const redSeaSpecies = findRedSeaSpecies(parsed.species);
+          const redSeaSpecies = matched;
           classifications.push({
             detectionIndex: index,
-            species: parsed.species,
+            species: redSeaSpecies?.scientificName ?? parsed.species,
             commonName: redSeaSpecies?.commonName ?? parsed.commonName,
             confidence,
             details: JSON.stringify({

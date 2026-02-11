@@ -33,16 +33,24 @@ export async function classifyFish(
         },
         {
           type: "text",
-          text: `Testing API connection. Describe what you see in this image in one sentence.
-Return ONLY valid JSON:
+          text: `Identify the primary fish species visible in this underwater photograph. Focus ONLY on the fish, not the scene or environment.
+
+Return ONLY valid JSON in this exact format:
 {
-  "species": "Test response",
-  "commonName": "API Working",
-  "confidence": 1.0,
-  "family": "Test",
-  "characteristics": "Your description here",
-  "conservationStatus": "OK"
-}`,
+  "species": "Genus species (scientific name)",
+  "commonName": "Common name of the fish",
+  "confidence": 0.85,
+  "family": "Family name (e.g., Chaetodontidae, Pomacentridae)",
+  "characteristics": "Key identifying features of THIS SPECIFIC FISH ONLY (colors, patterns, body shape, fins)",
+  "conservationStatus": "IUCN status or Unknown"
+}
+
+Rules:
+- Identify the most prominent/visible fish species
+- Be specific about scientific classification
+- characteristics should ONLY describe the fish itself, not the scene
+- If multiple fish, focus on the largest/most visible one
+- Give lower confidence if uncertain`,
         },
       ],
     }),

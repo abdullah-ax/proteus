@@ -42,7 +42,7 @@ export function UnderwaterFormCard({ onScan }: UnderwaterFormCardProps) {
 
         <UploadDropzone />
 
-        <OceanButton size="lg" onClick={onScan}>
+        <OceanButton onClick={onScan}>
           Confirm & Scan
         </OceanButton>
       </div>

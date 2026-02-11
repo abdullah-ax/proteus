@@ -8,7 +8,8 @@ export default defineSchema({
     contentType: v.string(),
     fileSize: v.number(),
     uploadedBy: v.string(),
-    sha256: v.string(),
+    sha256: v.optional(v.string()),
+    duplicateWarning: v.optional(v.string()),
 
     pipelineStatus: v.union(
       v.literal("uploaded"),
@@ -39,6 +40,7 @@ export default defineSchema({
     wasRecolored: v.optional(v.boolean()),
 
     fishCount: v.optional(v.number()),
+    uniqueSpeciesCount: v.optional(v.number()),
 
     createdAt: v.number(),
   })

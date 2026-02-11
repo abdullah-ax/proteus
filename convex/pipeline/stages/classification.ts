@@ -3,6 +3,9 @@
 import { ChatOpenAI } from "@langchain/openai";
 import { HumanMessage } from "@langchain/core/messages";
 import type { PipelineState } from "../types";
+import { RED_SEA_SPECIES, isRedSeaSpecies, findRedSeaSpecies } from "../data/redSeaSpecies";
+
+const CONFIDENCE_THRESHOLD = 0.7;
 
 export async function classifyFish(
   state: PipelineState
@@ -21,74 +24,116 @@ export async function classifyFish(
 
   const classifications = [];
 
-  // For testing: analyze the full image instead of cropped detections
-  const base64 = Buffer.from(state.imageBuffer).toString("base64");
+  // Build Red Sea species list for prompt
+  const speciesList = RED_SEA_SPECIES.map(
+    (s) => `${s.scientificName} (${s.commonName})`
+  ).join("\n");
 
-  const response = await model.invoke([
-    new HumanMessage({
-      content: [
-        {
-          type: "image_url",
-          image_url: { url: `data:image/jpeg;base64,${base64}` },
-        },
-        {
-          type: "text",
-          text: `Identify the primary fish species visible in this underwater photograph. Focus ONLY on the fish, not the scene or environment.
+  // If no fish detections, analyze full image (fallback for testing)
+  const fishToClassify = state.fishDetections && state.fishDetections.length > 0
+    ? state.fishDetections
+    : [{ bbox: { x: 0, y: 0, width: 1, height: 1 }, croppedBuffer: state.imageBuffer }];
+
+  // Process each detected fish
+  for (const [index, detection] of fishToClassify.entries()) {
+    // Use cropped image if available, otherwise full image
+    const imageToClassify = detection.croppedBuffer ?? state.imageBuffer;
+    const base64 = Buffer.from(imageToClassify).toString("base64");
+
+    const response = await model.invoke([
+      new HumanMessage({
+        content: [
+          {
+            type: "image_url",
+            image_url: { url: `data:image/jpeg;base64,${base64}` },
+          },
+          {
+            type: "text",
+            text: `Identify this fish species. It MUST be from the Red Sea species list below.
+
+RED SEA SPECIES LIST:
+${speciesList}
 
 Return ONLY valid JSON in this exact format:
 {
-  "species": "Genus species (scientific name)",
-  "commonName": "Common name of the fish",
+  "species": "Genus species",
+  "commonName": "Common name",
   "confidence": 0.85,
-  "family": "Family name (e.g., Chaetodontidae, Pomacentridae)",
-  "characteristics": "Key identifying features of THIS SPECIFIC FISH ONLY (colors, patterns, body shape, fins)",
-  "conservationStatus": "IUCN status or Unknown"
+  "family": "Family name",
+  "characteristics": "Key identifying features",
+  "reasoning": "Why this species was chosen"
 }
 
-Rules:
-- Identify the most prominent/visible fish species
-- Be specific about scientific classification
-- characteristics should ONLY describe the fish itself, not the scene
-- If multiple fish, focus on the largest/most visible one
-- Give lower confidence if uncertain`,
-        },
-      ],
-    }),
-  ]);
+CRITICAL RULES:
+- ONLY identify species from the Red Sea list above
+- If the fish is NOT in the list, return: species="Unknown", commonName="Not in Red Sea database", confidence=0
+- Give confidence >0.7 only if you're certain it matches a Red Sea species
+- Base identification on visible features: color patterns, body shape, fin structure
+- Provide reasoning for your classification
+- Focus ONLY on the fish itself, not the scene or environment`,
+          },
+        ],
+      }),
+    ]);
 
-  const content =
-    typeof response.content === "string" ? response.content : "";
-  const jsonMatch = content.match(/\{[\s\S]*\}/);
+    const content =
+      typeof response.content === "string" ? response.content : "";
+    const jsonMatch = content.match(/\{[\s\S]*\}/);
 
-  if (jsonMatch) {
-    try {
-      const parsed = JSON.parse(jsonMatch[0]);
+    if (jsonMatch) {
+      try {
+        const parsed = JSON.parse(jsonMatch[0]);
+
+        // Validate against Red Sea species list
+        const isValid = isRedSeaSpecies(parsed.species);
+        const confidence = parsed.confidence ?? 0;
+
+        // Apply guardrails
+        if (!isValid || confidence < CONFIDENCE_THRESHOLD) {
+          classifications.push({
+            detectionIndex: index,
+            species: "Unknown",
+            commonName: "Not in Red Sea species database",
+            confidence: 0,
+            details: JSON.stringify({
+              originalSpecies: parsed.species,
+              originalConfidence: confidence,
+              reason: !isValid
+                ? "Species not found in Red Sea database"
+                : "Confidence below threshold (0.7)",
+              characteristics: parsed.characteristics,
+            }),
+          });
+        } else {
+          const redSeaSpecies = findRedSeaSpecies(parsed.species);
+          classifications.push({
+            detectionIndex: index,
+            species: parsed.species,
+            commonName: redSeaSpecies?.commonName ?? parsed.commonName,
+            confidence,
+            details: JSON.stringify({
+              family: redSeaSpecies?.family ?? parsed.family,
+              characteristics: parsed.characteristics,
+              reasoning: parsed.reasoning,
+            }),
+          });
+        }
+      } catch {
+        classifications.push({
+          detectionIndex: index,
+          species: "Parse Error",
+          commonName: "JSON Parse Failed",
+          confidence: 0,
+        });
+      }
+    } else {
       classifications.push({
-        detectionIndex: 0,
-        species: parsed.species ?? "Unknown",
-        commonName: parsed.commonName ?? "Unknown",
-        confidence: parsed.confidence ?? 0,
-        details: JSON.stringify({
-          family: parsed.family,
-          characteristics: parsed.characteristics,
-          conservationStatus: parsed.conservationStatus,
-        }),
-      });
-    } catch {
-      classifications.push({
-        detectionIndex: 0,
-        species: "Parse Error",
-        commonName: "JSON Parse Failed",
+        detectionIndex: index,
+        species: "No Match",
+        commonName: "No JSON Found",
         confidence: 0,
       });
     }
-  } else {
-    classifications.push({
-      detectionIndex: 0,
-      species: "No Match",
-      commonName: "No JSON Found",
-      confidence: 0,
-    });
   }
 
   return { ...state, classifications };

@@ -45,7 +45,7 @@ export const execute = internalAction({
       },
     });
 
-    // Stage 3: Perceptual hash duplicate check
+    // Stage 3: Metadata-based duplicate check
     const duplicateStage = new RunnableLambda({
       func: async (state: PipelineState) => {
         await ctx.runMutation(internal.images.updatePipelineStatus, {
@@ -54,18 +54,27 @@ export const execute = internalAction({
           currentStage: "Checking for duplicates",
         });
         const result = await checkDuplicate(state, ctx as any);
+
+        // Store duplicate warning but don't block pipeline
+        if (result.duplicateWarning) {
+          await ctx.runMutation(internal.images.updateDuplicateWarning, {
+            imageId,
+            warning: result.duplicateWarning,
+          });
+        }
+
+        // Only block for exact duplicates
         if (result.isDuplicate) {
-          throw new Error(
-            `Near-duplicate detected. Similar to existing image: ${result.duplicateOfId}`
-          );
+          throw new Error(result.duplicateWarning ?? "Duplicate image detected");
         }
-        if (!result.pHashVector) {
-          throw new Error("Pipeline stage returned no pHash vector");
+
+        if (result.sha256) {
+          await ctx.runMutation(internal.images.updateSha256, {
+            imageId,
+            sha256: result.sha256,
+          });
         }
-        await ctx.runMutation(internal.images.updatePHash, {
-          imageId,
-          pHashVector: result.pHashVector,
-        });
+
         return result;
       },
     });
@@ -112,25 +121,40 @@ export const execute = internalAction({
       },
     });
 
-    // Stage 6: Species classification via Gemini
+    // Stage 6: Species classification with Red Sea guardrails
     const classificationStage = new RunnableLambda({
       func: async (state: PipelineState) => {
         await ctx.runMutation(internal.images.updatePipelineStatus, {
           imageId,
           status: "classified",
-          currentStage: "Testing API connection",
+          currentStage: "Classifying fish species",
         });
         const result = await classifyFish(state);
 
-        // Create a dummy detection entry for testing since we disabled fish extraction
+        // Count unique species (excluding Unknown/errors)
+        const validSpecies = new Set(
+          result.classifications
+            ?.filter((c) =>
+              c.confidence > 0 &&
+              c.species !== "Unknown" &&
+              c.species !== "Parse Error" &&
+              c.species !== "No Match"
+            )
+            .map((c) => c.species) ?? []
+        );
+
+        const uniqueSpeciesCount = validSpecies.size;
+
+        // Create detection records with classifications
         for (const classification of result.classifications ?? []) {
+          const detection = state.fishDetections?.[classification.detectionIndex];
+
           const detectionId = await ctx.runMutation(internal.fishDetections.create, {
             imageId,
-            bbox: { x: 0, y: 0, width: 1, height: 1 }, // Full image
-            croppedStorageId: undefined,
+            bbox: detection?.bbox ?? { x: 0, y: 0, width: 1, height: 1 },
+            croppedStorageId: detection?.croppedStorageId,
           });
 
-          // Update with classification results
           await ctx.runMutation(internal.fishDetections.updateClassification, {
             detectionId,
             species: classification.species,
@@ -143,6 +167,7 @@ export const execute = internalAction({
         await ctx.runMutation(internal.images.updateFishCount, {
           imageId,
           fishCount: result.classifications?.length ?? 0,
+          uniqueSpeciesCount,
         });
 
         return result;
@@ -151,10 +176,10 @@ export const execute = internalAction({
 
     const pipeline = RunnableSequence.from([
       metadataStage,
-      // duplicateStage, // Temporarily disabled for testing
-      // recolorationStage, // Disabled per user request
-      // fishExtractionStage, // Temporarily disabled for testing
-      classificationStage,
+      duplicateStage,        // Re-enabled with metadata checking
+      // recolorationStage,  // Keep disabled - not needed for demo
+      fishExtractionStage,   // Re-enabled
+      classificationStage,   // Updated with guardrails
     ]);
 
     try {

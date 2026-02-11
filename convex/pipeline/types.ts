@@ -15,9 +15,11 @@ export interface PipelineState {
   isRedSeaVerified?: boolean;
 
   // Stage 3: Duplicate check
+  sha256?: string;
   pHashVector?: number[];
   isDuplicate?: boolean;
   duplicateOfId?: Id<"images">;
+  duplicateWarning?: string;
 
   // Stage 4: Recoloration
   recoloredBuffer?: ArrayBufferLike;

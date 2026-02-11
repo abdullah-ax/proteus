@@ -2,37 +2,50 @@
 
 import type { ActionCtx } from "../../_generated/server";
 import type { PipelineState } from "../types";
-import { computePHash } from "../utils/phash";
-
-const SIMILARITY_THRESHOLD = 0.95;
+import { internal } from "../../_generated/api";
+import crypto from "crypto";
 
 export async function checkDuplicate(
   state: PipelineState,
   ctx: ActionCtx
 ): Promise<PipelineState> {
-  const pHashVector = await computePHash(state.imageBuffer);
+  // Compute SHA256 hash for exact duplicate detection
+  const sha256 = crypto
+    .createHash("sha256")
+    .update(Buffer.from(state.imageBuffer))
+    .digest("hex");
 
-  const results = await ctx.vectorSearch("images", "by_phash", {
-    vector: pHashVector,
-    limit: 5,
-    filter: (q: any) =>
-      q.eq("pipelineStatus", "completed"),
-  });
+  // Check for exact duplicates by SHA256
+  const existingImages = await ctx.runQuery(internal.images.getBySha256, { sha256 });
 
-  const duplicate = results.find(
-    (r: { _id: any; _score: number }) =>
-      r._score > SIMILARITY_THRESHOLD &&
-      r._id.toString() !== state.imageId.toString()
-  );
-
-  if (duplicate) {
+  if (existingImages.length > 0) {
+    const existing = existingImages[0];
+    const uploadDate = new Date(existing._creationTime).toLocaleDateString();
     return {
       ...state,
-      pHashVector,
+      sha256,
       isDuplicate: true,
-      duplicateOfId: duplicate._id,
+      duplicateOfId: existing._id,
+      duplicateWarning: `Are you sure you haven't sent this before? This exact image was uploaded on ${uploadDate}.`,
     };
   }
 
-  return { ...state, pHashVector, isDuplicate: false };
+  // Check for likely duplicates by EXIF metadata
+  if (state.exif?.timestamp && state.exif?.camera) {
+    const similarImages = await ctx.runQuery(internal.images.getByMetadata, {
+      timestamp: state.exif.timestamp,
+      camera: state.exif.camera,
+    });
+
+    if (similarImages.length > 0) {
+      return {
+        ...state,
+        sha256,
+        isDuplicate: false,
+        duplicateWarning: `Are you sure you haven't sent this before? A similar photo was found from the same camera at ${state.exif.timestamp}.`,
+      };
+    }
+  }
+
+  return { ...state, sha256, isDuplicate: false };
 }

@@ -158,8 +158,60 @@ export const updateFishCount = internalMutation({
   args: {
     imageId: v.id("images"),
     fishCount: v.number(),
+    uniqueSpeciesCount: v.optional(v.number()),
   },
-  handler: async (ctx, { imageId, fishCount }) => {
-    await ctx.db.patch(imageId, { fishCount });
+  handler: async (ctx, { imageId, fishCount, uniqueSpeciesCount }) => {
+    await ctx.db.patch(imageId, {
+      fishCount,
+      ...(uniqueSpeciesCount !== undefined && { uniqueSpeciesCount }),
+    });
+  },
+});
+
+export const getBySha256 = internalQuery({
+  args: { sha256: v.string() },
+  handler: async (ctx, { sha256 }) => {
+    return await ctx.db
+      .query("images")
+      .withIndex("by_sha256", (q) => q.eq("sha256", sha256))
+      .collect();
+  },
+});
+
+export const getByMetadata = internalQuery({
+  args: {
+    timestamp: v.string(),
+    camera: v.string(),
+  },
+  handler: async (ctx, { timestamp, camera }) => {
+    return await ctx.db
+      .query("images")
+      .filter((q) =>
+        q.and(
+          q.eq(q.field("exif.timestamp"), timestamp),
+          q.eq(q.field("exif.camera"), camera)
+        )
+      )
+      .take(1);
+  },
+});
+
+export const updateDuplicateWarning = internalMutation({
+  args: {
+    imageId: v.id("images"),
+    warning: v.string(),
+  },
+  handler: async (ctx, { imageId, warning }) => {
+    await ctx.db.patch(imageId, { duplicateWarning: warning });
+  },
+});
+
+export const updateSha256 = internalMutation({
+  args: {
+    imageId: v.id("images"),
+    sha256: v.string(),
+  },
+  handler: async (ctx, { imageId, sha256 }) => {
+    await ctx.db.patch(imageId, { sha256 });
   },
 });

@@ -14,7 +14,7 @@ export async function extractFish(
   if (!apiKey) throw new Error("OPENROUTER_API_KEY environment variable is not set");
 
   const model = new ChatOpenAI({
-    modelName: "google/gemini-flash-latest",  // Latest Gemini Flash for fast bounding box detection
+    modelName: "google/gemini-2.0-flash-001",  // Gemini 2.0 Flash for fast bounding box detection
     temperature: 0,
     openAIApiKey: apiKey,
     configuration: {

@@ -14,8 +14,8 @@ export function GlassCard({ children, className, strong, onClick }: GlassCardPro
     <div
       className={cn(
         strong ? "glass-card-strong" : "glass-card",
-        "p-4",
-        onClick && "cursor-pointer hover:bg-white/25 transition-colors duration-200",
+        "p-4 shadow-[0_20px_50px_-35px_rgba(0,0,0,0.8)] transition-all duration-300",
+        onClick && "cursor-pointer hover:bg-white/20 hover:-translate-y-0.5",
         className
       )}
       onClick={onClick}

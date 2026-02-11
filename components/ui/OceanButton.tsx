@@ -22,7 +22,7 @@ export function OceanButton({
   type = "button",
 }: OceanButtonProps) {
   const base =
-    "font-semibold rounded-2xl transition-all duration-200 flex items-center justify-center gap-2 select-none";
+    "font-semibold rounded-2xl transition-all duration-300 ease-out flex items-center justify-center gap-2 select-none";
   const sizes = {
     sm: "px-4 py-2 text-sm",
     md: "px-6 py-3 text-base",
@@ -30,9 +30,9 @@ export function OceanButton({
   };
   const variants = {
     primary:
-      "bg-ocean-button text-white shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]",
-    ghost: "bg-white/10 text-white hover:bg-white/20",
-    outline: "border border-white/30 text-white hover:bg-white/10",
+      "bg-ocean-button text-white shadow-[0_20px_40px_-28px_rgba(0,0,0,0.9)] hover:shadow-[0_30px_50px_-30px_rgba(0,0,0,0.9)] hover:-translate-y-0.5 active:translate-y-0",
+    ghost: "bg-white/10 text-white hover:bg-white/20 hover:-translate-y-0.5",
+    outline: "border border-white/30 text-white hover:bg-white/10 hover:-translate-y-0.5",
   };
 
   return (

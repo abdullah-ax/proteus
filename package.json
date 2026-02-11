@@ -11,7 +11,7 @@
   "dependencies": {
     "@convex-dev/workos-authkit": "^0.1.6",
     "@langchain/core": "^1.1.20",
-    "@langchain/google-genai": "^2.1.16",
+    "@langchain/openai": "^1.2.7",
     "@workos-inc/authkit-nextjs": "^2.0.0",
     "clsx": "^2.1.1",
     "convex": "^1.24.0",

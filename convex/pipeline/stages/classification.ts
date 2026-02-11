@@ -7,10 +7,6 @@ import type { PipelineState } from "../types";
 export async function classifyFish(
   state: PipelineState
 ): Promise<PipelineState> {
-  if (!state.fishDetections || state.fishDetections.length === 0) {
-    return { ...state, classifications: [] };
-  }
-
   const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) throw new Error("OPENROUTER_API_KEY environment variable is not set");
 
@@ -25,71 +21,66 @@ export async function classifyFish(
 
   const classifications = [];
 
-  for (let i = 0; i < state.fishDetections.length; i++) {
-    const detection = state.fishDetections[i];
-    if (!detection.croppedBuffer) continue;
+  // For testing: analyze the full image instead of cropped detections
+  const base64 = Buffer.from(state.imageBuffer).toString("base64");
 
-    const base64 = Buffer.from(detection.croppedBuffer).toString("base64");
-
-    const response = await model.invoke([
-      new HumanMessage({
-        content: [
-          {
-            type: "image_url",
-            image_url: { url: `data:image/jpeg;base64,${base64}` },
-          },
-          {
-            type: "text",
-            text: `Identify the species of this fish from the Red Sea. This is a cropped image from an underwater photograph taken in the Red Sea region.
+  const response = await model.invoke([
+    new HumanMessage({
+      content: [
+        {
+          type: "image_url",
+          image_url: { url: `data:image/jpeg;base64,${base64}` },
+        },
+        {
+          type: "text",
+          text: `Testing API connection. Describe what you see in this image in one sentence.
 Return ONLY valid JSON:
 {
-  "species": "Scientific name (Genus species)",
-  "commonName": "Common English name",
-  "confidence": 0.85,
-  "family": "Family name",
-  "characteristics": "Brief identifying features",
-  "conservationStatus": "IUCN status if known, otherwise Unknown"
-}
-Focus on Red Sea endemic and common species. If uncertain, give your best assessment with a lower confidence score.`,
-          },
-        ],
-      }),
-    ]);
+  "species": "Test response",
+  "commonName": "API Working",
+  "confidence": 1.0,
+  "family": "Test",
+  "characteristics": "Your description here",
+  "conservationStatus": "OK"
+}`,
+        },
+      ],
+    }),
+  ]);
 
-    const content =
-      typeof response.content === "string" ? response.content : "";
-    const jsonMatch = content.match(/\{[\s\S]*\}/);
+  const content =
+    typeof response.content === "string" ? response.content : "";
+  const jsonMatch = content.match(/\{[\s\S]*\}/);
 
-    if (jsonMatch) {
-      try {
-        const parsed = JSON.parse(jsonMatch[0]);
-        classifications.push({
-          detectionIndex: i,
-          species: parsed.species ?? "Unknown",
-          commonName: parsed.commonName ?? "Unknown",
-          confidence: parsed.confidence ?? 0,
-          details: JSON.stringify({
-            family: parsed.family,
-            characteristics: parsed.characteristics,
-            conservationStatus: parsed.conservationStatus,
-          }),
-        });
-      } catch {
-        classifications.push({
-          detectionIndex: i,
-          species: "Unknown",
-          commonName: "Unknown",
-          confidence: 0,
-        });
-      }
-    } else {
+  if (jsonMatch) {
+    try {
+      const parsed = JSON.parse(jsonMatch[0]);
       classifications.push({
-        detectionIndex: i,
-        species: "Unknown",
-        commonName: "Unknown",
+        detectionIndex: 0,
+        species: parsed.species ?? "Unknown",
+        commonName: parsed.commonName ?? "Unknown",
+        confidence: parsed.confidence ?? 0,
+        details: JSON.stringify({
+          family: parsed.family,
+          characteristics: parsed.characteristics,
+          conservationStatus: parsed.conservationStatus,
+        }),
+      });
+    } catch {
+      classifications.push({
+        detectionIndex: 0,
+        species: "Parse Error",
+        commonName: "JSON Parse Failed",
         confidence: 0,
       });
     }
+  } else {
+    classifications.push({
+      detectionIndex: 0,
+      species: "No Match",
+      commonName: "No JSON Found",
+      confidence: 0,
+    });
   }
 
   return { ...state, classifications };

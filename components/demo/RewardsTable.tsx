@@ -3,6 +3,9 @@
 import { useMemo, useState } from "react";
 import { REWARDS, REWARD_CATEGORIES } from "@/lib/mockData";
 import { RewardRow } from "./RewardRow";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface RewardsTableProps {
   onSelect: (rewardId: string) => void;
@@ -27,30 +30,33 @@ export function RewardsTable({ onSelect, dimmed }: RewardsTableProps) {
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-3">
           <h3 className="text-lg font-semibold text-white">Rewards</h3>
-          <select
-            value={category}
-            onChange={(event) => setCategory(event.target.value)}
-            className="rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-xs text-white"
-          >
-            {REWARD_CATEGORIES.map((item) => (
-              <option key={item} value={item} className="text-slate-900">
-                {item}
-              </option>
-            ))}
-          </select>
+          <Select value={category} onValueChange={setCategory}>
+            <SelectTrigger className="w-40">
+              <SelectValue placeholder="Filter" />
+            </SelectTrigger>
+            <SelectContent>
+              {REWARD_CATEGORIES.map((item) => (
+                <SelectItem key={item} value={item}>
+                  {item}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
-        <input
+        <Input
           value={search}
           onChange={(event) => setSearch(event.target.value)}
           placeholder="Search rewards"
-          className="rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-xs text-white placeholder:text-white/50"
+          className="max-w-xs"
         />
       </div>
-      <div className="mt-4 max-h-72 space-y-3 overflow-y-auto pr-2">
-        {filtered.map((reward) => (
-          <RewardRow key={reward.id} {...reward} onClick={() => onSelect(reward.id)} />
-        ))}
-      </div>
+      <ScrollArea className="mt-4 h-72">
+        <div className="space-y-3 pr-2">
+          {filtered.map((reward) => (
+            <RewardRow key={reward.id} {...reward} onClick={() => onSelect(reward.id)} />
+          ))}
+        </div>
+      </ScrollArea>
     </div>
   );
 }

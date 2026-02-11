@@ -1,31 +1,31 @@
 export const CAROUSEL_ITEMS = [
   {
     id: "c1",
-    imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+    imageUrl: "/mock/carousel-1.svg",
     location: "Ras Mohammed",
     username: "reef_mira",
   },
   {
     id: "c2",
-    imageUrl: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=1200&q=80",
+    imageUrl: "/mock/carousel-2.svg",
     location: "Dahab Blue Hole",
     username: "ocean_ali",
   },
   {
     id: "c3",
-    imageUrl: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80",
+    imageUrl: "/mock/carousel-3.svg",
     location: "Tiran Island",
     username: "salty_nour",
   },
   {
     id: "c4",
-    imageUrl: "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=1200&q=80",
+    imageUrl: "/mock/carousel-4.svg",
     location: "Elphinstone",
     username: "deep_reef",
   },
   {
     id: "c5",
-    imageUrl: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=80",
+    imageUrl: "/mock/carousel-5.svg",
     location: "Brothers Islands",
     username: "blue_saba",
   },
@@ -41,7 +41,7 @@ export const REWARD_CATEGORIES = ["All", "Spa", "Dive", "Snorkel", "Food", "Acti
 export const REWARDS = [
   {
     id: "r1",
-    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=600&q=80",
+    image: "/mock/reward-1.svg",
     title: "15% Off Oceanfront Dinner",
     description: "Two-course coastal menu at partner restaurant.",
     vendor: "The Blue Table",
@@ -51,7 +51,7 @@ export const REWARDS = [
   },
   {
     id: "r2",
-    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80",
+    image: "/mock/reward-2.svg",
     title: "Guided Reef Snorkel",
     description: "Small-group snorkel with marine biologist.",
     vendor: "Reef Guides",
@@ -61,7 +61,7 @@ export const REWARDS = [
   },
   {
     id: "r3",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
+    image: "/mock/reward-3.svg",
     title: "Spa Recovery Session",
     description: "60-minute recovery massage post-dive.",
     vendor: "Azure Spa",
@@ -71,7 +71,7 @@ export const REWARDS = [
   },
   {
     id: "r4",
-    image: "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=600&q=80",
+    image: "/mock/reward-4.svg",
     title: "Discovery Dive",
     description: "Beginner-friendly discovery dive.",
     vendor: "Red Sea Divers",
@@ -81,7 +81,7 @@ export const REWARDS = [
   },
   {
     id: "r5",
-    image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&q=80",
+    image: "/mock/reward-5.svg",
     title: "Sunset Desert Safari",
     description: "Off-resort adventure with local guides.",
     vendor: "Desert Fox",

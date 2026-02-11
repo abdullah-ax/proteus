@@ -44,16 +44,20 @@ export async function extractMetadata(
       : undefined,
   };
 
+  // TODO: Re-enable GPS verification once properly configured
+  // For now, accept all images regardless of location
   let isRedSeaVerified: boolean;
   if (exif.latitude !== undefined && exif.longitude !== undefined) {
     isRedSeaVerified = isInRedSea(exif.latitude, exif.longitude);
-    if (!isRedSeaVerified) {
-      throw new Error(
-        `Image GPS coordinates (${exif.latitude.toFixed(4)}, ${exif.longitude.toFixed(4)}) are outside the Red Sea region`
-      );
-    }
+    // Note: Currently not enforcing Red Sea location requirement
+    // Uncomment below to enforce:
+    // if (!isRedSeaVerified) {
+    //   throw new Error(
+    //     `Image GPS coordinates (${exif.latitude.toFixed(4)}, ${exif.longitude.toFixed(4)}) are outside the Red Sea region`
+    //   );
+    // }
   } else {
-    // No GPS data — warn but allow through
+    // No GPS data — allow through
     isRedSeaVerified = false;
   }
 

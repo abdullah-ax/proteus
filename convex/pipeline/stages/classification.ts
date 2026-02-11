@@ -3,7 +3,7 @@
 import { ChatOpenAI } from "@langchain/openai";
 import { HumanMessage } from "@langchain/core/messages";
 import type { PipelineState } from "../types";
-import { RED_SEA_SPECIES, isRedSeaSpecies, findRedSeaSpecies } from "../data/redSeaSpecies";
+import { RED_SEA_SPECIES_LIST_TEXT, isRedSeaSpecies, findRedSeaSpecies } from "../data/redSeaSpecies";
 
 const CONFIDENCE_THRESHOLD = 0.7;
 
@@ -24,10 +24,7 @@ export async function classifyFish(
 
   const classifications = [];
 
-  // Build Red Sea species list for prompt
-  const speciesList = RED_SEA_SPECIES.map(
-    (s) => `${s.scientificName} (${s.commonName})`
-  ).join("\n");
+  const speciesList = RED_SEA_SPECIES_LIST_TEXT;
 
   // If no fish detections, analyze full image (fallback for testing)
   const fishToClassify = state.fishDetections && state.fishDetections.length > 0
@@ -51,7 +48,7 @@ export async function classifyFish(
             type: "text",
             text: `Identify this fish species. It MUST be from the Red Sea species list below.
 
-RED SEA SPECIES LIST:
+RED SEA MARINE LIFE LIST:
 ${speciesList}
 
 Return ONLY valid JSON in this exact format:

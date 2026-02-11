@@ -21,15 +21,8 @@ export const create = mutation({
     const identity = await ctx.auth.getUserIdentity();
     const uploadedBy = identity?.tokenIdentifier ?? "anonymous";
 
-    const existing = await ctx.db
-      .query("images")
-      .withIndex("by_sha256", (q) => q.eq("sha256", args.sha256))
-      .first();
-
-    if (existing) {
-      await ctx.storage.delete(args.storageId);
-      throw new Error("This exact image has already been uploaded");
-    }
+    // Note: Duplicate checking is handled by the pipeline, not here
+    // This allows for user-friendly warnings and metadata-based checks
 
     const imageId = await ctx.db.insert("images", {
       storageId: args.storageId,

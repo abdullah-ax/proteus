@@ -18,8 +18,13 @@ export async function checkDuplicate(
   // Check for exact duplicates by SHA256
   const existingImages = await ctx.runQuery(internal.images.getBySha256, { sha256 });
 
-  if (existingImages.length > 0) {
-    const existing = existingImages[0];
+  // Filter out the current image (exclude self from duplicate check)
+  const duplicates = existingImages.filter(
+    (img) => img._id.toString() !== state.imageId.toString()
+  );
+
+  if (duplicates.length > 0) {
+    const existing = duplicates[0];
     const uploadDate = new Date(existing._creationTime).toLocaleDateString();
     return {
       ...state,
@@ -37,7 +42,12 @@ export async function checkDuplicate(
       camera: state.exif.camera,
     });
 
-    if (similarImages.length > 0) {
+    // Filter out the current image
+    const similarDuplicates = similarImages.filter(
+      (img) => img._id.toString() !== state.imageId.toString()
+    );
+
+    if (similarDuplicates.length > 0) {
       return {
         ...state,
         sha256,

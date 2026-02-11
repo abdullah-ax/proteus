@@ -3,9 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: 14 165 233;
-  --color-background: 2 6 23;
-  --color-foreground: 226 232 240;
+  --color-primary: 30 136 229;
+  --color-background: 11 60 109;
+  --color-foreground: 255 255 255;
+}
+
+.ocean-theme {
+  --color-primary: 30 136 229;
+  --color-background: 11 60 109;
+  --color-foreground: 255 255 255;
 }
 
 * {
@@ -20,4 +26,22 @@ body {
 body {
   background: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+}
+
+.glass-card-strong {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
 }

@@ -1,6 +1,6 @@
 "use node";
 
-import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
+import { ChatOpenAI } from "@langchain/openai";
 import { HumanMessage } from "@langchain/core/messages";
 import { Jimp } from "jimp";
 import type { ActionCtx } from "../../_generated/server";
@@ -10,13 +10,16 @@ export async function extractFish(
   state: PipelineState,
   ctx: ActionCtx
 ): Promise<PipelineState> {
-  const apiKey = process.env.GOOGLE_API_KEY;
-  if (!apiKey) throw new Error("GOOGLE_API_KEY environment variable is not set");
+  const apiKey = process.env.OPENROUTER_API_KEY;
+  if (!apiKey) throw new Error("OPENROUTER_API_KEY environment variable is not set");
 
-  const model = new ChatGoogleGenerativeAI({
-    model: "gemini-2.0-flash",
+  const model = new ChatOpenAI({
+    modelName: "google/gemini-2.0-flash-exp",
     temperature: 0,
-    apiKey,
+    openAIApiKey: apiKey,
+    configuration: {
+      baseURL: "https://openrouter.ai/api/v1",
+    },
   });
 
   const imageBuffer = state.recoloredBuffer ?? state.imageBuffer;

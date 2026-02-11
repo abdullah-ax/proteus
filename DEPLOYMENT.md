@@ -34,15 +34,17 @@ openssl rand -base64 32
 
 **Important**: Update the redirect URI in your WorkOS dashboard to match your Vercel domain.
 
-### 3. Google Gemini API
+### 3. OpenRouter API
 
-Get your API key from [Google AI Studio](https://makersuite.google.com/app/apikey):
+Get your API key from [OpenRouter Keys](https://openrouter.ai/keys):
 
 ```bash
-GOOGLE_API_KEY=AIzaSy...
+OPENROUTER_API_KEY=sk-or-v1-...
 ```
 
 Add this to the **Convex Dashboard** under Environment Variables (not Vercel), as the pipeline runs in Convex actions.
+
+**Note**: The pipeline uses Gemini 2.0 Flash through OpenRouter, which routes through your OpenRouter credits instead of directly hitting Google's API.
 
 ## Vercel Deployment Steps
 
@@ -63,11 +65,11 @@ Add this to the **Convex Dashboard** under Environment Variables (not Vercel), a
    npx convex deploy --prod
    ```
 
-5. **Add GOOGLE_API_KEY** in Convex Dashboard:
+5. **Add OPENROUTER_API_KEY** in Convex Dashboard:
    - Go to https://dashboard.convex.dev
    - Select your project
    - Navigate to Settings → Environment Variables
-   - Add `GOOGLE_API_KEY`
+   - Add `OPENROUTER_API_KEY`
 
 6. **Update WorkOS Redirect URI**:
    - Go to WorkOS Dashboard → Your App → Redirect URIs
@@ -90,9 +92,9 @@ Add this to the **Convex Dashboard** under Environment Variables (not Vercel), a
 - Check Vercel function logs for specific errors
 
 ### Pipeline Fails
-- Verify `GOOGLE_API_KEY` is set in Convex Dashboard (not Vercel)
+- Verify `OPENROUTER_API_KEY` is set in Convex Dashboard (not Vercel)
 - Check Convex logs for error messages
-- Ensure the API key has sufficient quota
+- Ensure you have sufficient OpenRouter credits (check https://openrouter.ai/credits)
 
 ### Authentication Issues
 - Verify `WORKOS_COOKIE_PASSWORD` is at least 32 characters

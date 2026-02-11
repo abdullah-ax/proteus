@@ -8,6 +8,21 @@
   --color-foreground: 226 232 240;
 }
 
+.ocean-theme {
+  --color-primary: 30 136 229;
+  --color-background: 11 60 109;
+  --color-foreground: 255 255 255;
+}
+
+.ocean-font {
+  font-family: var(--font-ocean-body), "Avenir Next", "Helvetica Neue", sans-serif;
+}
+
+.ocean-font .font-display {
+  font-family: var(--font-ocean-display), "Bebas Neue", "Helvetica Neue", sans-serif;
+  letter-spacing: 0.04em;
+}
+
 * {
   border-color: color-mix(in oklab, rgb(var(--color-foreground)) 15%, transparent);
 }
@@ -20,4 +35,50 @@ body {
 body {
   background: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
+}
+
+/* Glass morphism utilities */
+.glass-card {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+}
+
+.glass-card-strong {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+}
+
+/* Holographic glow for scanning animation */
+@keyframes neon-glow {
+  0%, 100% { filter: drop-shadow(0 0 4px #42A5F5) drop-shadow(0 0 8px #1E88E5); }
+  50% { filter: drop-shadow(0 0 8px #42A5F5) drop-shadow(0 0 16px #1E88E5) drop-shadow(0 0 24px #0B3C6D); }
+}
+
+.neon-glow {
+  animation: neon-glow 2s ease-in-out infinite;
+}
+
+/* Scrollbar styling for ocean theme */
+.ocean-theme ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.ocean-theme ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ocean-theme ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.ocean-theme ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
 }

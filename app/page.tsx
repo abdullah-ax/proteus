@@ -1,42 +1,48 @@
 "use client";
 
-import Link from "next/link";
-import { Upload, Images } from "lucide-react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { OceanLayout } from "@/components/layout/OceanLayout";
+import { StewardshipModal } from "@/components/hub/StewardshipModal";
+import { HubHeader } from "@/components/hub/HubHeader";
+import { ImageCarousel } from "@/components/hub/ImageCarousel";
+import { PointsCard } from "@/components/hub/PointsCard";
+import { ChallengesCard } from "@/components/hub/ChallengesCard";
+import { RewardsSection } from "@/components/hub/RewardsSection";
+import { WaterSurface } from "@/components/hub/WaterSurface";
+import { RewardDetailPopup } from "@/components/hub/RewardDetailPopup";
 
 export default function Home() {
-  return (
-    <main className="min-h-screen px-6 py-16 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-semibold text-primary">Proteus</h1>
-      <p className="mt-2 text-sm text-slate-300">
-        Red Sea fish identification pipeline
-      </p>
+  const router = useRouter();
+  const [isWaveHovered, setIsWaveHovered] = useState(false);
+  const [selectedReward, setSelectedReward] = useState<string | null>(null);
 
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <Link
-          href="/upload"
-          className="flex items-center gap-4 p-6 rounded-xl border border-slate-700/50 hover:border-primary/40 transition-colors"
-        >
-          <Upload className="w-8 h-8 text-primary" />
-          <div>
-            <p className="font-medium text-foreground">Upload Image</p>
-            <p className="text-xs text-slate-400 mt-0.5">
-              Submit an underwater photo for analysis
-            </p>
-          </div>
-        </Link>
-        <Link
-          href="/images"
-          className="flex items-center gap-4 p-6 rounded-xl border border-slate-700/50 hover:border-primary/40 transition-colors"
-        >
-          <Images className="w-8 h-8 text-primary" />
-          <div>
-            <p className="font-medium text-foreground">Gallery</p>
-            <p className="text-xs text-slate-400 mt-0.5">
-              View processed images and classifications
-            </p>
-          </div>
-        </Link>
-      </div>
-    </main>
+  return (
+    <OceanLayout className="ocean-font">
+      <StewardshipModal />
+      <main className="relative mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12">
+        <HubHeader />
+
+        <section className={isWaveHovered ? "opacity-15 transition-opacity duration-200" : "transition-opacity duration-200"}>
+          <ImageCarousel />
+        </section>
+
+        <section className="grid gap-4 md:grid-cols-[1.1fr_1.4fr]">
+          <PointsCard />
+          <ChallengesCard />
+        </section>
+
+        <RewardsSection onSelectReward={setSelectedReward} dimmed={isWaveHovered} />
+
+        <WaterSurface
+          isHovered={isWaveHovered}
+          onHoverStart={() => setIsWaveHovered(true)}
+          onHoverEnd={() => setIsWaveHovered(false)}
+          onScan={() => router.push("/scan")}
+        />
+      </main>
+
+      <RewardDetailPopup rewardId={selectedReward} onClose={() => setSelectedReward(null)} />
+    </OceanLayout>
   );
 }

@@ -144,7 +144,7 @@ export const execute = internalAction({
     const pipeline = RunnableSequence.from([
       metadataStage,
       duplicateStage,
-      recolorationStage,
+      // recolorationStage, // Disabled per user request
       fishExtractionStage,
       classificationStage,
     ]);

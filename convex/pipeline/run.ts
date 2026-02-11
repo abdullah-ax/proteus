@@ -178,7 +178,7 @@ export const execute = internalAction({
       metadataStage,
       duplicateStage,        // Re-enabled with metadata checking
       // recolorationStage,  // Keep disabled - not needed for demo
-      fishExtractionStage,   // Re-enabled
+      // fishExtractionStage,   // Disabled - too slow, causing timeouts
       classificationStage,   // Updated with guardrails
     ]);
 

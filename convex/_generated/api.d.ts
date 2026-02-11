@@ -12,6 +12,7 @@ import type * as auth from "../auth.js";
 import type * as fishDetections from "../fishDetections.js";
 import type * as http from "../http.js";
 import type * as images from "../images.js";
+import type * as pipeline_data_redSeaSpecies from "../pipeline/data/redSeaSpecies.js";
 import type * as pipeline_run from "../pipeline/run.js";
 import type * as pipeline_stages_classification from "../pipeline/stages/classification.js";
 import type * as pipeline_stages_duplicateCheck from "../pipeline/stages/duplicateCheck.js";
@@ -33,6 +34,7 @@ declare const fullApi: ApiFromModules<{
   fishDetections: typeof fishDetections;
   http: typeof http;
   images: typeof images;
+  "pipeline/data/redSeaSpecies": typeof pipeline_data_redSeaSpecies;
   "pipeline/run": typeof pipeline_run;
   "pipeline/stages/classification": typeof pipeline_stages_classification;
   "pipeline/stages/duplicateCheck": typeof pipeline_stages_duplicateCheck;
@@ -70,42 +72,4 @@ export declare const internal: FilterApi<
   FunctionReference<any, "internal">
 >;
 
-export declare const components: {
-  workOSAuthKit: {
-    lib: {
-      enqueueWebhookEvent: FunctionReference<
-        "mutation",
-        "internal",
-        {
-          apiKey: string;
-          event: string;
-          eventId: string;
-          eventTypes?: Array<string>;
-          logLevel?: "DEBUG";
-          onEventHandle?: string;
-          updatedAt?: string;
-        },
-        any
-      >;
-      getAuthUser: FunctionReference<
-        "query",
-        "internal",
-        { id: string },
-        {
-          createdAt: string;
-          email: string;
-          emailVerified: boolean;
-          externalId?: null | string;
-          firstName?: null | string;
-          id: string;
-          lastName?: null | string;
-          lastSignInAt?: null | string;
-          locale?: null | string;
-          metadata: Record<string, any>;
-          profilePictureUrl?: null | string;
-          updatedAt: string;
-        } | null
-      >;
-    };
-  };
-};
+export declare const components: {};

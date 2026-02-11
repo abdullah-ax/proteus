@@ -178,8 +178,8 @@ export const execute = internalAction({
       metadataStage,
       duplicateStage,        // Re-enabled with metadata checking
       // recolorationStage,  // Keep disabled - not needed for demo
-      // fishExtractionStage,   // Disabled - too slow, causing timeouts
-      classificationStage,   // Updated with guardrails
+      fishExtractionStage,   // Re-enabled: extracts ALL fish
+      classificationStage,   // Classifies EACH fish vs Red Sea DB
     ]);
 
     try {

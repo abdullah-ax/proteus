@@ -4,7 +4,7 @@ import { Jimp } from "jimp";
 
 export async function computePHash(imageBuffer: ArrayBuffer): Promise<number[]> {
   const image = await Jimp.read(Buffer.from(imageBuffer));
-  image.grayscale().resize(8, 8);
+  image.greyscale().resize({ w: 8, h: 8 });
 
   const values: number[] = [];
   const { data } = image.bitmap;

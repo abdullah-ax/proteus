@@ -78,19 +78,15 @@ Be thorough — include partially visible fish at edges. Do not include other ma
 
     const cropped = await image
       .clone()
-      .crop(left, top, width, height)
-      .quality(90)
-      .getBufferAsync(Jimp.MIME_JPEG);
+      .crop({ x: left, y: top, w: width, h: height })
+      .getBuffer("image/jpeg", { quality: 90 });
 
-    const blob = new Blob([cropped]);
+    const blob = new Blob([new Uint8Array(cropped)]);
     const croppedStorageId = await ctx.storage.store(blob);
 
     detections.push({
       bbox: { x: fish.x, y: fish.y, width: fish.width, height: fish.height },
-      croppedBuffer: cropped.buffer.slice(
-        cropped.byteOffset,
-        cropped.byteOffset + cropped.byteLength
-      ),
+      croppedBuffer: cropped.buffer,
       croppedStorageId,
     });
   }

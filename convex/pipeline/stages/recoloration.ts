@@ -41,18 +41,15 @@ export async function recolor(
   // Mild saturation boost to approximate the previous sharp modulate.
   image.color([{ apply: "saturate", params: [15] }]);
 
-  const correctedBuffer = await image.quality(90).getBufferAsync(Jimp.MIME_JPEG);
+  const correctedBuffer = await image.getBuffer("image/jpeg", { quality: 90 });
 
-  const blob = new Blob([correctedBuffer]);
+  const blob = new Blob([new Uint8Array(correctedBuffer)]);
   const recoloredStorageId = await ctx.storage.store(blob);
 
   return {
     ...state,
     wasRecolored: true,
-    recoloredBuffer: correctedBuffer.buffer.slice(
-      correctedBuffer.byteOffset,
-      correctedBuffer.byteOffset + correctedBuffer.byteLength
-    ),
+    recoloredBuffer: correctedBuffer.buffer,
     recoloredStorageId,
   };
 }

@@ -20,14 +20,14 @@ export interface PipelineState {
   duplicateOfId?: Id<"images">;
 
   // Stage 4: Recoloration
-  recoloredBuffer?: ArrayBuffer;
+  recoloredBuffer?: ArrayBufferLike;
   recoloredStorageId?: Id<"_storage">;
   wasRecolored?: boolean;
 
   // Stage 5: Fish extraction
   fishDetections?: Array<{
     bbox: { x: number; y: number; width: number; height: number };
-    croppedBuffer?: ArrayBuffer;
+    croppedBuffer?: ArrayBufferLike;
     croppedStorageId?: Id<"_storage">;
   }>;
 

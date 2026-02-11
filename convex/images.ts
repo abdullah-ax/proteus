@@ -17,8 +17,9 @@ export const create = mutation({
     sha256: v.string(),
   },
   handler: async (ctx, args) => {
+    // TODO: Re-enable auth check once WorkOS is configured
     const identity = await ctx.auth.getUserIdentity();
-    if (!identity) throw new Error("Unauthenticated");
+    const uploadedBy = identity?.tokenIdentifier ?? "anonymous";
 
     const existing = await ctx.db
       .query("images")
@@ -35,7 +36,7 @@ export const create = mutation({
       fileName: args.fileName,
       contentType: args.contentType,
       fileSize: args.fileSize,
-      uploadedBy: identity.tokenIdentifier,
+      uploadedBy,
       sha256: args.sha256,
       pipelineStatus: "uploaded",
       createdAt: Date.now(),

@@ -1,8 +1,9 @@
 import { httpRouter } from "convex/server";
-import { authKit } from "./auth";
+// import { authKit } from "./auth";
 
 const http = httpRouter();
 
-authKit.registerRoutes(http);
+// TODO: Re-enable WorkOS authentication once properly configured
+// authKit.registerRoutes(http);
 
 export default http;

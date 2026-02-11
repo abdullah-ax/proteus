@@ -1,8 +1,9 @@
 import { defineApp } from "convex/server";
-import workOSAuthKit from "@convex-dev/workos-authkit/convex.config";
+// import workOSAuthKit from "@convex-dev/workos-authkit/convex.config";
 
 const app = defineApp();
 
-app.use(workOSAuthKit);
+// TODO: Re-enable WorkOS authentication once properly configured
+// app.use(workOSAuthKit);
 
 export default app;

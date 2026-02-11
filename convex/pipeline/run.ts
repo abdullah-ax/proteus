@@ -118,25 +118,33 @@ export const execute = internalAction({
         await ctx.runMutation(internal.images.updatePipelineStatus, {
           imageId,
           status: "classified",
-          currentStage: "Classifying species",
+          currentStage: "Testing API connection",
         });
         const result = await classifyFish(state);
-        const detections = await ctx.runQuery(
-          internal.fishDetections.getByImageInternal,
-          { imageId }
-        );
+
+        // Create a dummy detection entry for testing since we disabled fish extraction
         for (const classification of result.classifications ?? []) {
-          const detection = detections[classification.detectionIndex];
-          if (detection) {
-            await ctx.runMutation(internal.fishDetections.updateClassification, {
-              detectionId: detection._id,
-              species: classification.species,
-              commonName: classification.commonName,
-              confidence: classification.confidence,
-              classificationDetails: classification.details,
-            });
-          }
+          const detectionId = await ctx.runMutation(internal.fishDetections.create, {
+            imageId,
+            bbox: { x: 0, y: 0, width: 1, height: 1 }, // Full image
+            croppedStorageId: undefined,
+          });
+
+          // Update with classification results
+          await ctx.runMutation(internal.fishDetections.updateClassification, {
+            detectionId,
+            species: classification.species,
+            commonName: classification.commonName,
+            confidence: classification.confidence,
+            classificationDetails: classification.details,
+          });
         }
+
+        await ctx.runMutation(internal.images.updateFishCount, {
+          imageId,
+          fishCount: result.classifications?.length ?? 0,
+        });
+
         return result;
       },
     });

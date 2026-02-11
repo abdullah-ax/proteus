@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { GlassCard } from "@/components/ui/GlassCard";
 
 interface SpeciesCardProps {
@@ -14,9 +15,14 @@ export function SpeciesCard({ commonName, scientificName, confidence, imageUrl, 
   return (
     <GlassCard className="flex flex-col gap-4">
       <div className="flex items-start gap-4">
-        <div className="relative h-16 w-16 overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-[0_12px_30px_-22px_rgba(0,0,0,0.8)]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(125,211,252,0.6),transparent_60%)]" />
-          <div className="absolute inset-x-3 bottom-3 h-1 rounded-full bg-white/30" />
+        <div className="relative h-16 w-16 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+          {imageUrl ? (
+            <Image src={imageUrl} alt={commonName} fill className="object-cover" />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center text-xs text-white/60">
+              No Image
+            </div>
+          )}
         </div>
         <div className="flex-1">
           <p className="text-sm font-semibold text-white">{commonName}</p>

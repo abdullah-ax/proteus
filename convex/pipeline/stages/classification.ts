@@ -14,7 +14,7 @@ export async function classifyFish(
   if (!apiKey) throw new Error("OPENROUTER_API_KEY environment variable is not set");
 
   const model = new ChatOpenAI({
-    modelName: "google/gemma-3-27b-it:free",
+    modelName: "openai/gpt-4.1",
     temperature: 0,
     openAIApiKey: apiKey,
     configuration: {

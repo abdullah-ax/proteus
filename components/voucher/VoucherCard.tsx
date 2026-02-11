@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import { QRCodeCanvas } from "qrcode.react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { OceanButton } from "@/components/ui/OceanButton";
@@ -15,9 +17,8 @@ interface VoucherCardProps {
 export function VoucherCard({ title, vendor, image, code, terms, onBack }: VoucherCardProps) {
   return (
     <GlassCard strong className="mx-auto w-full max-w-lg p-6">
-      <div className="relative h-44 w-full overflow-hidden rounded-3xl border border-white/15 bg-white/5 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.7)]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(125,211,252,0.5),transparent_60%),linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0))]" />
-        <div className="absolute bottom-6 left-6 text-xs uppercase tracking-[0.3em] text-white/60">Voucher</div>
+      <div className="relative h-44 w-full overflow-hidden rounded-3xl border border-white/15">
+        <Image src={image} alt={title} fill className="object-cover" />
       </div>
       <div className="mt-4">
         <h2 className="text-2xl font-semibold text-white">{title}</h2>

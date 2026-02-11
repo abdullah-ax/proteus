@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { GlassCard } from "@/components/ui/GlassCard";
@@ -39,13 +41,8 @@ export function RewardDetailPopup({ rewardId, onClose }: RewardDetailPopupProps)
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 px-4">
       <GlassCard className="w-full max-w-xl p-6">
-        <div className="relative h-48 w-full overflow-hidden rounded-3xl border border-white/15 bg-white/5 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.7)]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(125,211,252,0.5),transparent_60%),linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0))]" />
-          <div className="absolute inset-0 opacity-70">
-            <div className="absolute right-10 top-10 h-16 w-16 rounded-full bg-white/10 blur-2xl" />
-            <div className="absolute left-10 bottom-8 h-24 w-24 rounded-full bg-white/10 blur-3xl" />
-          </div>
-          <div className="absolute bottom-6 left-6 text-xs uppercase tracking-[0.3em] text-white/60">Reward Highlight</div>
+        <div className="relative h-48 w-full overflow-hidden rounded-3xl border border-white/15">
+          <Image src={reward.image} alt={reward.title} fill className="object-cover" />
         </div>
         <div className="mt-4 flex items-center justify-between">
           <div>

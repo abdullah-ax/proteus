@@ -35,8 +35,6 @@ body {
 body {
   background: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 
 /* Glass morphism utilities */
@@ -54,11 +52,6 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
-}
-
-.glass-card,
-.glass-card-strong {
-  box-shadow: 0 30px 70px -50px rgba(0, 0, 0, 0.85);
 }
 
 /* Holographic glow for scanning animation */

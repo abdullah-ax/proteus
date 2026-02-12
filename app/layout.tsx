@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ConvexClientProvider } from "./ConvexClientProvider";
+import { RewardsProvider } from "./RewardsProvider";
 
 export const metadata: Metadata = {
   title: "Proteus",
@@ -11,7 +12,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <ConvexClientProvider>{children}</ConvexClientProvider>
+        <ConvexClientProvider>
+          <RewardsProvider>{children}</RewardsProvider>
+        </ConvexClientProvider>
       </body>
     </html>
   );

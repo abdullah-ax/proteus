@@ -5,7 +5,8 @@
       "Bash(npm run build:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(CONVEX_DEPLOYMENT=dev:dazzling-panther-807 npx convex deploy:*)"
+      "Bash(CONVEX_DEPLOYMENT=dev:dazzling-panther-807 npx convex deploy:*)",
+      "Bash(npm install:*)"
     ]
   }
 }

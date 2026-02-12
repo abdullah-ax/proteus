@@ -21,3 +21,53 @@ body {
   background: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
 }
+
+/* Ocean Theme */
+.ocean-theme {
+  --color-primary: 30 136 229;
+  --color-background: 11 60 109;
+  --color-foreground: 224 242 254;
+}
+
+/* Glass Morphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+}
+
+.glass-card-strong {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+}
+
+/* Neon Glow for Holographic Fish */
+@keyframes neon-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.8)) drop-shadow(0 0 20px rgba(0, 229, 255, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(0, 229, 255, 1)) drop-shadow(0 0 40px rgba(0, 229, 255, 0.6));
+  }
+}
+
+.neon-glow {
+  animation: neon-glow 2s ease-in-out infinite;
+}
+
+/* Ocean Theme Scrollbar */
+.ocean-theme::-webkit-scrollbar {
+  width: 6px;
+}
+.ocean-theme::-webkit-scrollbar-track {
+  background: transparent;
+}
+.ocean-theme::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}

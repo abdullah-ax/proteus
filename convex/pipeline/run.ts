@@ -8,7 +8,6 @@ import type { PipelineState } from "./types";
 import { extractMetadata } from "./stages/metadata";
 import { checkDuplicate } from "./stages/duplicateCheck";
 import { recolor } from "./stages/recoloration";
-// import { extractFish } from "./stages/fishExtraction";
 import { classifyFish } from "./stages/classification";
 
 export const execute = internalAction({
@@ -97,29 +96,7 @@ export const execute = internalAction({
       },
     });
 
-    // Stage 5: Fish detection via Gemini vision
-    // const fishExtractionStage = new RunnableLambda({
-    //   func: async (state: PipelineState) => {
-    //     await ctx.runMutation(internal.images.updatePipelineStatus, {
-    //       imageId,
-    //       status: "fish_extracted",
-    //       currentStage: "Detecting fish",
-    //     });
-    //     const result = await extractFish(state, ctx as any);
-    //     for (const detection of result.fishDetections ?? []) {
-    //       await ctx.runMutation(internal.fishDetections.create, {
-    //         imageId,
-    //         bbox: detection.bbox,
-    //         croppedStorageId: detection.croppedStorageId,
-    //       });
-    //     }
-    //     await ctx.runMutation(internal.images.updateFishCount, {
-    //       imageId,
-    //       fishCount: result.fishDetections?.length ?? 0,
-    //     });
-    //     return result;
-    //   },
-    // });
+    // Stage 5: Fish detection is disabled for now. Skip directly to classification.
 
     // Stage 6: Species classification with Red Sea guardrails
     const classificationStage = new RunnableLambda({
@@ -178,7 +155,6 @@ export const execute = internalAction({
       metadataStage,
       duplicateStage,        // Re-enabled with metadata checking
       // recolorationStage,  // Keep disabled - not needed for demo
-      // fishExtractionStage,   // Re-enabled: extracts ALL fish
       classificationStage,   // Classifies EACH fish vs Red Sea DB
     ]);
 

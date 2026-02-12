@@ -17,6 +17,7 @@ import {
   Paintbrush,
 } from "lucide-react";
 import Link from "next/link";
+import { usePreloadImages } from "@/hooks/usePreloadImages";
 
 export default function ImageDetailPage() {
   const params = useParams();
@@ -42,6 +43,11 @@ export default function ImageDetailPage() {
   }
 
   const displayUrl = image.recoloredUrl ?? image.url;
+  const detectionUrls =
+    detections
+      ?.map((det) => det.croppedUrl ?? null)
+      .filter((url): url is string => Boolean(url)) ?? [];
+  usePreloadImages([displayUrl, ...detectionUrls].filter(Boolean));
 
   return (
     <main className="min-h-screen px-6 py-16 max-w-5xl mx-auto">

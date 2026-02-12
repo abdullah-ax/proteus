@@ -16,7 +16,7 @@ export default function FishdexDetailPage() {
 
   const detail = useQuery(
     api.fishDetections.getFishdexSpeciesDetail,
-    slug ? { slug } : undefined
+    slug ? { slug } : "skip"
   );
 
   const confidencePct = Math.round((detail?.stats.confidenceAvg ?? 0) * 100);

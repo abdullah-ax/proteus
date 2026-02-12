@@ -5,9 +5,13 @@ import { api } from "@/convex/_generated/api";
 import { ImageCard } from "@/components/images/ImageCard";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import Link from "next/link";
+import { usePreloadImages } from "@/hooks/usePreloadImages";
 
 export default function ImagesPage() {
   const images = useQuery(api.images.list);
+  const imageUrls =
+    images?.map((image) => image.url).filter((url) => Boolean(url)) ?? [];
+  usePreloadImages(imageUrls);
 
   return (
     <main className="min-h-screen px-6 py-16 max-w-6xl mx-auto">

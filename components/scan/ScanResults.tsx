@@ -10,6 +10,7 @@ import { OceanButton } from "@/components/ui/OceanButton";
 import { PointsBanner } from "./PointsBanner";
 import { SpeciesCard } from "./SpeciesCard";
 import { ArrowLeft, RotateCcw, Fish } from "lucide-react";
+import { usePreloadImages } from "@/hooks/usePreloadImages";
 import type { Id } from "@/convex/_generated/dataModel";
 
 interface ScanResultsProps {
@@ -39,6 +40,12 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
   }, [detections, pointsEarned, addPoints]);
 
   const extractedUrl = detections?.find((d) => d.croppedUrl)?.croppedUrl ?? null;
+  const previewUrls = [
+    image?.url ?? null,
+    image?.recoloredUrl ?? null,
+    extractedUrl,
+  ].filter((url): url is string => Boolean(url));
+  usePreloadImages(previewUrls);
 
   return (
     <motion.div
@@ -68,6 +75,8 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
                     src={item.url}
                     alt={item.label}
                     className="w-full h-full object-cover"
+                    loading="eager"
+                    decoding="async"
                   />
                 ) : (
                   <div className="w-full h-full bg-white/10" />

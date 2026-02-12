@@ -1,23 +1,46 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useQuery } from "convex/react";
 import { ArrowLeft } from "lucide-react";
 import { OceanLayout } from "@/components/layout/OceanLayout";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { api } from "@/convex/_generated/api";
+import { usePreloadImages } from "@/hooks/usePreloadImages";
 
-interface FishdexDetailPageProps {
-  params: { slug: string };
-}
-
-export default function FishdexDetailPage({ params }: FishdexDetailPageProps) {
+export default function FishdexDetailPage() {
   const router = useRouter();
-  const detail = useQuery(api.fishDetections.getFishdexSpeciesDetail, {
-    slug: params.slug,
-  });
+  const params = useParams();
+  const slugParam = params?.slug;
+  const slug = Array.isArray(slugParam) ? slugParam[0] : slugParam;
+
+  const detail = useQuery(
+    api.fishDetections.getFishdexSpeciesDetail,
+    slug ? { slug } : undefined
+  );
 
   const confidencePct = Math.round((detail?.stats.confidenceAvg ?? 0) * 100);
+  const captureUrls =
+    detail?.detections
+      ?.map((det) => det.croppedUrl ?? det.imageUrl ?? null)
+      .filter((url): url is string => Boolean(url)) ?? [];
+  usePreloadImages(captureUrls);
+
+  if (!slug) {
+    return (
+      <OceanLayout className="flex flex-col min-h-screen">
+        <header className="flex items-center gap-3 px-5 py-4">
+          <button
+            onClick={() => router.push("/fishdex")}
+            className="w-9 h-9 rounded-full bg-white/12 flex items-center justify-center"
+          >
+            <ArrowLeft className="w-[18px] h-[18px] text-white" />
+          </button>
+          <h1 className="text-lg font-semibold text-white">Loading…</h1>
+        </header>
+      </OceanLayout>
+    );
+  }
 
   if (detail === null) {
     return (

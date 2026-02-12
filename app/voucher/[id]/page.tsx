@@ -1,8 +1,8 @@
 "use client";
 
 import { OceanLayout } from "@/components/layout/OceanLayout";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { OceanButton } from "@/components/ui/OceanButton";
 import { VOUCHER } from "@/lib/mockData";
 import { QRCodeCanvas } from "qrcode.react";
 import { useRouter } from "next/navigation";
@@ -10,9 +10,9 @@ import { useRouter } from "next/navigation";
 export default function VoucherPage() {
   const router = useRouter();
   return (
-    <OceanLayout className="font-sans">
+    <OceanLayout className="ocean-font">
       <main className="mx-auto flex min-h-screen max-w-xl items-center justify-center px-6 py-12">
-        <Card className="w-full p-6">
+        <GlassCard strong className="w-full p-6">
           <h2 className="text-2xl font-semibold text-white">{VOUCHER.title}</h2>
           <p className="text-sm text-white/70">{VOUCHER.vendor}</p>
           <p className="mt-3 text-sm text-white/70">{VOUCHER.description}</p>
@@ -24,10 +24,10 @@ export default function VoucherPage() {
             Show this QR at the vendor to redeem.
           </p>
           <div className="mt-6 flex justify-end gap-3">
-            <Button variant="ghost" onClick={() => router.push("/")}>Back</Button>
-            <Button>Download</Button>
+            <OceanButton variant="ghost" onClick={() => router.push("/")}>Back</OceanButton>
+            <OceanButton>Download</OceanButton>
           </div>
-        </Card>
+        </GlassCard>
       </main>
     </OceanLayout>
   );

@@ -1,15 +1,15 @@
 "use client";
 
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-
 export function UploadDropzone() {
   return (
-    <Card className="border-dashed p-6 text-center">
+    <div className="rounded-2xl border border-dashed border-white/30 bg-white/5 p-6 text-center">
       <p className="text-sm text-white/80">Drag & drop or upload your photo.</p>
-      <Button variant="ghost" className="mt-3">
+      <button
+        type="button"
+        className="mt-3 rounded-xl bg-white/15 px-4 py-2 text-xs font-semibold text-white"
+      >
         Upload
-      </Button>
-    </Card>
+      </button>
+    </div>
   );
 }

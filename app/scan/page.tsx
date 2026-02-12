@@ -6,7 +6,7 @@ import { UnderwaterFormCard } from "@/components/demo/UnderwaterFormCard";
 import { ScanningHologramLayer } from "@/components/demo/ScanningHologramLayer";
 import { SpeciesResultCard } from "@/components/demo/SpeciesResultCard";
 import { PointsEarnedBanner } from "@/components/demo/PointsEarnedBanner";
-import { Button } from "@/components/ui/button";
+import { OceanButton } from "@/components/ui/OceanButton";
 import { SCAN_RESULTS } from "@/lib/mockData";
 import { useRouter } from "next/navigation";
 
@@ -25,7 +25,7 @@ export default function ScanPage() {
   }, [stage]);
 
   return (
-    <OceanLayout className="font-sans">
+    <OceanLayout className="ocean-font">
       <main className="mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-6 py-12">
         {stage === "form" && <UnderwaterFormCard onScan={() => setStage("scanning")} />}
 
@@ -47,8 +47,8 @@ export default function ScanPage() {
             </div>
             <PointsEarnedBanner points={SCAN_RESULTS.pointsAwarded} />
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
-              <Button variant="ghost" onClick={() => router.push("/")}>Back to Hub</Button>
-              <Button onClick={() => setStage("form")}>Scan Another</Button>
+              <OceanButton variant="ghost" onClick={() => router.push("/")}>Back to Hub</OceanButton>
+              <OceanButton onClick={() => setStage("form")}>Scan Another</OceanButton>
             </div>
           </div>
         )}

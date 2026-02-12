@@ -2,44 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 210 82% 24%;
-    --foreground: 0 0% 100%;
-    --card: 210 60% 22%;
-    --card-foreground: 0 0% 100%;
-    --primary: 208 79% 51%;
-    --primary-foreground: 0 0% 100%;
-    --muted: 210 38% 28%;
-    --muted-foreground: 210 30% 90%;
-    --border: 210 30% 80%;
-    --ring: 207 90% 61%;
-    --radius: 18px;
-  }
+:root {
+  --color-primary: 30 136 229;
+  --color-background: 11 60 109;
+  --color-foreground: 255 255 255;
+}
 
-  * {
-    @apply border-border;
-  }
+.ocean-theme {
+  --color-primary: 30 136 229;
+  --color-background: 11 60 109;
+  --color-foreground: 255 255 255;
+}
 
-  body {
-    @apply bg-background text-foreground;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
+* {
+  border-color: color-mix(in oklab, rgb(var(--color-foreground)) 15%, transparent);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
 }
 
 .glass-card-strong {
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
 }

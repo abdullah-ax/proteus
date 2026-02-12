@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { OceanButton } from "@/components/ui/OceanButton";
 import { ActivityToggle } from "./ActivityToggle";
 import { ConditionalDiveFields } from "./ConditionalDiveFields";
 import { UploadDropzone } from "./UploadDropzone";
@@ -17,13 +16,13 @@ export function UnderwaterFormCard({ onScan }: UnderwaterFormCardProps) {
   const [site, setSite] = useState("");
 
   return (
-    <Card className="p-6">
-      <CardHeader>
-        <CardTitle className="text-2xl">Scan Fish</CardTitle>
-        <p className="text-sm text-white/70">Upload a clear underwater photo to identify species.</p>
-      </CardHeader>
+    <GlassCard strong className="p-6">
+      <h2 className="text-2xl font-semibold text-white">Scan Fish</h2>
+      <p className="mt-2 text-sm text-white/70">
+        Upload a clear underwater photo to identify species.
+      </p>
 
-      <CardContent className="mt-4 space-y-4">
+      <div className="mt-6 space-y-4">
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-white/60">Activity</p>
           <ActivityToggle value={activity} onChange={setActivity} />
@@ -31,10 +30,11 @@ export function UnderwaterFormCard({ onScan }: UnderwaterFormCardProps) {
 
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-white/60">Dive Site Name</p>
-          <Input
+          <input
             value={site}
             onChange={(event) => setSite(event.target.value)}
             placeholder="Ras Mohammed"
+            className="mt-2 w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/50"
           />
         </div>
 
@@ -42,10 +42,10 @@ export function UnderwaterFormCard({ onScan }: UnderwaterFormCardProps) {
 
         <UploadDropzone />
 
-        <Button size="lg" onClick={onScan}>
+        <OceanButton onClick={onScan}>
           Confirm & Scan
-        </Button>
-      </CardContent>
-    </Card>
+        </OceanButton>
+      </div>
+    </GlassCard>
   );
 }

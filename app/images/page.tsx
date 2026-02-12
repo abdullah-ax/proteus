@@ -10,7 +10,8 @@ import { usePreloadImages } from "@/hooks/usePreloadImages";
 export default function ImagesPage() {
   const images = useQuery(api.images.list);
   const imageUrls =
-    images?.map((image) => image.url).filter((url) => Boolean(url)) ?? [];
+    images?.map((image) => image.url).filter((url): url is string => Boolean(url)) ??
+    [];
   usePreloadImages(imageUrls);
 
   return (

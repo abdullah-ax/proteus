@@ -47,7 +47,10 @@ export default function ImageDetailPage() {
     detections
       ?.map((det) => det.croppedUrl ?? null)
       .filter((url): url is string => Boolean(url)) ?? [];
-  usePreloadImages([displayUrl, ...detectionUrls].filter(Boolean));
+  const preloadUrls = [displayUrl, ...detectionUrls].filter(
+    (url): url is string => Boolean(url)
+  );
+  usePreloadImages(preloadUrls);
 
   return (
     <main className="min-h-screen px-6 py-16 max-w-5xl mx-auto">

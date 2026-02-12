@@ -44,6 +44,8 @@ export default function HubPage() {
         onHoverStart={() => setIsWaveHovered(true)}
         onHoverEnd={() => setIsWaveHovered(false)}
         onScanClick={() => router.push("/scan")}
+        onFishdexClick={() => router.push("/fishdex")}
+        onMapClick={() => router.push("/map")}
       />
 
       <RewardDetailPopup

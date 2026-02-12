@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useQuery } from "convex/react";
@@ -20,17 +20,24 @@ interface ScanResultsProps {
 export function ScanResults({ imageId, onReset }: ScanResultsProps) {
   const router = useRouter();
   const { addPoints } = useRewardsContext();
+  const hasRewarded = useRef(false);
   const detections = useQuery(api.fishDetections.getByImage, {
+    imageId: imageId as Id<"images">,
+  });
+  const image = useQuery(api.images.getById, {
     imageId: imageId as Id<"images">,
   });
 
   const pointsEarned = (detections?.length ?? 0) * 50;
 
   useEffect(() => {
-    if (detections && detections.length > 0) {
+    if (!hasRewarded.current && detections && detections.length > 0) {
       addPoints(pointsEarned);
+      hasRewarded.current = true;
     }
   }, [detections, pointsEarned, addPoints]);
+
+  const extractedUrl = detections?.find((d) => d.croppedUrl)?.croppedUrl ?? null;
 
   return (
     <motion.div
@@ -39,6 +46,38 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
       exit={{ opacity: 0 }}
       className="flex flex-col gap-4 px-5 pb-8"
     >
+      <div className="flex flex-col gap-2">
+        <p className="text-xs font-medium text-white/70 tracking-wider">
+          Scan Previews
+        </p>
+        <div className="grid grid-cols-3 gap-2">
+          {[
+            { label: "Original", url: image?.url ?? null },
+            { label: "Recolored", url: image?.recoloredUrl ?? null },
+            { label: "Extracted", url: extractedUrl },
+          ].map((item) => (
+            <div
+              key={item.label}
+              className="rounded-xl border border-white/12 bg-white/8 p-2 flex flex-col gap-2"
+            >
+              <div className="h-16 rounded-lg bg-white/15 overflow-hidden">
+                {item.url ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={item.url}
+                    alt={item.label}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-white/10" />
+                )}
+              </div>
+              <p className="text-[11px] text-white/70 font-medium">{item.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {pointsEarned > 0 && <PointsBanner points={pointsEarned} />}
 
       <h2 className="text-lg font-semibold text-white mt-2">

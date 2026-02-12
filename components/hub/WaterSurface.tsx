@@ -2,16 +2,25 @@
 
 import { motion } from "framer-motion";
 import { BubbleButton } from "./BubbleButton";
-import { Scan, Compass, Map } from "lucide-react";
+import { Scan, Fish, Map } from "lucide-react";
 
 interface WaterSurfaceProps {
   isHovered: boolean;
   onHoverStart: () => void;
   onHoverEnd: () => void;
   onScanClick: () => void;
+  onFishdexClick: () => void;
+  onMapClick: () => void;
 }
 
-export function WaterSurface({ isHovered, onHoverStart, onHoverEnd, onScanClick }: WaterSurfaceProps) {
+export function WaterSurface({
+  isHovered,
+  onHoverStart,
+  onHoverEnd,
+  onScanClick,
+  onFishdexClick,
+  onMapClick,
+}: WaterSurfaceProps) {
   return (
     <motion.div
       className="relative w-full h-[180px] mt-auto"
@@ -34,9 +43,9 @@ export function WaterSurface({ isHovered, onHoverStart, onHoverEnd, onScanClick 
 
       {/* Bubble buttons */}
       <div className="absolute inset-0 flex items-center justify-center gap-8 pt-10">
-        <BubbleButton icon={Compass} label="Explore" size="sm" onClick={() => {}} />
+        <BubbleButton icon={Fish} label="Fishdex" size="sm" onClick={onFishdexClick} />
         <BubbleButton icon={Scan} label="Scan" size="lg" onClick={onScanClick} />
-        <BubbleButton icon={Map} label="Map" size="sm" onClick={() => {}} />
+        <BubbleButton icon={Map} label="Map" size="sm" onClick={onMapClick} />
       </div>
     </motion.div>
   );

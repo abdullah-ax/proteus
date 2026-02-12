@@ -38,13 +38,14 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
   }, [detections]);
 
   const funFacts = useMemo(() => {
+    const defaults = {
+      depth: "1–30 m",
+      packs: "small schools",
+      aggression: "low",
+      ecosystemImpact: "reef helper",
+    };
     if (!primaryDetection?.classificationDetails) {
-      return {
-        depth: "unknown",
-        packs: "unknown",
-        aggression: "unknown",
-        ecosystemImpact: "unknown",
-      };
+      return defaults;
     }
     try {
       const parsed = JSON.parse(primaryDetection.classificationDetails) as {
@@ -54,18 +55,13 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
         ecosystemImpact?: string;
       };
       return {
-        depth: parsed.depth ?? "unknown",
-        packs: parsed.packs ?? "unknown",
-        aggression: parsed.aggression ?? "unknown",
-        ecosystemImpact: parsed.ecosystemImpact ?? "unknown",
+        depth: parsed.depth ?? defaults.depth,
+        packs: parsed.packs ?? defaults.packs,
+        aggression: parsed.aggression ?? defaults.aggression,
+        ecosystemImpact: parsed.ecosystemImpact ?? defaults.ecosystemImpact,
       };
     } catch {
-      return {
-        depth: "unknown",
-        packs: "unknown",
-        aggression: "unknown",
-        ecosystemImpact: "unknown",
-      };
+      return defaults;
     }
   }, [primaryDetection?.classificationDetails]);
 

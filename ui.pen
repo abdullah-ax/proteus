@@ -19,15 +19,15 @@
         },
         "colors": [
           {
-            "color": "#0B3C6D",
+            "color": "#0A1F3C",
             "position": 0
           },
           {
-            "color": "#1565C0",
-            "position": 0.4
+            "color": "#0F3057",
+            "position": 0.55
           },
           {
-            "color": "#1E88E5",
+            "color": "#0B3C6D",
             "position": 1
           }
         ]
@@ -61,51 +61,25 @@
                   "id": "frENo",
                   "name": "logo",
                   "fill": "#FFFFFF",
-                  "content": "PROTEUS",
-                  "fontFamily": "DM Mono",
+                  "content": "Proteus",
+                  "fontFamily": "Inter",
                   "fontSize": 20,
                   "fontWeight": "600",
-                  "letterSpacing": 3
+                  "letterSpacing": 0
                 },
                 {
                   "type": "frame",
-                  "id": "BBIfe",
-                  "name": "Points Badge",
-                  "fill": "rgba(255,255,255,0.15)",
+                  "id": "av9eOS",
+                  "name": "Avatar",
+                  "width": 36,
+                  "height": 36,
                   "cornerRadius": 100,
+                  "fill": "rgba(255,255,255,0.12)",
                   "stroke": {
                     "align": "inside",
-                    "thickness": 1,
-                    "fill": "rgba(255,255,255,0.25)"
-                  },
-                  "gap": 6,
-                  "padding": [
-                    6,
-                    14
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "2z8dU",
-                      "name": "trophyIcon",
-                      "width": 16,
-                      "height": 16,
-                      "iconFontName": "trophy",
-                      "iconFontFamily": "lucide",
-                      "fill": "#FFD700"
-                    },
-                    {
-                      "type": "text",
-                      "id": "ANA8y",
-                      "name": "pointsText",
-                      "fill": "#FFFFFF",
-                      "content": "1,250",
-                      "fontFamily": "DM Mono",
-                      "fontSize": 14,
-                      "fontWeight": "500"
-                    }
-                  ]
+                    "fill": "rgba(255,255,255,0.25)",
+                    "thickness": 1
+                  }
                 }
               ]
             },
@@ -294,12 +268,12 @@
                   "id": "4muob",
                   "name": "Points Card",
                   "width": "fill_container",
-                  "fill": "rgba(255,255,255,0.08)",
+                  "fill": "rgba(255,255,255,0.10)",
                   "cornerRadius": 16,
                   "stroke": {
                     "align": "inside",
-                    "thickness": 1,
-                    "fill": "rgba(255,255,255,0.12)"
+                    "fill": "rgba(255,255,255,0.18)",
+                    "thickness": 1
                   },
                   "layout": "vertical",
                   "gap": 8,
@@ -322,7 +296,7 @@
                       "name": "pValue",
                       "fill": "#FFFFFF",
                       "content": "1,250",
-                      "fontFamily": "DM Mono",
+                      "fontFamily": "Inter",
                       "fontSize": 32,
                       "fontWeight": "500",
                       "letterSpacing": -1
@@ -363,12 +337,12 @@
                   "id": "YAPUV",
                   "name": "Challenges Card",
                   "width": "fill_container",
-                  "fill": "rgba(255,255,255,0.08)",
+                  "fill": "rgba(255,255,255,0.10)",
                   "cornerRadius": 16,
                   "stroke": {
                     "align": "inside",
-                    "thickness": 1,
-                    "fill": "rgba(255,255,255,0.12)"
+                    "fill": "rgba(255,255,255,0.18)",
+                    "thickness": 1
                   },
                   "layout": "vertical",
                   "gap": 10,
@@ -397,7 +371,7 @@
                           "type": "text",
                           "id": "pN4dJ",
                           "name": "ch1emoji",
-                          "content": "🐠",
+                          "content": "\ud83d\udc20",
                           "fontFamily": "Inter",
                           "fontSize": 14,
                           "fontWeight": "normal"
@@ -459,7 +433,7 @@
                           "type": "text",
                           "id": "8CLXI",
                           "name": "ch2emoji",
-                          "content": "📍",
+                          "content": "\ud83d\udccd",
                           "fontFamily": "Inter",
                           "fontSize": 14,
                           "fontWeight": "normal"
@@ -538,20 +512,10 @@
                       "id": "nWKuE",
                       "name": "rewardsTitle",
                       "fill": "#FFFFFF",
-                      "content": "Rewards",
+                      "content": "Available Rewards",
                       "fontFamily": "Inter",
-                      "fontSize": 18,
+                      "fontSize": 22,
                       "fontWeight": "600"
-                    },
-                    {
-                      "type": "text",
-                      "id": "MPqYp",
-                      "name": "rewardsCount",
-                      "fill": "#FFFFFFAA",
-                      "content": "6 available",
-                      "fontFamily": "Inter",
-                      "fontSize": 12,
-                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -560,116 +524,132 @@
                   "id": "z2Vku",
                   "name": "Filter Row",
                   "width": "fill_container",
-                  "gap": 8,
+                  "gap": 16,
                   "children": [
                     {
                       "type": "frame",
-                      "id": "63EPI",
-                      "name": "filterAll",
-                      "fill": "#FFFFFF",
-                      "cornerRadius": 100,
-                      "padding": [
-                        6,
-                        14
-                      ],
+                      "id": "cat5fdY",
+                      "name": "Category Block",
+                      "layout": "vertical",
+                      "gap": 6,
                       "children": [
                         {
                           "type": "text",
-                          "id": "AwYg9",
-                          "name": "filterAllText",
-                          "fill": "#0B3C6D",
-                          "content": "All",
+                          "id": "catLXKzc",
+                          "content": "Category",
+                          "fill": "#EAF6FF",
                           "fontFamily": "Inter",
-                          "fontSize": 12,
-                          "fontWeight": "500"
+                          "fontSize": 10,
+                          "fontWeight": "600",
+                          "letterSpacing": 1
+                        },
+                        {
+                          "type": "frame",
+                          "id": "catSE3I4",
+                          "name": "Category Select",
+                          "layout": "horizontal",
+                          "alignItems": "center",
+                          "gap": 8,
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "cornerRadius": 10,
+                          "fill": "rgba(255,255,255,0.10)",
+                          "stroke": {
+                            "align": "inside",
+                            "fill": "rgba(255,255,255,0.15)",
+                            "thickness": 1
+                          },
+                          "width": 220,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "catVKG9F",
+                              "content": "All",
+                              "fill": "#FFFFFF",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "icon_font",
+                              "id": "catCyI5V",
+                              "name": "chevron",
+                              "iconFontFamily": "lucide",
+                              "iconFontName": "chevron-down",
+                              "width": 14,
+                              "height": 14,
+                              "fill": "#FFFFFFAA"
+                            }
+                          ]
                         }
                       ]
                     },
                     {
                       "type": "frame",
-                      "id": "aP6uP",
-                      "name": "filterExp",
-                      "fill": "rgba(255,255,255,0.1)",
-                      "cornerRadius": 100,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "rgba(255,255,255,0.2)"
-                      },
-                      "padding": [
-                        6,
-                        14
-                      ],
+                      "id": "seaSnto",
+                      "name": "Search Block",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "width": "fill_container",
                       "children": [
                         {
                           "type": "text",
-                          "id": "fbRnR",
-                          "name": "filterExpText",
-                          "fill": "#FFFFFFCC",
-                          "content": "Experiences",
+                          "id": "seaLVYLR",
+                          "content": "Search",
+                          "fill": "#EAF6FF",
                           "fontFamily": "Inter",
-                          "fontSize": 12,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "42M7z",
-                      "name": "filterGear",
-                      "fill": "rgba(255,255,255,0.1)",
-                      "cornerRadius": 100,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "rgba(255,255,255,0.2)"
-                      },
-                      "padding": [
-                        6,
-                        14
-                      ],
-                      "children": [
+                          "fontSize": 10,
+                          "fontWeight": "600",
+                          "letterSpacing": 1
+                        },
                         {
-                          "type": "text",
-                          "id": "Iho11",
-                          "name": "filterGearText",
-                          "fill": "#FFFFFFCC",
-                          "content": "Gear",
-                          "fontFamily": "Inter",
-                          "fontSize": 12,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "sE7Xq",
-                      "name": "filterCourses",
-                      "fill": "rgba(255,255,255,0.1)",
-                      "cornerRadius": 100,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "rgba(255,255,255,0.2)"
-                      },
-                      "padding": [
-                        6,
-                        14
-                      ],
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "82UO2",
-                          "name": "filterCoursesText",
-                          "fill": "#FFFFFFCC",
-                          "content": "Courses",
-                          "fontFamily": "Inter",
-                          "fontSize": 12,
-                          "fontWeight": "normal"
+                          "type": "frame",
+                          "id": "seaBtHMA",
+                          "name": "Search Bar",
+                          "layout": "horizontal",
+                          "alignItems": "center",
+                          "gap": 8,
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "cornerRadius": 10,
+                          "fill": "rgba(255,255,255,0.10)",
+                          "stroke": {
+                            "align": "inside",
+                            "fill": "rgba(255,255,255,0.15)",
+                            "thickness": 1
+                          },
+                          "width": "fill_container",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "seaIorzR",
+                              "name": "searchIcon",
+                              "iconFontFamily": "lucide",
+                              "iconFontName": "search",
+                              "width": 14,
+                              "height": 14,
+                              "fill": "#FFFFFFAA"
+                            },
+                            {
+                              "type": "text",
+                              "id": "seaTbZEL",
+                              "content": "Find rewards...",
+                              "fill": "#FFFFFF66",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
                         }
                       ]
                     }
-                  ]
+                  ],
+                  "layout": "horizontal",
+                  "justifyContent": "space_between"
                 },
                 {
                   "type": "frame",
@@ -748,28 +728,63 @@
                         },
                         {
                           "type": "frame",
-                          "id": "O4IPo",
-                          "name": "rw1pts",
-                          "fill": "rgba(66,165,245,0.2)",
-                          "cornerRadius": 100,
-                          "padding": [
-                            4,
-                            10
-                          ],
+                          "id": "acthQVU",
+                          "name": "Reward Actions",
+                          "layout": "vertical",
+                          "gap": 6,
+                          "width": 90,
                           "children": [
                             {
-                              "type": "text",
-                              "id": "xYTQj",
-                              "name": "rw1ptsText",
-                              "fill": "#42A5F5",
-                              "content": "500",
-                              "fontFamily": "DM Mono",
-                              "fontSize": 11,
-                              "fontWeight": "500"
+                              "type": "frame",
+                              "id": "O4IPo",
+                              "name": "rw1pts",
+                              "fill": "rgba(66,165,245,0.2)",
+                              "cornerRadius": 100,
+                              "padding": [
+                                4,
+                                10
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "xYTQj",
+                                  "name": "rw1ptsText",
+                                  "fill": "#42A5F5",
+                                  "content": "500",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "btn2emU",
+                              "name": "Redeem Button",
+                              "cornerRadius": 8,
+                              "padding": [
+                                6,
+                                8
+                              ],
+                              "fill": "#1E88E5",
+                              "alignItems": "center",
+                              "justifyContent": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "btnTmY3j",
+                                  "content": "Redeem",
+                                  "fill": "#FFFFFF",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 10,
+                                  "fontWeight": "600"
+                                }
+                              ]
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "justifyContent": "space_between"
                     },
                     {
                       "type": "frame",
@@ -840,28 +855,63 @@
                         },
                         {
                           "type": "frame",
-                          "id": "J6Jmy",
-                          "name": "rw2pts",
-                          "fill": "rgba(66,165,245,0.2)",
-                          "cornerRadius": 100,
-                          "padding": [
-                            4,
-                            10
-                          ],
+                          "id": "actObmx",
+                          "name": "Reward Actions",
+                          "layout": "vertical",
+                          "gap": 6,
+                          "width": 90,
                           "children": [
                             {
-                              "type": "text",
-                              "id": "ibuQ2",
-                              "name": "rw2ptsText",
-                              "fill": "#42A5F5",
-                              "content": "300",
-                              "fontFamily": "DM Mono",
-                              "fontSize": 11,
-                              "fontWeight": "500"
+                              "type": "frame",
+                              "id": "J6Jmy",
+                              "name": "rw2pts",
+                              "fill": "rgba(66,165,245,0.2)",
+                              "cornerRadius": 100,
+                              "padding": [
+                                4,
+                                10
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "ibuQ2",
+                                  "name": "rw2ptsText",
+                                  "fill": "#42A5F5",
+                                  "content": "300",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "btnY4ow",
+                              "name": "Redeem Button",
+                              "cornerRadius": 8,
+                              "padding": [
+                                6,
+                                8
+                              ],
+                              "fill": "#1E88E5",
+                              "alignItems": "center",
+                              "justifyContent": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "btnTr684",
+                                  "content": "Redeem",
+                                  "fill": "#FFFFFF",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 10,
+                                  "fontWeight": "600"
+                                }
+                              ]
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "justifyContent": "space_between"
                     },
                     {
                       "type": "frame",
@@ -932,28 +982,63 @@
                         },
                         {
                           "type": "frame",
-                          "id": "A1Gd9",
-                          "name": "rw3pts",
-                          "fill": "rgba(66,165,245,0.2)",
-                          "cornerRadius": 100,
-                          "padding": [
-                            4,
-                            10
-                          ],
+                          "id": "actSD3N",
+                          "name": "Reward Actions",
+                          "layout": "vertical",
+                          "gap": 6,
+                          "width": 90,
                           "children": [
                             {
-                              "type": "text",
-                              "id": "jpUSO",
-                              "name": "rw3ptsText",
-                              "fill": "#42A5F5",
-                              "content": "800",
-                              "fontFamily": "DM Mono",
-                              "fontSize": 11,
-                              "fontWeight": "500"
+                              "type": "frame",
+                              "id": "A1Gd9",
+                              "name": "rw3pts",
+                              "fill": "rgba(66,165,245,0.2)",
+                              "cornerRadius": 100,
+                              "padding": [
+                                4,
+                                10
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "jpUSO",
+                                  "name": "rw3ptsText",
+                                  "fill": "#42A5F5",
+                                  "content": "800",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "btny3WS",
+                              "name": "Redeem Button",
+                              "cornerRadius": 8,
+                              "padding": [
+                                6,
+                                8
+                              ],
+                              "fill": "#1E88E5",
+                              "alignItems": "center",
+                              "justifyContent": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "btnTHaKq",
+                                  "content": "Redeem",
+                                  "fill": "#FFFFFF",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 10,
+                                  "fontWeight": "600"
+                                }
+                              ]
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "justifyContent": "space_between"
                     }
                   ]
                 }
@@ -1007,11 +1092,11 @@
               "type": "frame",
               "id": "gJsLA",
               "x": 0,
-              "y": 70,
+              "y": 58,
               "name": "Bubble Row",
               "width": 1200,
               "height": 90,
-              "gap": 80,
+              "gap": 120,
               "justifyContent": "center",
               "alignItems": "center",
               "children": [
@@ -1019,8 +1104,8 @@
                   "type": "frame",
                   "id": "45Tds",
                   "name": "Bubble Fishdex",
-                  "width": 56,
-                  "height": 56,
+                  "width": 80,
+                  "height": 80,
                   "fill": "rgba(255,255,255,0.12)",
                   "cornerRadius": 100,
                   "stroke": {
@@ -1037,21 +1122,11 @@
                       "type": "icon_font",
                       "id": "TxFxA",
                       "name": "b2icon",
-                      "width": 18,
-                      "height": 18,
+                      "width": 26,
+                      "height": 26,
                       "iconFontName": "fish",
                       "iconFontFamily": "lucide",
                       "fill": "#FFFFFFCC"
-                    },
-                    {
-                      "type": "text",
-                      "id": "xWfLx",
-                      "name": "b2label",
-                      "fill": "#FFFFFFAA",
-                      "content": "Fishdex",
-                      "fontFamily": "Inter",
-                      "fontSize": 8,
-                      "fontWeight": "500"
                     }
                   ]
                 },
@@ -1059,8 +1134,8 @@
                   "type": "frame",
                   "id": "cwmk7",
                   "name": "Bubble Scan",
-                  "width": 72,
-                  "height": 72,
+                  "width": 112,
+                  "height": 112,
                   "fill": "rgba(255,255,255,0.18)",
                   "cornerRadius": 100,
                   "stroke": {
@@ -1077,21 +1152,11 @@
                       "type": "icon_font",
                       "id": "CGeSL",
                       "name": "b1icon",
-                      "width": 22,
-                      "height": 22,
-                      "iconFontName": "scan",
+                      "width": 32,
+                      "height": 32,
+                      "iconFontName": "plus",
                       "iconFontFamily": "lucide",
                       "fill": "#FFFFFF"
-                    },
-                    {
-                      "type": "text",
-                      "id": "4x0a7",
-                      "name": "b1label",
-                      "fill": "#FFFFFFCC",
-                      "content": "Scan",
-                      "fontFamily": "Inter",
-                      "fontSize": 9,
-                      "fontWeight": "500"
                     }
                   ]
                 },
@@ -1099,8 +1164,8 @@
                   "type": "frame",
                   "id": "uzAqI",
                   "name": "Bubble Map",
-                  "width": 56,
-                  "height": 56,
+                  "width": 80,
+                  "height": 80,
                   "fill": "rgba(255,255,255,0.12)",
                   "cornerRadius": 100,
                   "stroke": {
@@ -1117,21 +1182,11 @@
                       "type": "icon_font",
                       "id": "nFE34",
                       "name": "b3icon",
-                      "width": 18,
-                      "height": 18,
+                      "width": 26,
+                      "height": 26,
                       "iconFontName": "map",
                       "iconFontFamily": "lucide",
                       "fill": "#FFFFFFCC"
-                    },
-                    {
-                      "type": "text",
-                      "id": "4dXhq",
-                      "name": "b3label",
-                      "fill": "#FFFFFFAA",
-                      "content": "Map",
-                      "fontFamily": "Inter",
-                      "fontSize": 8,
-                      "fontWeight": "500"
                     }
                   ]
                 }
@@ -1159,15 +1214,15 @@
         },
         "colors": [
           {
-            "color": "#0B3C6D",
+            "color": "#0A1F3C",
             "position": 0
           },
           {
-            "color": "#1565C0",
-            "position": 0.4
+            "color": "#0F3057",
+            "position": 0.55
           },
           {
-            "color": "#1E88E5",
+            "color": "#0B3C6D",
             "position": 1
           }
         ]
@@ -1189,10 +1244,10 @@
               "id": "caTsC",
               "name": "Scan Header",
               "width": "fill_container",
-              "gap": 12,
+              "gap": 16,
               "padding": [
-                16,
-                20
+                20,
+                0
               ],
               "alignItems": "center",
               "children": [
@@ -1202,7 +1257,7 @@
                   "name": "backBtn",
                   "width": 36,
                   "height": 36,
-                  "fill": "rgba(255,255,255,0.12)",
+                  "fill": "rgba(255,255,255,0.10)",
                   "cornerRadius": 100,
                   "justifyContent": "center",
                   "alignItems": "center",
@@ -1217,7 +1272,12 @@
                       "iconFontFamily": "lucide",
                       "fill": "#FFFFFF"
                     }
-                  ]
+                  ],
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "rgba(255,255,255,0.2)",
+                    "thickness": 1
+                  }
                 },
                 {
                   "type": "text",
@@ -1226,7 +1286,7 @@
                   "fill": "#FFFFFF",
                   "content": "New Scan",
                   "fontFamily": "Inter",
-                  "fontSize": 18,
+                  "fontSize": 20,
                   "fontWeight": "600"
                 }
               ]
@@ -1239,7 +1299,7 @@
               "layout": "vertical",
               "padding": [
                 0,
-                20
+                0
               ],
               "children": [
                 {
@@ -1247,27 +1307,27 @@
                   "id": "844iI",
                   "name": "Form Inner",
                   "width": "fill_container",
-                  "fill": "rgba(255,255,255,0.08)",
-                  "cornerRadius": 16,
+                  "fill": "rgba(255,255,255,0.10)",
+                  "cornerRadius": 18,
                   "stroke": {
                     "align": "inside",
-                    "thickness": 1,
-                    "fill": "rgba(255,255,255,0.12)"
+                    "fill": "rgba(255,255,255,0.18)",
+                    "thickness": 1
                   },
                   "layout": "vertical",
                   "gap": 20,
-                  "padding": 20,
+                  "padding": 24,
                   "children": [
                     {
                       "type": "text",
                       "id": "dg8Op",
                       "name": "actLabel",
-                      "fill": "#FFFFFFAA",
+                      "fill": "#EAF6FF",
                       "content": "Activity Type",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "500",
-                      "letterSpacing": 0.5
+                      "letterSpacing": 1
                     },
                     {
                       "type": "frame",
@@ -1275,8 +1335,8 @@
                       "name": "Activity Toggle",
                       "width": "fill_container",
                       "height": 44,
-                      "fill": "rgba(255,255,255,0.06)",
-                      "cornerRadius": 12,
+                      "fill": "rgba(255,255,255,0.10)",
+                      "cornerRadius": 14,
                       "padding": 3,
                       "children": [
                         {
@@ -1330,12 +1390,12 @@
                       "type": "text",
                       "id": "a636O",
                       "name": "siteLabel",
-                      "fill": "#FFFFFFAA",
+                      "fill": "#EAF6FF",
                       "content": "Dive Site",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "500",
-                      "letterSpacing": 0.5
+                      "letterSpacing": 1
                     },
                     {
                       "type": "frame",
@@ -1343,8 +1403,8 @@
                       "name": "Site Select",
                       "width": "fill_container",
                       "height": 44,
-                      "fill": "rgba(255,255,255,0.06)",
-                      "cornerRadius": 12,
+                      "fill": "rgba(255,255,255,0.10)",
+                      "cornerRadius": 14,
                       "stroke": {
                         "align": "inside",
                         "thickness": 1,
@@ -1383,12 +1443,12 @@
                       "type": "text",
                       "id": "fdqmn",
                       "name": "uploadLabel",
-                      "fill": "#FFFFFFAA",
+                      "fill": "#EAF6FF",
                       "content": "Upload Photo",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "500",
-                      "letterSpacing": 0.5
+                      "letterSpacing": 1
                     },
                     {
                       "type": "frame",
@@ -1396,8 +1456,8 @@
                       "name": "Drop Zone",
                       "width": "fill_container",
                       "height": 160,
-                      "fill": "rgba(255,255,255,0.04)",
-                      "cornerRadius": 12,
+                      "fill": "rgba(255,255,255,0.08)",
+                      "cornerRadius": 14,
                       "stroke": {
                         "align": "inside",
                         "thickness": 1.5,
@@ -1445,7 +1505,7 @@
                           "type": "frame",
                           "id": "dkDxt",
                           "name": "Inline Preview",
-                          "width": 160,
+                          "width": 180,
                           "layout": "vertical",
                           "gap": 8,
                           "children": [
@@ -1454,7 +1514,7 @@
                               "id": "2ML1H",
                               "name": "Preview Thumb",
                               "width": "fill_container",
-                              "height": 100,
+                              "height": 110,
                               "fill": "rgba(255,255,255,0.12)",
                               "cornerRadius": 10
                             },
@@ -1484,26 +1544,8 @@
                           "name": "Start Scan Button",
                           "width": "fill_container",
                           "height": 48,
-                          "fill": {
-                            "type": "gradient",
-                            "gradientType": "linear",
-                            "enabled": true,
-                            "rotation": 135,
-                            "size": {
-                              "height": 1
-                            },
-                            "colors": [
-                              {
-                                "color": "#1565C0",
-                                "position": 0
-                              },
-                              {
-                                "color": "#42A5F5",
-                                "position": 1
-                              }
-                            ]
-                          },
-                          "cornerRadius": 14,
+                          "fill": "#1E88E5",
+                          "cornerRadius": 12,
                           "effect": {
                             "type": "shadow",
                             "shadowType": "outer",
@@ -1568,15 +1610,15 @@
         },
         "colors": [
           {
-            "color": "#0B3C6D",
+            "color": "#0A1F3C",
             "position": 0
           },
           {
-            "color": "#1565C0",
-            "position": 0.4
+            "color": "#0F3057",
+            "position": 0.55
           },
           {
-            "color": "#1E88E5",
+            "color": "#0B3C6D",
             "position": 1
           }
         ]
@@ -1598,10 +1640,10 @@
               "id": "fpC5N",
               "name": "Fishdex Header",
               "width": "fill_container",
-              "gap": 12,
+              "gap": 16,
               "padding": [
-                16,
-                20
+                20,
+                0
               ],
               "alignItems": "center",
               "children": [
@@ -1611,7 +1653,7 @@
                   "name": "backBtn",
                   "width": 36,
                   "height": 36,
-                  "fill": "rgba(255,255,255,0.12)",
+                  "fill": "rgba(255,255,255,0.10)",
                   "cornerRadius": 100,
                   "justifyContent": "center",
                   "alignItems": "center",
@@ -1626,7 +1668,12 @@
                       "iconFontFamily": "lucide",
                       "fill": "#FFFFFF"
                     }
-                  ]
+                  ],
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "rgba(255,255,255,0.2)",
+                    "thickness": 1
+                  }
                 },
                 {
                   "type": "frame",
@@ -1642,17 +1689,17 @@
                       "fill": "#FFFFFF",
                       "content": "Fishdex",
                       "fontFamily": "Inter",
-                      "fontSize": 18,
+                      "fontSize": 20,
                       "fontWeight": "600"
                     },
                     {
                       "type": "text",
                       "id": "mNpRY",
                       "name": "fishdexSub",
-                      "fill": "#FFFFFFAA",
-                      "content": "Red Sea database · 1,827 species",
+                      "fill": "#CFE3F7",
+                      "content": "Red Sea database \u00b7 1,827 species",
                       "fontFamily": "Inter",
-                      "fontSize": 12,
+                      "fontSize": 11,
                       "fontWeight": "500"
                     }
                   ]
@@ -1667,7 +1714,7 @@
               "layout": "vertical",
               "padding": [
                 0,
-                20
+                0
               ],
               "children": [
                 {
@@ -1675,16 +1722,16 @@
                   "id": "lqVKI",
                   "name": "Progress Card",
                   "width": "fill_container",
-                  "fill": "rgba(255,255,255,0.08)",
-                  "cornerRadius": 16,
+                  "fill": "rgba(255,255,255,0.10)",
+                  "cornerRadius": 18,
                   "stroke": {
                     "align": "inside",
-                    "thickness": 1,
-                    "fill": "rgba(255,255,255,0.12)"
+                    "fill": "rgba(255,255,255,0.18)",
+                    "thickness": 1
                   },
                   "layout": "vertical",
                   "gap": 10,
-                  "padding": 16,
+                  "padding": 20,
                   "children": [
                     {
                       "type": "text",
@@ -1866,7 +1913,7 @@
               "gap": 12,
               "padding": [
                 12,
-                20
+                0
               ],
               "children": [
                 {
@@ -1989,7 +2036,7 @@
                       "name": "Fish Card - Red Sea Clownfish",
                       "width": "fill_container",
                       "fill": "rgba(255,255,255,0.06)",
-                      "cornerRadius": 14,
+                      "cornerRadius": 16,
                       "stroke": {
                         "align": "inside",
                         "thickness": 1,
@@ -2085,7 +2132,7 @@
                       "name": "Fish Card - Sohal Surgeonfish",
                       "width": "fill_container",
                       "fill": "rgba(255,255,255,0.06)",
-                      "cornerRadius": 14,
+                      "cornerRadius": 16,
                       "stroke": {
                         "align": "inside",
                         "thickness": 1,
@@ -2181,7 +2228,7 @@
                       "name": "Fish Card - Titan Triggerfish",
                       "width": "fill_container",
                       "fill": "rgba(255,255,255,0.06)",
-                      "cornerRadius": 14,
+                      "cornerRadius": 16,
                       "stroke": {
                         "align": "inside",
                         "thickness": 1,
@@ -2297,15 +2344,15 @@
         },
         "colors": [
           {
-            "color": "#0B3C6D",
+            "color": "#0A1F3C",
             "position": 0
           },
           {
-            "color": "#1565C0",
-            "position": 0.4
+            "color": "#0F3057",
+            "position": 0.55
           },
           {
-            "color": "#1E88E5",
+            "color": "#0B3C6D",
             "position": 1
           }
         ]
@@ -2328,8 +2375,8 @@
               "name": "Map Header",
               "width": "fill_container",
               "padding": [
-                16,
-                20
+                20,
+                0
               ],
               "justifyContent": "space_between",
               "alignItems": "center",
@@ -2347,7 +2394,7 @@
                       "name": "backBtn",
                       "width": 36,
                       "height": 36,
-                      "fill": "rgba(255,255,255,0.12)",
+                      "fill": "rgba(255,255,255,0.10)",
                       "cornerRadius": 100,
                       "justifyContent": "center",
                       "alignItems": "center",
@@ -2362,7 +2409,12 @@
                           "iconFontFamily": "lucide",
                           "fill": "#FFFFFF"
                         }
-                      ]
+                      ],
+                      "stroke": {
+                        "align": "inside",
+                        "fill": "rgba(255,255,255,0.2)",
+                        "thickness": 1
+                      }
                     },
                     {
                       "type": "frame",
@@ -2378,17 +2430,17 @@
                           "fill": "#FFFFFF",
                           "content": "Red Sea Map",
                           "fontFamily": "Inter",
-                          "fontSize": 18,
+                          "fontSize": 20,
                           "fontWeight": "600"
                         },
                         {
                           "type": "text",
                           "id": "6nzf0",
                           "name": "mapSub",
-                          "fill": "#FFFFFFAA",
-                          "content": "Dive sites · reefs · sightings",
+                          "fill": "#CFE3F7",
+                          "content": "Dive sites \u00b7 reefs \u00b7 sightings",
                           "fontFamily": "Inter",
-                          "fontSize": 12,
+                          "fontSize": 11,
                           "fontWeight": "500"
                         }
                       ]
@@ -2401,7 +2453,7 @@
                   "name": "filterBtn",
                   "width": 36,
                   "height": 36,
-                  "fill": "rgba(255,255,255,0.12)",
+                  "fill": "rgba(255,255,255,0.10)",
                   "cornerRadius": 100,
                   "justifyContent": "center",
                   "alignItems": "center",
@@ -2416,9 +2468,15 @@
                       "iconFontFamily": "lucide",
                       "fill": "#FFFFFF"
                     }
-                  ]
+                  ],
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "rgba(255,255,255,0.2)",
+                    "thickness": 1
+                  }
                 }
-              ]
+              ],
+              "gap": 16
             },
             {
               "type": "frame",
@@ -2426,14 +2484,14 @@
               "name": "Map Card",
               "width": "fill_container",
               "fill": "rgba(255,255,255,0.08)",
-              "cornerRadius": 18,
+              "cornerRadius": 20,
               "stroke": {
                 "align": "inside",
-                "thickness": 1,
-                "fill": "rgba(255,255,255,0.12)"
+                "fill": "rgba(255,255,255,0.16)",
+                "thickness": 1
               },
               "layout": "vertical",
-              "padding": 14,
+              "padding": 18,
               "children": [
                 {
                   "type": "frame",
@@ -2443,7 +2501,7 @@
                   "width": "fill_container",
                   "height": 360,
                   "fill": "rgba(255,255,255,0.08)",
-                  "cornerRadius": 14,
+                  "cornerRadius": 16,
                   "layout": "none",
                   "children": [
                     {
@@ -2484,7 +2542,7 @@
                           "id": "nxIIt",
                           "name": "mapOverlayNote",
                           "fill": "#FFFFFF88",
-                          "content": "24 sightings · 8 species",
+                          "content": "24 sightings \u00b7 8 species",
                           "fontFamily": "Inter",
                           "fontSize": 10,
                           "fontWeight": "500"
@@ -2595,7 +2653,7 @@
               "gap": 12,
               "padding": [
                 0,
-                20
+                0
               ],
               "children": [
                 {
@@ -2683,7 +2741,7 @@
                               "id": "e1OJ3",
                               "name": "spot1Sub",
                               "fill": "#FFFFFF88",
-                              "content": "Iconic reef walls · strong currents",
+                              "content": "Iconic reef walls \u00b7 strong currents",
                               "fontFamily": "Inter",
                               "fontSize": 11,
                               "fontWeight": "500"
@@ -2767,7 +2825,7 @@
                               "id": "XgZ3D",
                               "name": "spot2Sub",
                               "fill": "#FFFFFF88",
-                              "content": "Dahab · sinkhole drop-off",
+                              "content": "Dahab \u00b7 sinkhole drop-off",
                               "fontFamily": "Inter",
                               "fontSize": 11,
                               "fontWeight": "500"
@@ -2851,7 +2909,7 @@
                               "id": "jHjs5",
                               "name": "spot3Sub",
                               "fill": "#FFFFFF88",
-                              "content": "WWII cargo ship · giant corals",
+                              "content": "WWII cargo ship \u00b7 giant corals",
                               "fontFamily": "Inter",
                               "fontSize": 11,
                               "fontWeight": "500"

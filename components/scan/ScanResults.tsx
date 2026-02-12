@@ -9,7 +9,7 @@ import { useRewardsContext } from "@/app/RewardsProvider";
 import { OceanButton } from "@/components/ui/OceanButton";
 import { PointsBanner } from "./PointsBanner";
 import { SpeciesCard } from "./SpeciesCard";
-import { ArrowLeft, RotateCcw } from "lucide-react";
+import { ArrowLeft, RotateCcw, Fish } from "lucide-react";
 import type { Id } from "@/convex/_generated/dataModel";
 
 interface ScanResultsProps {
@@ -27,6 +27,7 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
   const image = useQuery(api.images.getById, {
     imageId: imageId as Id<"images">,
   });
+  const fishdexStats = useQuery(api.fishDetections.getFishdexStats, { limit: 5 });
 
   const pointsEarned = (detections?.length ?? 0) * 50;
 
@@ -78,6 +79,37 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
         </div>
       </div>
 
+      {fishdexStats && (
+        <div className="glass-card p-4">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-medium text-white/70 tracking-wider">
+              Fishdex Progress
+            </p>
+            <button
+              className="text-xs text-ocean-surface flex items-center gap-1"
+              onClick={() => router.push("/fishdex")}
+            >
+              <Fish className="w-3 h-3" />
+              View Fishdex
+            </button>
+          </div>
+          <p className="mt-2 text-sm text-white">
+            {fishdexStats.unlockedCount.toLocaleString()} /{" "}
+            {fishdexStats.totalSpecies.toLocaleString()} unlocked
+          </p>
+          <div className="mt-2 h-1.5 rounded-full bg-white/15 overflow-hidden">
+            <div
+              className="h-full rounded-full bg-ocean-surface"
+              style={{
+                width: `${Math.round(
+                  (fishdexStats.unlockedCount / fishdexStats.totalSpecies) * 100
+                )}%`,
+              }}
+            />
+          </div>
+        </div>
+      )}
+
       {pointsEarned > 0 && <PointsBanner points={pointsEarned} />}
 
       <h2 className="text-lg font-semibold text-white mt-2">
@@ -85,13 +117,27 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
       </h2>
 
       <div className="flex flex-col gap-3">
-        {detections?.map((d: { _id: string; speciesName?: string; species?: string; confidence?: number }, i: number) => (
-          <SpeciesCard
-            key={d._id}
-            name={d.speciesName || d.species || "Unknown species"}
-            confidence={d.confidence ?? 0.85}
-            index={i}
-          />
+        {detections?.map((d: { _id: string; speciesName?: string; species?: string; confidence?: number; classificationDetails?: string }, i: number) => (
+          (() => {
+            let reasoning: string | undefined;
+            if (d.classificationDetails) {
+              try {
+                const parsed = JSON.parse(d.classificationDetails) as { reasoning?: string };
+                reasoning = parsed.reasoning;
+              } catch {
+                reasoning = undefined;
+              }
+            }
+            return (
+              <SpeciesCard
+                key={d._id}
+                name={d.speciesName || d.species || "Unknown species"}
+                confidence={d.confidence ?? 0.85}
+                index={i}
+                reasoning={reasoning}
+              />
+            );
+          })()
         ))}
       </div>
 

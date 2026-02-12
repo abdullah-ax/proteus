@@ -20,7 +20,12 @@ export function FishClassificationCard({
 }: FishClassificationCardProps) {
   const [expanded, setExpanded] = useState(false);
 
-  let details: { family?: string; characteristics?: string; conservationStatus?: string } | null = null;
+  let details: {
+    family?: string;
+    characteristics?: string;
+    conservationStatus?: string;
+    reasoning?: string;
+  } | null = null;
   if (classificationDetails) {
     try {
       details = JSON.parse(classificationDetails);
@@ -80,8 +85,12 @@ export function FishClassificationCard({
                 {details.characteristics && (
                   <p>{details.characteristics}</p>
                 )}
-                {details.conservationStatus && (
-                  <p>IUCN: {details.conservationStatus}</p>
+                {details.conservationStatus && <p>IUCN: {details.conservationStatus}</p>}
+                {details.reasoning && (
+                  <p>
+                    <span className="text-slate-300">Model reasoning:</span>{" "}
+                    {details.reasoning}
+                  </p>
                 )}
               </div>
             )}

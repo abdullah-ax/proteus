@@ -15,6 +15,8 @@ interface ScanningAnimationProps {
 export function ScanningAnimation({ imageId, onComplete }: ScanningAnimationProps) {
   const [fishIndex, setFishIndex] = useState(0);
   const image = useQuery(api.images.getById, { imageId: imageId as Id<"images"> });
+  const status = image?.pipelineStatus ?? "uploaded";
+  const currentStage = image?.currentStage ?? "Initializing pipeline";
 
   // Cycle through fish silhouettes
   useEffect(() => {
@@ -38,6 +40,19 @@ export function ScanningAnimation({ imageId, onComplete }: ScanningAnimationProp
       ? "Analysis failed"
       : "Analyzing your image...";
 
+  const progressSteps = [
+    "uploaded",
+    "metadata_extracted",
+    "duplicate_checked",
+    "recolored",
+    "fish_extracted",
+    "classified",
+    "completed",
+  ];
+
+  const progressIndex = progressSteps.indexOf(status);
+  const progressPct = progressIndex >= 0 ? Math.round(((progressIndex + 1) / progressSteps.length) * 100) : 10;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -45,6 +60,20 @@ export function ScanningAnimation({ imageId, onComplete }: ScanningAnimationProp
       exit={{ opacity: 0 }}
       className="flex flex-col items-center justify-center px-5 py-16"
     >
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-b from-ocean-mid/20 via-transparent to-transparent"
+          animate={{ opacity: [0.2, 0.5, 0.2] }}
+          transition={{ duration: 6, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute left-1/2 top-32 h-48 w-48 rounded-full border border-ocean-surface/30"
+          style={{ transform: "translateX(-50%)" }}
+          animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.1, 0.4] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+      </div>
+
       {/* Holographic fish */}
       <div className="relative w-[200px] h-[160px] mb-8">
         <AnimatePresence mode="wait">
@@ -79,8 +108,27 @@ export function ScanningAnimation({ imageId, onComplete }: ScanningAnimationProp
         {statusText}
       </motion.p>
       <p className="text-sm text-white/50">
-        {image?.pipelineStatus === "completed" ? "Redirecting..." : "This may take a moment"}
+        {image?.pipelineStatus === "completed"
+          ? "Redirecting..."
+          : image?.pipelineStatus === "failed"
+            ? "Something went wrong. Try again."
+            : currentStage}
       </p>
+
+      <div className="mt-6 w-full max-w-sm">
+        <div className="flex justify-between text-xs text-white/50 mb-2">
+          <span>Pipeline Progress</span>
+          <span>{progressPct}%</span>
+        </div>
+        <div className="h-2 rounded-full bg-white/10 overflow-hidden">
+          <motion.div
+            className="h-full rounded-full bg-ocean-surface"
+            initial={{ width: 0 }}
+            animate={{ width: `${progressPct}%` }}
+            transition={{ duration: 0.6 }}
+          />
+        </div>
+      </div>
 
       {/* Progress dots */}
       <div className="flex gap-2 mt-6">

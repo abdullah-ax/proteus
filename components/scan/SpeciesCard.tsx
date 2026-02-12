@@ -8,11 +8,13 @@ interface SpeciesCardProps {
   name: string;
   confidence: number;
   index: number;
+  reasoning?: string;
 }
 
-export function SpeciesCard({ name, confidence, index }: SpeciesCardProps) {
+export function SpeciesCard({ name, confidence, index, reasoning }: SpeciesCardProps) {
   const funFact = SPECIES_FUN_FACTS[name] || SPECIES_FUN_FACTS.default;
   const confidencePct = Math.round(confidence * 100);
+  const bodyText = reasoning || funFact;
 
   return (
     <motion.div
@@ -31,7 +33,7 @@ export function SpeciesCard({ name, confidence, index }: SpeciesCardProps) {
             style={{ width: `${confidencePct}%` }}
           />
         </div>
-        <p className="text-xs text-white/60 leading-relaxed">{funFact}</p>
+        <p className="text-xs text-white/60 leading-relaxed">{bodyText}</p>
       </GlassCard>
     </motion.div>
   );

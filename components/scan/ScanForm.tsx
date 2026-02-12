@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { OceanButton } from "@/components/ui/OceanButton";
@@ -20,7 +20,23 @@ export function ScanForm({ onSubmit }: ScanFormProps) {
   const [depth, setDepth] = useState<number | undefined>();
   const [duration, setDuration] = useState<number | undefined>();
   const [file, setFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const previewRef = useRef<string | null>(null);
   const { upload, isUploading, error } = useUpload();
+
+  useEffect(() => {
+    return () => {
+      if (previewRef.current) URL.revokeObjectURL(previewRef.current);
+    };
+  }, []);
+
+  const handleFile = useCallback((selected: File) => {
+    if (previewRef.current) URL.revokeObjectURL(previewRef.current);
+    const url = URL.createObjectURL(selected);
+    previewRef.current = url;
+    setPreviewUrl(url);
+    setFile(selected);
+  }, []);
 
   const handleSubmit = useCallback(async () => {
     if (!file) return;
@@ -92,9 +108,18 @@ export function ScanForm({ onSubmit }: ScanFormProps) {
           <label className="text-xs font-medium text-white/70 tracking-wider mb-2 block">
             Upload Photo
           </label>
-          <DropZone onFile={setFile} disabled={isUploading} />
+          <DropZone onFile={handleFile} disabled={isUploading} />
           {file && (
             <p className="mt-2 text-xs text-white/60 truncate">{file.name}</p>
+          )}
+          {previewUrl && (
+            <div className="mt-3 rounded-xl overflow-hidden border border-white/12 bg-white/5">
+              <img
+                src={previewUrl}
+                alt="Preview"
+                className="w-full h-48 object-cover"
+              />
+            </div>
           )}
         </div>
 

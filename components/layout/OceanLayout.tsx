@@ -9,7 +9,9 @@ interface OceanLayoutProps {
 
 export function OceanLayout({ children, className }: OceanLayoutProps) {
   return (
-    <div className={cn("min-h-screen bg-ocean-gradient ocean-theme", className)}>
+    <div
+      className={cn("min-h-screen w-full bg-ocean-gradient ocean-theme", className)}
+    >
       {children}
     </div>
   );

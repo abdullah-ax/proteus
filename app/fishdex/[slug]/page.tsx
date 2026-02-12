@@ -124,13 +124,15 @@ export default function FishdexDetailPage() {
           <div className="grid grid-cols-2 gap-3">
             {(detail?.detections ?? []).map((det) => (
               <GlassCard key={det._id} className="p-2">
-                <div className="h-28 rounded-xl bg-white/10 overflow-hidden">
+                <div className="h-32 rounded-xl bg-white/10 overflow-hidden">
                   {det.croppedUrl || det.imageUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={det.croppedUrl ?? det.imageUrl ?? ""}
                       alt="Capture"
                       className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   ) : (
                     <div className="w-full h-full bg-white/10" />

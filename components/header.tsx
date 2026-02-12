@@ -28,9 +28,13 @@ export default function Header({ transparent = false }: HeaderProps) {
           onClick={() => router.push("/")}
           className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
         >
-          <div className="h-10 w-10 rounded-full bg-white/15 border border-white/25 flex items-center justify-center text-white text-xs font-semibold">
-            P
-          </div>
+          <img
+            src="/logo.jpeg"
+            alt="Proteus"
+            className="h-10 w-10 rounded-full border border-white/25 object-cover"
+            loading="eager"
+            decoding="async"
+          />
           <span className="text-lg font-semibold text-white">Proteus</span>
         </button>
 

@@ -115,12 +115,12 @@ export function ScanningAnimation({ imageId, onComplete }: ScanningAnimationProp
             : currentStage}
       </p>
 
-      <div className="mt-6 w-full max-w-sm">
-        <div className="flex justify-between text-xs text-white/50 mb-2">
+      <div className="mt-6 w-full max-w-md">
+        <div className="flex justify-between text-xs text-white/50 mb-2 uppercase tracking-wide">
           <span>Pipeline Progress</span>
           <span>{progressPct}%</span>
         </div>
-        <div className="h-2 rounded-full bg-white/10 overflow-hidden">
+        <div className="h-2.5 rounded-full bg-white/10 overflow-hidden">
           <motion.div
             className="h-full rounded-full bg-ocean-surface"
             initial={{ width: 0 }}

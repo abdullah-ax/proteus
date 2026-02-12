@@ -26,6 +26,8 @@ export function ImageCard({ id, url, fileName, status, fishCount, createdAt }: I
             src={url}
             alt={fileName}
             className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-slate-600">

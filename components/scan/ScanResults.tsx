@@ -51,28 +51,6 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
       exit={{ opacity: 0 }}
       className="flex flex-col gap-4 px-5 pb-8"
     >
-      <div className="flex flex-col gap-2">
-        <p className="text-xs font-medium text-white/70 tracking-wider">
-          Scan Preview
-        </p>
-        <div className="rounded-xl border border-white/12 bg-white/8 p-2">
-          <div className="h-40 rounded-lg bg-white/15 overflow-hidden">
-            {image?.url ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={image.url}
-                alt="Original"
-                className="w-full h-full object-cover"
-                loading="eager"
-                decoding="async"
-              />
-            ) : (
-              <div className="w-full h-full bg-white/10" />
-            )}
-          </div>
-        </div>
-      </div>
-
       {fishdexStats && (
         <div className="glass-card p-4">
           <div className="flex items-center justify-between">
@@ -133,6 +111,28 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
             );
           })()
         ))}
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <p className="text-xs font-medium text-white/70 tracking-wider">
+          Scan Preview
+        </p>
+        <div className="rounded-xl border border-white/12 bg-white/8 p-2">
+          <div className="h-40 rounded-lg bg-white/15 overflow-hidden">
+            {image?.url ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={image.url}
+                alt="Original"
+                className="w-full h-full object-cover"
+                loading="eager"
+                decoding="async"
+              />
+            ) : (
+              <div className="w-full h-full bg-white/10" />
+            )}
+          </div>
+        </div>
       </div>
 
       {(!detections || detections.length === 0) && (

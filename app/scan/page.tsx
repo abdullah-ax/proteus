@@ -14,7 +14,15 @@ export default function ScanPage() {
   const { step, imageId, submitForm, completeScanning, reset } = useScanFlow();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0A1F3C] via-[#0F3057] to-[#0B3C6D]">
+    <div
+      className="min-h-screen bg-gradient-to-b from-[#0A1F3C] via-[#0F3057] to-[#0B3C6D]"
+      style={{
+        backgroundImage:
+          "linear-gradient(180deg, rgba(10,31,60,0.92) 0%, rgba(15,48,87,0.92) 55%, rgba(11,60,109,0.92) 100%), url('/scan-bg.svg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <Header transparent />
       <div className="max-w-4xl mx-auto px-6 pt-6 pb-12">
         <header className="flex items-center gap-3 mb-6">

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { FISH_SILHOUETTES } from "@/lib/mockData";
+import { Fish } from "lucide-react";
 import type { Id } from "@/convex/_generated/dataModel";
 
 interface ScanningAnimationProps {
@@ -74,8 +75,24 @@ export function ScanningAnimation({ imageId, onComplete }: ScanningAnimationProp
         />
       </div>
 
-      {/* Holographic fish */}
-      <div className="relative w-[200px] h-[160px] mb-8">
+      {/* Rotating fish loader */}
+      <div className="relative w-[220px] h-[180px] mb-8 flex items-center justify-center">
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center"
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
+        >
+          <div className="w-28 h-28 rounded-full border border-ocean-surface/40" />
+        </motion.div>
+        <motion.div
+          className="absolute flex items-center justify-center"
+          animate={{ rotate: -360 }}
+          transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+        >
+          <Fish className="w-10 h-10 text-white/90" />
+        </motion.div>
+
+        {/* Holographic fish */}
         <AnimatePresence mode="wait">
           <motion.svg
             key={fishIndex}

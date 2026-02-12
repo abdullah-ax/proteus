@@ -68,6 +68,8 @@ export function FishDetectionOverlay({
         alt="Analyzed image"
         className="hidden"
         crossOrigin="anonymous"
+        loading="eager"
+        decoding="async"
       />
       <canvas
         ref={canvasRef}

@@ -14,26 +14,21 @@ interface ImageCardProps {
 
 export function ImageCard({ id, url, fileName, status, fishCount, createdAt }: ImageCardProps) {
   const isProcessing = !["completed", "failed"].includes(status);
+  const displayUrl = url ?? "/placeholder.svg";
 
   return (
     <Link
       href={`/images/${id}`}
       className="block rounded-xl border border-slate-700/50 overflow-hidden hover:border-primary/40 transition-colors"
     >
-      <div className="aspect-video bg-slate-800 relative">
-        {url ? (
-          <img
-            src={url}
-            alt={fileName}
-            className="w-full h-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center text-slate-600">
-            No preview
-          </div>
-        )}
+      <div className="aspect-[4/3] bg-slate-800 relative">
+        <img
+          src={displayUrl}
+          alt={fileName}
+          className="w-full h-full object-contain"
+          loading="eager"
+          decoding="async"
+        />
         <div className="absolute top-2 right-2">
           {status === "completed" && (
             <span className="flex items-center gap-1 bg-emerald-500/90 text-white text-xs px-2 py-0.5 rounded-full">

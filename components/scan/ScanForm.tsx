@@ -21,6 +21,7 @@ export function ScanForm({ onSubmit }: ScanFormProps) {
   const [duration, setDuration] = useState<number | undefined>();
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [previewAspect, setPreviewAspect] = useState<number | null>(null);
   const previewRef = useRef<string | null>(null);
   const { upload, isUploading, error } = useUpload();
 
@@ -36,6 +37,14 @@ export function ScanForm({ onSubmit }: ScanFormProps) {
     previewRef.current = url;
     setPreviewUrl(url);
     setFile(selected);
+
+    const img = new Image();
+    img.onload = () => {
+      if (img.naturalWidth && img.naturalHeight) {
+        setPreviewAspect(img.naturalWidth / img.naturalHeight);
+      }
+    };
+    img.src = url;
   }, []);
 
   const handleSubmit = useCallback(async () => {
@@ -108,7 +117,12 @@ export function ScanForm({ onSubmit }: ScanFormProps) {
           <label className="text-xs font-medium text-white/70 tracking-wider mb-2 block">
             Upload Photo
           </label>
-          <DropZone onFile={handleFile} disabled={isUploading} previewUrl={previewUrl} />
+          <DropZone
+            onFile={handleFile}
+            disabled={isUploading}
+            previewUrl={previewUrl}
+            previewAspect={previewAspect}
+          />
           {file && (
             <p className="mt-2 text-xs text-white/60 truncate">{file.name}</p>
           )}

@@ -29,9 +29,9 @@ export default function Header({ transparent = false }: HeaderProps) {
           className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
         >
           <img
-            src="/logo.jpeg"
+            src="/logo.png"
             alt="Proteus"
-            className="h-10 w-10 rounded-full border border-white/25 object-cover"
+            className="h-10 w-10 rounded-full border border-white/25 object-contain"
             loading="eager"
             decoding="async"
           />

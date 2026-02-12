@@ -19,6 +19,7 @@ export function FishClassificationCard({
   classificationDetails,
 }: FishClassificationCardProps) {
   const [expanded, setExpanded] = useState(false);
+  const displayUrl = croppedUrl ?? "/placeholder.svg";
 
   let details: {
     family?: string;
@@ -36,17 +37,15 @@ export function FishClassificationCard({
 
   return (
     <div className="rounded-lg border border-slate-700/50 overflow-hidden">
-      {croppedUrl && (
-        <div className="aspect-square bg-slate-800">
-          <img
-            src={croppedUrl}
-            alt={commonName ?? "Fish"}
-            className="w-full h-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      )}
+      <div className="aspect-square bg-slate-800">
+        <img
+          src={displayUrl}
+          alt={commonName ?? "Fish"}
+          className="w-full h-full object-contain"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
       <div className="p-3">
         <p className="text-sm font-medium text-foreground">
           {commonName ?? "Unidentified"}

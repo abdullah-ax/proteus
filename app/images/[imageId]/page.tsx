@@ -42,7 +42,7 @@ export default function ImageDetailPage() {
     );
   }
 
-  const displayUrl = image.recoloredUrl ?? image.url;
+  const displayUrl = image.recoloredUrl ?? image.url ?? "/placeholder.svg";
   const detectionUrls =
     detections
       ?.map((det) => det.croppedUrl ?? null)
@@ -78,7 +78,7 @@ export default function ImageDetailPage() {
       <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Image with detections */}
         <div className="lg:col-span-2">
-          {displayUrl && detections && detections.length > 0 ? (
+          {detections && detections.length > 0 ? (
             <FishDetectionOverlay
               imageUrl={displayUrl}
               detections={detections.map((d) => ({
@@ -86,13 +86,15 @@ export default function ImageDetailPage() {
                 commonName: d.commonName ?? undefined,
               }))}
             />
-          ) : displayUrl ? (
+          ) : (
             <img
               src={displayUrl}
               alt={image.fileName}
-              className="w-full rounded-lg"
+              className="w-full rounded-lg object-contain bg-slate-900/40"
+              loading="eager"
+              decoding="async"
             />
-          ) : null}
+          )}
 
           {image.wasRecolored && (
             <div className="mt-3 flex items-center gap-2 text-xs text-slate-400">

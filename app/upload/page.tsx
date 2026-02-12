@@ -12,6 +12,7 @@ export default function UploadPage() {
   const { upload, isUploading, error } = useUpload();
   const [preview, setPreview] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [previewAspect, setPreviewAspect] = useState<number | null>(null);
   const previewUrlRef = useRef<string | null>(null);
 
   useEffect(() => {
@@ -26,6 +27,13 @@ export default function UploadPage() {
     previewUrlRef.current = objectUrl;
     setPreview(objectUrl);
     setFileName(file.name);
+    const img = new Image();
+    img.onload = () => {
+      if (img.naturalWidth && img.naturalHeight) {
+        setPreviewAspect(img.naturalWidth / img.naturalHeight);
+      }
+    };
+    img.src = objectUrl;
 
     try {
       const imageId = await upload(file);
@@ -53,24 +61,18 @@ export default function UploadPage() {
       </p>
 
       <div className="mt-8">
-        <DropZone onFile={handleFile} disabled={isUploading} />
+        <DropZone
+          onFile={handleFile}
+          disabled={isUploading}
+          previewUrl={preview}
+          previewAspect={previewAspect}
+        />
       </div>
 
       {isUploading && (
         <div className="mt-6 flex items-center gap-3 text-sm text-slate-300">
           <Loader2 className="w-4 h-4 animate-spin text-primary" />
           <span>Uploading {fileName}...</span>
-        </div>
-      )}
-
-      {preview && (
-        <div className="mt-6">
-          <p className="text-xs text-slate-400 mb-2">Preview</p>
-          <img
-            src={preview}
-            alt="Preview"
-            className="w-full max-h-64 object-contain rounded-lg border border-slate-700/50"
-          />
         </div>
       )}
 

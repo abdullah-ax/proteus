@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useQuery } from "convex/react";
@@ -22,6 +22,7 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
   const router = useRouter();
   const { addPoints } = useRewardsContext();
   const hasRewarded = useRef(false);
+  const [previewAspect, setPreviewAspect] = useState<number | null>(null);
   const detections = useQuery(api.fishDetections.getByImage, {
     imageId: imageId as Id<"images">,
   });
@@ -39,9 +40,8 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
     }
   }, [detections, pointsEarned, addPoints]);
 
-  const previewUrls = [image?.url ?? null].filter(
-    (url): url is string => Boolean(url)
-  );
+  const previewUrl = image?.url ?? "/placeholder.svg";
+  const previewUrls = [previewUrl];
   usePreloadImages(previewUrls);
 
   return (
@@ -118,19 +118,26 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
           Scan Preview
         </p>
         <div className="rounded-xl border border-white/12 bg-white/8 p-2">
-          <div className="h-40 rounded-lg bg-white/15 overflow-hidden">
-            {image?.url ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={image.url}
-                alt="Original"
-                className="w-full h-full object-cover"
-                loading="eager"
-                decoding="async"
-              />
-            ) : (
-              <div className="w-full h-full bg-white/10" />
-            )}
+          <div
+            className="rounded-lg bg-white/10 overflow-hidden"
+            style={{
+              aspectRatio: previewAspect ? `${previewAspect}` : "4 / 3",
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={previewUrl}
+              alt="Original"
+              className="w-full h-full object-contain"
+              loading="eager"
+              decoding="async"
+              onLoad={(event) => {
+                const img = event.currentTarget;
+                if (img.naturalWidth && img.naturalHeight) {
+                  setPreviewAspect(img.naturalWidth / img.naturalHeight);
+                }
+              }}
+            />
           </div>
         </div>
       </div>

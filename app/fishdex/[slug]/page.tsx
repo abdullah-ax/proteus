@@ -125,18 +125,14 @@ export default function FishdexDetailPage() {
             {(detail?.detections ?? []).map((det) => (
               <GlassCard key={det._id} className="p-2">
                 <div className="h-32 rounded-xl bg-white/10 overflow-hidden">
-                  {det.croppedUrl || det.imageUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={det.croppedUrl ?? det.imageUrl ?? ""}
-                      alt="Capture"
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-white/10" />
-                  )}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={det.croppedUrl ?? det.imageUrl ?? "/placeholder.svg"}
+                    alt="Capture"
+                    className="w-full h-full object-contain"
+                    loading="eager"
+                    decoding="async"
+                  />
                 </div>
                 <p className="mt-2 text-[10px] text-white/60">
                   {det.confidence !== null

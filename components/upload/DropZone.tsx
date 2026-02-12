@@ -16,9 +16,10 @@ interface DropZoneProps {
   onFile: (file: File) => void;
   disabled?: boolean;
   previewUrl?: string | null;
+  previewAspect?: number | null;
 }
 
-export function DropZone({ onFile, disabled, previewUrl }: DropZoneProps) {
+export function DropZone({ onFile, disabled, previewUrl, previewAspect }: DropZoneProps) {
   const onDrop = useCallback(
     (accepted: File[]) => {
       if (accepted.length > 0) {
@@ -71,13 +72,18 @@ export function DropZone({ onFile, disabled, previewUrl }: DropZoneProps) {
             </p>
           </div>
           {previewUrl && (
-            <div className="w-40">
-              <div className="h-24 rounded-lg overflow-hidden border border-slate-700/60 bg-slate-800/70">
+            <div className="w-44">
+              <div
+                className="rounded-lg overflow-hidden border border-slate-700/60 bg-slate-800/70"
+                style={{
+                  aspectRatio: previewAspect ? `${previewAspect}` : "4 / 3",
+                }}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={previewUrl}
                   alt="Selected"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   loading="eager"
                   decoding="async"
                 />

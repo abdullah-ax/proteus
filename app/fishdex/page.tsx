@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useQuery } from "convex/react";
 import { ArrowLeft, Filter } from "lucide-react";
-import { OceanLayout } from "@/components/layout/OceanLayout";
+import Header from "@/components/header";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { api } from "@/convex/_generated/api";
 import { slugify } from "@/lib/slug";
@@ -19,28 +19,30 @@ export default function FishdexPage() {
   const confidencePct = Math.round((stats?.confidenceAvg ?? 0) * 100);
 
   return (
-    <OceanLayout className="flex flex-col min-h-screen">
-      <header className="flex items-center justify-between px-5 py-4">
+    <div className="min-h-screen bg-gradient-to-b from-[#0A1F3C] via-[#0F3057] to-[#0B3C6D]">
+      <Header />
+      <div className="max-w-5xl mx-auto px-6 pt-6 pb-12">
+        <header className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <button
             onClick={() => router.push("/")}
-            className="w-9 h-9 rounded-full bg-white/12 flex items-center justify-center"
+            className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center"
           >
             <ArrowLeft className="w-[18px] h-[18px] text-white" />
           </button>
           <div>
-            <h1 className="text-lg font-semibold text-white">Fishdex</h1>
-            <p className="text-xs text-white/70">
+            <h1 className="text-xl font-semibold text-white">Fishdex</h1>
+            <p className="text-xs text-[#CFE3F7]">
               Red Sea database · {totalSpecies.toLocaleString()} species
             </p>
           </div>
         </div>
-        <button className="w-9 h-9 rounded-full bg-white/12 flex items-center justify-center">
+        <button className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
           <Filter className="w-[18px] h-[18px] text-white" />
         </button>
       </header>
 
-      <div className="px-5">
+      <div className="bg-white/8 border border-white/15 rounded-2xl p-6 shadow-lg">
         <GlassCard className="space-y-3">
           <p className="text-xs text-white/70 font-medium tracking-wide">Unlocked Progress</p>
           <div>
@@ -74,22 +76,22 @@ export default function FishdexPage() {
         </GlassCard>
       </div>
 
-      <div className="flex items-center justify-between px-5 pt-5">
+      <div className="flex items-center justify-between pt-6">
         <h2 className="text-sm font-semibold text-white">Unlocked Fish</h2>
         <div className="flex gap-2">
-          <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-white text-ocean-deep">
+          <span className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-white text-ocean-deep">
             All
           </span>
-          <span className="text-[11px] px-2.5 py-1 rounded-full bg-white/15 text-white/80">
+          <span className="text-[11px] px-3 py-1.5 rounded-full bg-white/15 text-white/80">
             Recent
           </span>
-          <span className="text-[11px] px-2.5 py-1 rounded-full bg-white/15 text-white/80">
+          <span className="text-[11px] px-3 py-1.5 rounded-full bg-white/15 text-white/80">
             Favorites
           </span>
         </div>
       </div>
 
-      <div className="px-5 pb-8 pt-3 flex flex-col gap-3">
+      <div className="pt-3 flex flex-col gap-3">
         {(stats?.species ?? []).map((fish) => (
           <Link
             key={fish.scientificName}
@@ -122,6 +124,7 @@ export default function FishdexPage() {
           </GlassCard>
         )}
       </div>
-    </OceanLayout>
+      </div>
+    </div>
   );
 }

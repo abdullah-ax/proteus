@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { ArrowLeft, SlidersHorizontal } from "lucide-react";
-import { OceanLayout } from "@/components/layout/OceanLayout";
+import Header from "@/components/header";
 import { GlassCard } from "@/components/ui/GlassCard";
 
 const SPOTS = [
@@ -30,26 +30,28 @@ export default function MapPage() {
   const router = useRouter();
 
   return (
-    <OceanLayout className="flex flex-col min-h-screen">
-      <header className="flex items-center justify-between px-5 py-4">
+    <div className="min-h-screen bg-gradient-to-b from-[#0A1F3C] via-[#0F3057] to-[#0B3C6D]">
+      <Header />
+      <div className="max-w-5xl mx-auto px-6 pt-6 pb-12">
+        <header className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <button
             onClick={() => router.push("/")}
-            className="w-9 h-9 rounded-full bg-white/12 flex items-center justify-center"
+            className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center"
           >
             <ArrowLeft className="w-[18px] h-[18px] text-white" />
           </button>
           <div>
-            <h1 className="text-lg font-semibold text-white">Red Sea Map</h1>
-            <p className="text-xs text-white/70">Dive sites · reefs · sightings</p>
+            <h1 className="text-xl font-semibold text-white">Red Sea Map</h1>
+            <p className="text-xs text-[#CFE3F7]">Dive sites · reefs · sightings</p>
           </div>
         </div>
-        <button className="w-9 h-9 rounded-full bg-white/12 flex items-center justify-center">
+        <button className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
           <SlidersHorizontal className="w-[18px] h-[18px] text-white" />
         </button>
       </header>
 
-      <div className="px-5">
+      <div className="bg-white/8 border border-white/15 rounded-2xl p-5 shadow-lg">
         <GlassCard className="p-3">
           <div className="h-[340px] rounded-2xl bg-white/10 relative overflow-hidden">
             <div className="absolute left-3 top-3 rounded-xl bg-ocean-deep/70 px-3 py-2">
@@ -73,7 +75,7 @@ export default function MapPage() {
         </GlassCard>
       </div>
 
-      <div className="px-5 pt-5 pb-8 flex flex-col gap-3">
+      <div className="pt-6 flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-semibold text-white">Red Sea Dive Spots</h2>
           <p className="text-[11px] text-white/60">Sorted by activity</p>
@@ -93,6 +95,7 @@ export default function MapPage() {
           </GlassCard>
         ))}
       </div>
-    </OceanLayout>
+      </div>
+    </div>
   );
 }

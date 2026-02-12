@@ -15,9 +15,10 @@ const MAX_SIZE = 25 * 1024 * 1024; // 25MB
 interface DropZoneProps {
   onFile: (file: File) => void;
   disabled?: boolean;
+  previewUrl?: string | null;
 }
 
-export function DropZone({ onFile, disabled }: DropZoneProps) {
+export function DropZone({ onFile, disabled, previewUrl }: DropZoneProps) {
   const onDrop = useCallback(
     (accepted: File[]) => {
       if (accepted.length > 0) {
@@ -42,7 +43,7 @@ export function DropZone({ onFile, disabled }: DropZoneProps) {
     <div>
       <div
         {...getRootProps()}
-        className={`border-2 border-dashed rounded-xl p-12 text-center cursor-pointer transition-colors ${
+        className={`border-2 border-dashed rounded-xl p-6 cursor-pointer transition-colors ${
           isDragActive
             ? "border-primary bg-primary/5"
             : disabled
@@ -51,20 +52,39 @@ export function DropZone({ onFile, disabled }: DropZoneProps) {
         }`}
       >
         <input {...getInputProps()} />
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex items-center justify-between gap-6">
+          <div className="flex flex-col items-start gap-3 text-left">
+            <div className="flex items-center gap-3">
           {isDragActive ? (
             <ImageIcon className="w-10 h-10 text-primary" />
           ) : (
             <Upload className="w-10 h-10 text-slate-400" />
           )}
-          <p className="text-sm text-slate-300">
-            {isDragActive
-              ? "Drop your image here"
-              : "Drag & drop an underwater photo, or click to browse"}
-          </p>
-          <p className="text-xs text-slate-500">
-            JPEG, PNG, or HEIC up to 25MB
-          </p>
+              <p className="text-sm text-slate-300">
+                {isDragActive
+                  ? "Drop your image here"
+                  : "Drag & drop an underwater photo, or click to browse"}
+              </p>
+            </div>
+            <p className="text-xs text-slate-500">
+              JPEG, PNG, or HEIC up to 25MB
+            </p>
+          </div>
+          {previewUrl && (
+            <div className="w-40">
+              <div className="h-24 rounded-lg overflow-hidden border border-slate-700/60 bg-slate-800/70">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={previewUrl}
+                  alt="Selected"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+              <p className="mt-2 text-[10px] text-slate-400">Selected</p>
+            </div>
+          )}
         </div>
       </div>
       {rejection && (

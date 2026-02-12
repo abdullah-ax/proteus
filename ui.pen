@@ -1,0 +1,3003 @@
+{
+  "version": "2.7",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bNMcU",
+      "x": 0,
+      "y": 0,
+      "name": "Hub Screen",
+      "clip": true,
+      "width": 1200,
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 180,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#0B3C6D",
+            "position": 0
+          },
+          {
+            "color": "#1565C0",
+            "position": 0.4
+          },
+          {
+            "color": "#1E88E5",
+            "position": 1
+          }
+        ]
+      },
+      "layout": "vertical",
+      "gap": 16,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "HJRHt",
+          "name": "Hub Content",
+          "width": 980,
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "9wu37",
+              "name": "Hub Header",
+              "width": "fill_container",
+              "padding": [
+                16,
+                20
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "frENo",
+                  "name": "logo",
+                  "fill": "#FFFFFF",
+                  "content": "PROTEUS",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 20,
+                  "fontWeight": "600",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "frame",
+                  "id": "BBIfe",
+                  "name": "Points Badge",
+                  "fill": "rgba(255,255,255,0.15)",
+                  "cornerRadius": 100,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "rgba(255,255,255,0.25)"
+                  },
+                  "gap": 6,
+                  "padding": [
+                    6,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "2z8dU",
+                      "name": "trophyIcon",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "trophy",
+                      "iconFontFamily": "lucide",
+                      "fill": "#FFD700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ANA8y",
+                      "name": "pointsText",
+                      "fill": "#FFFFFF",
+                      "content": "1,250",
+                      "fontFamily": "DM Mono",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YUj0b",
+              "name": "Image Carousel",
+              "clip": true,
+              "width": "fill_container",
+              "height": 220,
+              "gap": 12,
+              "padding": [
+                0,
+                20
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "8SBbB",
+                  "name": "Carousel Card 1",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "hotspur1705",
+                    "link": "https://unsplash.com/@hotspur1705",
+                    "author": "geoff trodd"
+                  },
+                  "clip": true,
+                  "width": 280,
+                  "height": "fill_container",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1631038871728-65197c89e8c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA4OTQxMjd8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "padding": 16,
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "LEdY7",
+                      "name": "Card Overlay 1",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 180,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#00000000",
+                            "position": 0
+                          },
+                          {
+                            "color": "#000000CC",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "layout": "vertical",
+                      "gap": 4,
+                      "justifyContent": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "yyIw2",
+                          "name": "loc1",
+                          "fill": "#FFFFFF",
+                          "content": "Ras Mohammed",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "mkNyZ",
+                          "name": "user1",
+                          "fill": "#FFFFFFAA",
+                          "content": "Sarah M.",
+                          "fontFamily": "Inter",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "FhPIt",
+                  "name": "Carousel Card 2",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "ursulakrapf",
+                    "link": "https://unsplash.com/@ursulakrapf",
+                    "author": "Ursula Krapf"
+                  },
+                  "clip": true,
+                  "width": 280,
+                  "height": "fill_container",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1568013363276-1050b44b156f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA4OTQxMjd8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "padding": 16,
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "s6EvM",
+                      "name": "Card Overlay 2",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 180,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#00000000",
+                            "position": 0
+                          },
+                          {
+                            "color": "#000000CC",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "layout": "vertical",
+                      "gap": 4,
+                      "justifyContent": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "owNSw",
+                          "name": "loc2",
+                          "fill": "#FFFFFF",
+                          "content": "Jackson Reef",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ug43X",
+                          "name": "user2",
+                          "fill": "#FFFFFFAA",
+                          "content": "Ahmed K.",
+                          "fontFamily": "Inter",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "zOErA",
+              "name": "Stats Row",
+              "width": "fill_container",
+              "gap": 12,
+              "padding": [
+                12,
+                20
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "4muob",
+                  "name": "Points Card",
+                  "width": "fill_container",
+                  "fill": "rgba(255,255,255,0.08)",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "rgba(255,255,255,0.12)"
+                  },
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "p9JSf",
+                      "name": "pLabel",
+                      "fill": "#FFFFFFAA",
+                      "content": "Your Points",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "500",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "vsVTY",
+                      "name": "pValue",
+                      "fill": "#FFFFFF",
+                      "content": "1,250",
+                      "fontFamily": "DM Mono",
+                      "fontSize": 32,
+                      "fontWeight": "500",
+                      "letterSpacing": -1
+                    },
+                    {
+                      "type": "frame",
+                      "id": "UjYX7",
+                      "name": "Points Sub",
+                      "gap": 4,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "93tXO",
+                          "name": "pArrow",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "trending-up",
+                          "iconFontFamily": "lucide",
+                          "fill": "#22C55E"
+                        },
+                        {
+                          "type": "text",
+                          "id": "aYhfH",
+                          "name": "pChange",
+                          "fill": "#22C55E",
+                          "content": "+150 this week",
+                          "fontFamily": "Inter",
+                          "fontSize": 11,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "YAPUV",
+                  "name": "Challenges Card",
+                  "width": "fill_container",
+                  "fill": "rgba(255,255,255,0.08)",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "rgba(255,255,255,0.12)"
+                  },
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xngqS",
+                      "name": "cLabel",
+                      "fill": "#FFFFFFAA",
+                      "content": "Challenges",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "500",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "frame",
+                      "id": "HR1Go",
+                      "name": "Challenge 1",
+                      "width": "fill_container",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "pN4dJ",
+                          "name": "ch1emoji",
+                          "content": "🐠",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "0qDDC",
+                          "name": "ch1info",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 3,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Cc0vf",
+                              "name": "ch1title",
+                              "fill": "#FFFFFF",
+                              "content": "Scan 5 species",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "MmGrP",
+                              "name": "ch1bar",
+                              "width": "fill_container",
+                              "height": 4,
+                              "fill": "rgba(255,255,255,0.15)",
+                              "cornerRadius": 100,
+                              "layout": "none",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "cornerRadius": 100,
+                                  "id": "63hT3",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "ch1fill",
+                                  "fill": "#42A5F5",
+                                  "width": 90,
+                                  "height": 4
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Bs2fK",
+                      "name": "Challenge 2",
+                      "width": "fill_container",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "8CLXI",
+                          "name": "ch2emoji",
+                          "content": "📍",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "InhYs",
+                          "name": "ch2info",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 3,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "123hK",
+                              "name": "ch2title",
+                              "fill": "#FFFFFF",
+                              "content": "Visit 3 dive sites",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "AdYJr",
+                              "name": "ch2bar",
+                              "width": "fill_container",
+                              "height": 4,
+                              "fill": "rgba(255,255,255,0.15)",
+                              "cornerRadius": 100,
+                              "layout": "none",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "cornerRadius": 100,
+                                  "id": "AXdCW",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "ch2fill",
+                                  "fill": "#42A5F5",
+                                  "width": 50,
+                                  "height": 4
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "EGmd9",
+              "name": "Rewards Section",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                16,
+                20
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "FEx6g",
+                  "name": "Rewards Header",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "nWKuE",
+                      "name": "rewardsTitle",
+                      "fill": "#FFFFFF",
+                      "content": "Rewards",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MPqYp",
+                      "name": "rewardsCount",
+                      "fill": "#FFFFFFAA",
+                      "content": "6 available",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "z2Vku",
+                  "name": "Filter Row",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "63EPI",
+                      "name": "filterAll",
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 100,
+                      "padding": [
+                        6,
+                        14
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "AwYg9",
+                          "name": "filterAllText",
+                          "fill": "#0B3C6D",
+                          "content": "All",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "aP6uP",
+                      "name": "filterExp",
+                      "fill": "rgba(255,255,255,0.1)",
+                      "cornerRadius": 100,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "rgba(255,255,255,0.2)"
+                      },
+                      "padding": [
+                        6,
+                        14
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "fbRnR",
+                          "name": "filterExpText",
+                          "fill": "#FFFFFFCC",
+                          "content": "Experiences",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "42M7z",
+                      "name": "filterGear",
+                      "fill": "rgba(255,255,255,0.1)",
+                      "cornerRadius": 100,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "rgba(255,255,255,0.2)"
+                      },
+                      "padding": [
+                        6,
+                        14
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Iho11",
+                          "name": "filterGearText",
+                          "fill": "#FFFFFFCC",
+                          "content": "Gear",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sE7Xq",
+                      "name": "filterCourses",
+                      "fill": "rgba(255,255,255,0.1)",
+                      "cornerRadius": 100,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "rgba(255,255,255,0.2)"
+                      },
+                      "padding": [
+                        6,
+                        14
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "82UO2",
+                          "name": "filterCoursesText",
+                          "fill": "#FFFFFFCC",
+                          "content": "Courses",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MvZYY",
+                  "name": "Rewards List",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "X5msE",
+                      "name": "Reward Row 1",
+                      "width": "fill_container",
+                      "fill": "rgba(255,255,255,0.08)",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "rgba(255,255,255,0.1)"
+                      },
+                      "gap": 12,
+                      "padding": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "TcuPW",
+                          "name": "rw1img",
+                          "metadata": {
+                            "type": "unsplash",
+                            "username": "amauriam",
+                            "link": "https://unsplash.com/@amauriam",
+                            "author": "Amauri Acosta Montiel"
+                          },
+                          "clip": true,
+                          "width": 48,
+                          "height": 48,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "https://images.unsplash.com/photo-1545378106-bdfc34d802aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA4OTQxNzB8&ixlib=rb-4.1.0&q=80&w=1080",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 10
+                        },
+                        {
+                          "type": "frame",
+                          "id": "RwiGl",
+                          "name": "rw1info",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "aR0k3",
+                              "name": "rw1title",
+                              "fill": "#FFFFFF",
+                              "content": "Sunset Snorkel Tour",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "j1Nkr",
+                              "name": "rw1desc",
+                              "fill": "#FFFFFFAA",
+                              "content": "2-hour guided snorkeling",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "O4IPo",
+                          "name": "rw1pts",
+                          "fill": "rgba(66,165,245,0.2)",
+                          "cornerRadius": 100,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "xYTQj",
+                              "name": "rw1ptsText",
+                              "fill": "#42A5F5",
+                              "content": "500",
+                              "fontFamily": "DM Mono",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "yrYDX",
+                      "name": "Reward Row 2",
+                      "width": "fill_container",
+                      "fill": "rgba(255,255,255,0.08)",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "rgba(255,255,255,0.1)"
+                      },
+                      "gap": 12,
+                      "padding": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Jwulk",
+                          "name": "rw2img",
+                          "metadata": {
+                            "type": "unsplash",
+                            "username": "jeremybishop",
+                            "link": "https://unsplash.com/@jeremybishop",
+                            "author": "Jeremy Bishop"
+                          },
+                          "clip": true,
+                          "width": 48,
+                          "height": 48,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "https://images.unsplash.com/photo-1502209524164-acea936639a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA4OTQxNzF8&ixlib=rb-4.1.0&q=80&w=1080",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 10
+                        },
+                        {
+                          "type": "frame",
+                          "id": "gbHug",
+                          "name": "rw2info",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "QRUHe",
+                              "name": "rw2title",
+                              "fill": "#FFFFFF",
+                              "content": "Dive Computer Rental",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "eittT",
+                              "name": "rw2desc",
+                              "fill": "#FFFFFFAA",
+                              "content": "Full-day Suunto rental",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "J6Jmy",
+                          "name": "rw2pts",
+                          "fill": "rgba(66,165,245,0.2)",
+                          "cornerRadius": 100,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ibuQ2",
+                              "name": "rw2ptsText",
+                              "fill": "#42A5F5",
+                              "content": "300",
+                              "fontFamily": "DM Mono",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "kOu5Z",
+                      "name": "Reward Row 3",
+                      "width": "fill_container",
+                      "fill": "rgba(255,255,255,0.08)",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "rgba(255,255,255,0.1)"
+                      },
+                      "gap": 12,
+                      "padding": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "z3S7I",
+                          "name": "rw3img",
+                          "metadata": {
+                            "type": "unsplash",
+                            "username": "wolfalexs",
+                            "link": "https://unsplash.com/@wolfalexs",
+                            "author": "Oleksandr Sushko"
+                          },
+                          "clip": true,
+                          "width": 48,
+                          "height": 48,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "https://images.unsplash.com/photo-1637308107404-7003fa527de5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA4OTQxODZ8&ixlib=rb-4.1.0&q=80&w=1080",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 10
+                        },
+                        {
+                          "type": "frame",
+                          "id": "tByQd",
+                          "name": "rw3info",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "lJaRV",
+                              "name": "rw3title",
+                              "fill": "#FFFFFF",
+                              "content": "Marine Biology Course",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "KlWqT",
+                              "name": "rw3desc",
+                              "fill": "#FFFFFFAA",
+                              "content": "Red Sea ecosystem certification",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "A1Gd9",
+                          "name": "rw3pts",
+                          "fill": "rgba(66,165,245,0.2)",
+                          "cornerRadius": 100,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "jpUSO",
+                              "name": "rw3ptsText",
+                              "fill": "#42A5F5",
+                              "content": "800",
+                              "fontFamily": "DM Mono",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UzEA1",
+          "name": "Water Surface",
+          "width": "fill_container",
+          "height": 180,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 180,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#1E88E500",
+                "position": 0
+              },
+              {
+                "color": "#1565C0",
+                "position": 0.3
+              },
+              {
+                "color": "#0B3C6DFF",
+                "position": 1
+              }
+            ]
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "path",
+              "id": "phEZM",
+              "x": 0,
+              "y": 0,
+              "name": "Wave",
+              "geometry": "M0 20q50-20 107.5 0 57.5 20 107.5 0 50-20 107.5 0 57.5 20 107.5 0l0 20-430 0z",
+              "fill": "rgba(255,255,255,0.06)",
+              "width": 1200,
+              "height": 40
+            },
+            {
+              "type": "frame",
+              "id": "gJsLA",
+              "x": 0,
+              "y": 70,
+              "name": "Bubble Row",
+              "width": 1200,
+              "height": 90,
+              "gap": 80,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "45Tds",
+                  "name": "Bubble Fishdex",
+                  "width": 56,
+                  "height": 56,
+                  "fill": "rgba(255,255,255,0.12)",
+                  "cornerRadius": 100,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "rgba(255,255,255,0.2)"
+                  },
+                  "layout": "vertical",
+                  "gap": 3,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "TxFxA",
+                      "name": "b2icon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "fish",
+                      "iconFontFamily": "lucide",
+                      "fill": "#FFFFFFCC"
+                    },
+                    {
+                      "type": "text",
+                      "id": "xWfLx",
+                      "name": "b2label",
+                      "fill": "#FFFFFFAA",
+                      "content": "Fishdex",
+                      "fontFamily": "Inter",
+                      "fontSize": 8,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "cwmk7",
+                  "name": "Bubble Scan",
+                  "width": 72,
+                  "height": 72,
+                  "fill": "rgba(255,255,255,0.18)",
+                  "cornerRadius": 100,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "rgba(255,255,255,0.3)"
+                  },
+                  "layout": "vertical",
+                  "gap": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "CGeSL",
+                      "name": "b1icon",
+                      "width": 22,
+                      "height": 22,
+                      "iconFontName": "scan",
+                      "iconFontFamily": "lucide",
+                      "fill": "#FFFFFF"
+                    },
+                    {
+                      "type": "text",
+                      "id": "4x0a7",
+                      "name": "b1label",
+                      "fill": "#FFFFFFCC",
+                      "content": "Scan",
+                      "fontFamily": "Inter",
+                      "fontSize": 9,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "uzAqI",
+                  "name": "Bubble Map",
+                  "width": 56,
+                  "height": 56,
+                  "fill": "rgba(255,255,255,0.12)",
+                  "cornerRadius": 100,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "rgba(255,255,255,0.2)"
+                  },
+                  "layout": "vertical",
+                  "gap": 3,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "nFE34",
+                      "name": "b3icon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "map",
+                      "iconFontFamily": "lucide",
+                      "fill": "#FFFFFFCC"
+                    },
+                    {
+                      "type": "text",
+                      "id": "4dXhq",
+                      "name": "b3label",
+                      "fill": "#FFFFFFAA",
+                      "content": "Map",
+                      "fontFamily": "Inter",
+                      "fontSize": 8,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "IAV3N",
+      "x": 1300,
+      "y": 0,
+      "name": "Scan Form Screen",
+      "clip": true,
+      "width": 1200,
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 180,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#0B3C6D",
+            "position": 0
+          },
+          {
+            "color": "#1565C0",
+            "position": 0.4
+          },
+          {
+            "color": "#1E88E5",
+            "position": 1
+          }
+        ]
+      },
+      "layout": "vertical",
+      "gap": 20,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "0V8Nh",
+          "name": "Scan Content",
+          "width": 720,
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "caTsC",
+              "name": "Scan Header",
+              "width": "fill_container",
+              "gap": 12,
+              "padding": [
+                16,
+                20
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Z3rfF",
+                  "name": "backBtn",
+                  "width": 36,
+                  "height": 36,
+                  "fill": "rgba(255,255,255,0.12)",
+                  "cornerRadius": 100,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "nxcAO",
+                      "name": "backIcon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "arrow-left",
+                      "iconFontFamily": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "JISRD",
+                  "name": "scanTitle",
+                  "fill": "#FFFFFF",
+                  "content": "New Scan",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ze0K2",
+              "name": "Form Card",
+              "width": "fill_container",
+              "layout": "vertical",
+              "padding": [
+                0,
+                20
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "844iI",
+                  "name": "Form Inner",
+                  "width": "fill_container",
+                  "fill": "rgba(255,255,255,0.08)",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "rgba(255,255,255,0.12)"
+                  },
+                  "layout": "vertical",
+                  "gap": 20,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "dg8Op",
+                      "name": "actLabel",
+                      "fill": "#FFFFFFAA",
+                      "content": "Activity Type",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Fv2u2",
+                      "name": "Activity Toggle",
+                      "width": "fill_container",
+                      "height": 44,
+                      "fill": "rgba(255,255,255,0.06)",
+                      "cornerRadius": 12,
+                      "padding": 3,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "GVaIR",
+                          "name": "togSnork",
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "fill": "#FFFFFF",
+                          "cornerRadius": 10,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "nXs9N",
+                              "name": "togSnorkText",
+                              "fill": "#0B3C6D",
+                              "content": "Snorkeling",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "rFoLC",
+                          "name": "togDive",
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "cornerRadius": 10,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "8lJeg",
+                              "name": "togDiveText",
+                              "fill": "#FFFFFFAA",
+                              "content": "Diving",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "a636O",
+                      "name": "siteLabel",
+                      "fill": "#FFFFFFAA",
+                      "content": "Dive Site",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "frame",
+                      "id": "54Odw",
+                      "name": "Site Select",
+                      "width": "fill_container",
+                      "height": 44,
+                      "fill": "rgba(255,255,255,0.06)",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "rgba(255,255,255,0.12)"
+                      },
+                      "padding": [
+                        0,
+                        14
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "xUt3M",
+                          "name": "siteText",
+                          "fill": "#FFFFFF",
+                          "content": "Ras Mohammed",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "hp3zd",
+                          "name": "siteChev",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "chevron-down",
+                          "iconFontFamily": "lucide",
+                          "fill": "#FFFFFFAA"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "fdqmn",
+                      "name": "uploadLabel",
+                      "fill": "#FFFFFFAA",
+                      "content": "Upload Photo",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "frame",
+                      "id": "3SsJF",
+                      "name": "Drop Zone",
+                      "width": "fill_container",
+                      "height": 140,
+                      "fill": "rgba(255,255,255,0.04)",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "rgba(255,255,255,0.15)"
+                      },
+                      "layout": "vertical",
+                      "gap": 8,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "N4TAe",
+                          "name": "dzIcon",
+                          "width": 32,
+                          "height": 32,
+                          "iconFontName": "upload",
+                          "iconFontFamily": "lucide",
+                          "fill": "#FFFFFF66"
+                        },
+                        {
+                          "type": "text",
+                          "id": "qIpFZ",
+                          "name": "dzText",
+                          "fill": "#FFFFFF99",
+                          "content": "Drag & drop or tap to browse",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "oqV6T",
+                          "name": "dzSub",
+                          "fill": "#FFFFFF55",
+                          "content": "JPEG, PNG, HEIC up to 25MB",
+                          "fontFamily": "Inter",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZmYJq",
+                      "name": "previewLabel",
+                      "fill": "#FFFFFFAA",
+                      "content": "Scan Previews",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "frame",
+                      "id": "mgWIi",
+                      "name": "Preview Row",
+                      "width": "fill_container",
+                      "height": 110,
+                      "gap": 10,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "auDLK",
+                          "name": "Preview Card - Original",
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "fill": "rgba(255,255,255,0.06)",
+                          "cornerRadius": 12,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "rgba(255,255,255,0.12)"
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "iX3zK",
+                              "name": "Preview Thumb",
+                              "width": "fill_container",
+                              "height": 64,
+                              "fill": "rgba(255,255,255,0.12)",
+                              "cornerRadius": 10
+                            },
+                            {
+                              "type": "text",
+                              "id": "3MFF9",
+                              "name": "Preview Label",
+                              "fill": "#FFFFFFAA",
+                              "content": "Original",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "THDJv",
+                          "name": "Preview Card - Recolored",
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "fill": "rgba(255,255,255,0.06)",
+                          "cornerRadius": 12,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "rgba(255,255,255,0.12)"
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "KgAzZ",
+                              "name": "Preview Thumb",
+                              "width": "fill_container",
+                              "height": 64,
+                              "fill": "rgba(255,255,255,0.12)",
+                              "cornerRadius": 10
+                            },
+                            {
+                              "type": "text",
+                              "id": "TzQfZ",
+                              "name": "Preview Label",
+                              "fill": "#FFFFFFAA",
+                              "content": "Recolored",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "H3ToB",
+                          "name": "Preview Card - Extracted",
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "fill": "rgba(255,255,255,0.06)",
+                          "cornerRadius": 12,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "rgba(255,255,255,0.12)"
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "sI4Cz",
+                              "name": "Preview Thumb",
+                              "width": "fill_container",
+                              "height": 64,
+                              "fill": "rgba(255,255,255,0.12)",
+                              "cornerRadius": 10
+                            },
+                            {
+                              "type": "text",
+                              "id": "T1Yuc",
+                              "name": "Preview Label",
+                              "fill": "#FFFFFFAA",
+                              "content": "Extracted",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Z1Bg9",
+                      "name": "Button Wrapper",
+                      "width": "fill_container",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "jk8Uj",
+                          "name": "Start Scan Button",
+                          "width": "fill_container",
+                          "height": 48,
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 135,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "#1565C0",
+                                "position": 0
+                              },
+                              {
+                                "color": "#42A5F5",
+                                "position": 1
+                              }
+                            ]
+                          },
+                          "cornerRadius": 14,
+                          "effect": {
+                            "type": "shadow",
+                            "shadowType": "outer",
+                            "color": "#1565C066",
+                            "offset": {
+                              "x": 0,
+                              "y": 4
+                            },
+                            "blur": 20
+                          },
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "EqufC",
+                              "name": "btnIcon",
+                              "width": 18,
+                              "height": 18,
+                              "iconFontName": "scan",
+                              "iconFontFamily": "lucide",
+                              "fill": "#FFFFFF"
+                            },
+                            {
+                              "type": "text",
+                              "id": "XSwre",
+                              "name": "btnText",
+                              "fill": "#FFFFFF",
+                              "content": "Start Scan",
+                              "fontFamily": "Inter",
+                              "fontSize": 15,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "XO9ZG",
+      "x": 2600,
+      "y": 0,
+      "name": "Fishdex Screen",
+      "clip": true,
+      "width": 1200,
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 180,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#0B3C6D",
+            "position": 0
+          },
+          {
+            "color": "#1565C0",
+            "position": 0.4
+          },
+          {
+            "color": "#1E88E5",
+            "position": 1
+          }
+        ]
+      },
+      "layout": "vertical",
+      "gap": 20,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "GD9fG",
+          "name": "Fishdex Content",
+          "width": 900,
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "fpC5N",
+              "name": "Fishdex Header",
+              "width": "fill_container",
+              "gap": 12,
+              "padding": [
+                16,
+                20
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "zOZUc",
+                  "name": "backBtn",
+                  "width": 36,
+                  "height": 36,
+                  "fill": "rgba(255,255,255,0.12)",
+                  "cornerRadius": 100,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "SbPDv",
+                      "name": "backIcon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "chevron-left",
+                      "iconFontFamily": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "oRUy8",
+                  "name": "titleStack",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Jkh5o",
+                      "name": "fishdexTitle",
+                      "fill": "#FFFFFF",
+                      "content": "Fishdex",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "mNpRY",
+                      "name": "fishdexSub",
+                      "fill": "#FFFFFFAA",
+                      "content": "Red Sea database · 1,827 species",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "UuBgx",
+              "name": "Progress Section",
+              "width": "fill_container",
+              "layout": "vertical",
+              "padding": [
+                0,
+                20
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "lqVKI",
+                  "name": "Progress Card",
+                  "width": "fill_container",
+                  "fill": "rgba(255,255,255,0.08)",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "rgba(255,255,255,0.12)"
+                  },
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "EI8LY",
+                      "name": "progressTitle",
+                      "fill": "#FFFFFF",
+                      "content": "Unlocked Progress",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "5MTNS",
+                      "name": "progressValue",
+                      "fill": "#FFFFFF",
+                      "content": "128 / 1,827 unlocked",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "OnULS",
+                      "name": "progressNote",
+                      "fill": "#FFFFFF88",
+                      "content": "Based on unique detections in fishDetections",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "eSqy6",
+                      "name": "progressBarBg",
+                      "width": "fill_container",
+                      "height": 8,
+                      "fill": "rgba(255,255,255,0.15)",
+                      "cornerRadius": 100,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "uid9M",
+                          "name": "progressBarFill",
+                          "width": 70,
+                          "height": "fill_container",
+                          "fill": "#42A5F5",
+                          "cornerRadius": 100
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "rf7PQ",
+                      "name": "progressStats",
+                      "width": "fill_container",
+                      "gap": 10,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "XOB9E",
+                          "name": "statChip1",
+                          "width": "fill_container",
+                          "fill": "rgba(255,255,255,0.10)",
+                          "cornerRadius": 10,
+                          "layout": "vertical",
+                          "gap": 2,
+                          "padding": [
+                            6,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "yv56z",
+                              "name": "stat1Label",
+                              "fill": "#FFFFFF88",
+                              "content": "New this week",
+                              "fontFamily": "Inter",
+                              "fontSize": 10,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "qsjwY",
+                              "name": "stat1Value",
+                              "fill": "#FFFFFF",
+                              "content": "+12",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "gQnN6",
+                          "name": "statChip2",
+                          "width": "fill_container",
+                          "fill": "rgba(255,255,255,0.10)",
+                          "cornerRadius": 10,
+                          "layout": "vertical",
+                          "gap": 2,
+                          "padding": [
+                            6,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "m6ZGX",
+                              "name": "stat2Label",
+                              "fill": "#FFFFFF88",
+                              "content": "Unique sites",
+                              "fontFamily": "Inter",
+                              "fontSize": 10,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "Pbvzc",
+                              "name": "stat2Value",
+                              "fill": "#FFFFFF",
+                              "content": "6",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "FLHOJ",
+                          "name": "statChip3",
+                          "width": "fill_container",
+                          "fill": "rgba(255,255,255,0.10)",
+                          "cornerRadius": 10,
+                          "layout": "vertical",
+                          "gap": 2,
+                          "padding": [
+                            6,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "wRvgR",
+                              "name": "stat3Label",
+                              "fill": "#FFFFFF88",
+                              "content": "Confidence avg",
+                              "fontFamily": "Inter",
+                              "fontSize": 10,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "cp8it",
+                              "name": "stat3Value",
+                              "fill": "#FFFFFF",
+                              "content": "87%",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Y3wr9",
+              "name": "Unlocked Section",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                12,
+                20
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "u97DB",
+                  "name": "Unlocked Header",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "CGX5r",
+                      "name": "sectionTitle",
+                      "fill": "#FFFFFF",
+                      "content": "Unlocked Fish",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "JqL5S",
+                      "name": "Filter Row",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "7ySWd",
+                          "name": "chipAll",
+                          "height": 24,
+                          "fill": "#FFFFFF",
+                          "cornerRadius": 100,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "qkzzR",
+                              "name": "chipAllText",
+                              "fill": "#0B3C6D",
+                              "content": "All",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Fr8H5",
+                          "name": "chipRecent",
+                          "height": 24,
+                          "fill": "rgba(255,255,255,0.12)",
+                          "cornerRadius": 100,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "deAYj",
+                              "name": "chipRecentText",
+                              "fill": "#FFFFFFCC",
+                              "content": "Recent",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "uZciI",
+                          "name": "chipFav",
+                          "height": 24,
+                          "fill": "rgba(255,255,255,0.12)",
+                          "cornerRadius": 100,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Towpq",
+                              "name": "chipFavText",
+                              "fill": "#FFFFFFCC",
+                              "content": "Favorites",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fUDxs",
+                  "name": "Unlocked List",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "vHX5e",
+                      "name": "Fish Card - Red Sea Clownfish",
+                      "width": "fill_container",
+                      "fill": "rgba(255,255,255,0.06)",
+                      "cornerRadius": 14,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "rgba(255,255,255,0.12)"
+                      },
+                      "gap": 12,
+                      "padding": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "CWY0P",
+                          "name": "Fish Thumb",
+                          "width": 44,
+                          "height": 44,
+                          "fill": "rgba(255,255,255,0.18)",
+                          "cornerRadius": 100
+                        },
+                        {
+                          "type": "frame",
+                          "id": "9hvQc",
+                          "name": "Fish Content",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 6,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "4Ulo3",
+                              "name": "name1",
+                              "fill": "#FFFFFF",
+                              "content": "Red Sea Clownfish",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "wkT3w",
+                              "name": "sci1",
+                              "fill": "#FFFFFF88",
+                              "content": "Amphiprion bicintus",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "z1wQT",
+                              "name": "Progress Row",
+                              "width": "fill_container",
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "6v6xl",
+                                  "name": "Mini Bar Bg",
+                                  "width": "fill_container",
+                                  "height": 6,
+                                  "fill": "rgba(255,255,255,0.15)",
+                                  "cornerRadius": 100,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "0dPr8",
+                                      "name": "Mini Bar Fill",
+                                      "width": 80,
+                                      "height": "fill_container",
+                                      "fill": "#42A5F5",
+                                      "cornerRadius": 100
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "2OdEZ",
+                                  "name": "count1",
+                                  "fill": "#FFFFFFAA",
+                                  "content": "5 sightings",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 10,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "xECBm",
+                      "name": "Fish Card - Sohal Surgeonfish",
+                      "width": "fill_container",
+                      "fill": "rgba(255,255,255,0.06)",
+                      "cornerRadius": 14,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "rgba(255,255,255,0.12)"
+                      },
+                      "gap": 12,
+                      "padding": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "8cF6a",
+                          "name": "Fish Thumb",
+                          "width": 44,
+                          "height": 44,
+                          "fill": "rgba(255,255,255,0.18)",
+                          "cornerRadius": 100
+                        },
+                        {
+                          "type": "frame",
+                          "id": "7TzAV",
+                          "name": "Fish Content",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 6,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "9GQ2r",
+                              "name": "name2",
+                              "fill": "#FFFFFF",
+                              "content": "Sohal Surgeonfish",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "QiMQK",
+                              "name": "sci2",
+                              "fill": "#FFFFFF88",
+                              "content": "Acanthurus sohal",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "sLf6o",
+                              "name": "Progress Row",
+                              "width": "fill_container",
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "ckn7b",
+                                  "name": "Mini Bar Bg",
+                                  "width": "fill_container",
+                                  "height": 6,
+                                  "fill": "rgba(255,255,255,0.15)",
+                                  "cornerRadius": 100,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "dnR97",
+                                      "name": "Mini Bar Fill",
+                                      "width": 60,
+                                      "height": "fill_container",
+                                      "fill": "#42A5F5",
+                                      "cornerRadius": 100
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "FLB4N",
+                                  "name": "count2",
+                                  "fill": "#FFFFFFAA",
+                                  "content": "3 sightings",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 10,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "KyNtX",
+                      "name": "Fish Card - Titan Triggerfish",
+                      "width": "fill_container",
+                      "fill": "rgba(255,255,255,0.06)",
+                      "cornerRadius": 14,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "rgba(255,255,255,0.12)"
+                      },
+                      "gap": 12,
+                      "padding": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "KX9Fq",
+                          "name": "Fish Thumb",
+                          "width": 44,
+                          "height": 44,
+                          "fill": "rgba(255,255,255,0.18)",
+                          "cornerRadius": 100
+                        },
+                        {
+                          "type": "frame",
+                          "id": "nRLp3",
+                          "name": "Fish Content",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 6,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "RtjfP",
+                              "name": "name3",
+                              "fill": "#FFFFFF",
+                              "content": "Titan Triggerfish",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "dkGfA",
+                              "name": "sci3",
+                              "fill": "#FFFFFF88",
+                              "content": "Balistoides viridescens",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "TPJVD",
+                              "name": "Progress Row",
+                              "width": "fill_container",
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "3sK4O",
+                                  "name": "Mini Bar Bg",
+                                  "width": "fill_container",
+                                  "height": 6,
+                                  "fill": "rgba(255,255,255,0.15)",
+                                  "cornerRadius": 100,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "2ykHC",
+                                      "name": "Mini Bar Fill",
+                                      "width": 35,
+                                      "height": "fill_container",
+                                      "fill": "#42A5F5",
+                                      "cornerRadius": 100
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "xN1AI",
+                                  "name": "count3",
+                                  "fill": "#FFFFFFAA",
+                                  "content": "1 sighting",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 10,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "eHxsq",
+      "x": 3900,
+      "y": 0,
+      "name": "Map Screen",
+      "clip": true,
+      "width": 1200,
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 180,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#0B3C6D",
+            "position": 0
+          },
+          {
+            "color": "#1565C0",
+            "position": 0.4
+          },
+          {
+            "color": "#1E88E5",
+            "position": 1
+          }
+        ]
+      },
+      "layout": "vertical",
+      "gap": 20,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "kMpHA",
+          "name": "Map Content",
+          "width": 980,
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "Bpb00",
+              "name": "Map Header",
+              "width": "fill_container",
+              "padding": [
+                16,
+                20
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "4DidV",
+                  "name": "Left Header",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "mVvHx",
+                      "name": "backBtn",
+                      "width": 36,
+                      "height": 36,
+                      "fill": "rgba(255,255,255,0.12)",
+                      "cornerRadius": 100,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "1ZKNR",
+                          "name": "backIcon",
+                          "width": 18,
+                          "height": 18,
+                          "iconFontName": "chevron-left",
+                          "iconFontFamily": "lucide",
+                          "fill": "#FFFFFF"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "AsLvv",
+                      "name": "headerStack",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "LMn8F",
+                          "name": "mapTitle",
+                          "fill": "#FFFFFF",
+                          "content": "Red Sea Map",
+                          "fontFamily": "Inter",
+                          "fontSize": 18,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "6nzf0",
+                          "name": "mapSub",
+                          "fill": "#FFFFFFAA",
+                          "content": "Dive sites · reefs · sightings",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Bv7j8",
+                  "name": "filterBtn",
+                  "width": 36,
+                  "height": 36,
+                  "fill": "rgba(255,255,255,0.12)",
+                  "cornerRadius": 100,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "yNyNH",
+                      "name": "filterIcon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "sliders-horizontal",
+                      "iconFontFamily": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "tZSIt",
+              "name": "Map Card",
+              "width": "fill_container",
+              "fill": "rgba(255,255,255,0.08)",
+              "cornerRadius": 18,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "rgba(255,255,255,0.12)"
+              },
+              "layout": "vertical",
+              "padding": 14,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "KFjSX",
+                  "name": "Map Canvas",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 360,
+                  "fill": "rgba(255,255,255,0.08)",
+                  "cornerRadius": 14,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "6lGBH",
+                      "x": 12,
+                      "y": 12,
+                      "name": "Map Overlay",
+                      "width": 170,
+                      "fill": "rgba(11,60,109,0.55)",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 6,
+                      "padding": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "r3UJw",
+                          "name": "mapOverlayTitle",
+                          "fill": "#FFFFFFAA",
+                          "content": "Active Zone",
+                          "fontFamily": "Inter",
+                          "fontSize": 10,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "z9FHF",
+                          "name": "mapOverlayValue",
+                          "fill": "#FFFFFF",
+                          "content": "Ras Mohammed",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "nxIIt",
+                          "name": "mapOverlayNote",
+                          "fill": "#FFFFFF88",
+                          "content": "24 sightings · 8 species",
+                          "fontFamily": "Inter",
+                          "fontSize": 10,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "UscNs",
+                  "name": "Map Chips",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "fi1r3",
+                      "name": "chipDive",
+                      "height": 24,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 100,
+                      "padding": [
+                        4,
+                        10
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "xjRfc",
+                          "name": "chip1Text",
+                          "fill": "#0B3C6D",
+                          "content": "Dive Sites",
+                          "fontFamily": "Inter",
+                          "fontSize": 11,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "LmbTF",
+                      "name": "chipReefs",
+                      "height": 24,
+                      "fill": "rgba(255,255,255,0.12)",
+                      "cornerRadius": 100,
+                      "padding": [
+                        4,
+                        10
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "giMyV",
+                          "name": "chip2Text",
+                          "fill": "#FFFFFFCC",
+                          "content": "Reefs",
+                          "fontFamily": "Inter",
+                          "fontSize": 11,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "MS2UD",
+                      "name": "chipSightings",
+                      "height": 24,
+                      "fill": "rgba(255,255,255,0.12)",
+                      "cornerRadius": 100,
+                      "padding": [
+                        4,
+                        10
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "RJPHD",
+                          "name": "chip3Text",
+                          "fill": "#FFFFFFCC",
+                          "content": "Sightings",
+                          "fontFamily": "Inter",
+                          "fontSize": 11,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "GCxCs",
+              "name": "Dive Spots Section",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                0,
+                20
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "b1rAV",
+                  "name": "Spots Header",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "8r1Tj",
+                      "name": "spotsTitle",
+                      "fill": "#FFFFFF",
+                      "content": "Red Sea Dive Spots",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "mJSJ9",
+                      "name": "spotsFilter",
+                      "fill": "#FFFFFF88",
+                      "content": "Sorted by activity",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "aPbVk",
+                  "name": "Spot List",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "czDPi",
+                      "name": "Spot Card - Ras Mohammed",
+                      "width": "fill_container",
+                      "fill": "rgba(255,255,255,0.06)",
+                      "cornerRadius": 14,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "rgba(255,255,255,0.12)"
+                      },
+                      "gap": 12,
+                      "padding": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "YmAgQ",
+                          "name": "Spot Thumb",
+                          "width": 52,
+                          "height": 52,
+                          "fill": "rgba(255,255,255,0.18)",
+                          "cornerRadius": 12
+                        },
+                        {
+                          "type": "frame",
+                          "id": "9mObp",
+                          "name": "Spot Content",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "SR3ME",
+                              "name": "spot1Name",
+                              "fill": "#FFFFFF",
+                              "content": "Ras Mohammed",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "e1OJ3",
+                              "name": "spot1Sub",
+                              "fill": "#FFFFFF88",
+                              "content": "Iconic reef walls · strong currents",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "FLYy9",
+                              "name": "Spot Meta",
+                              "gap": 10,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "jWxZJ",
+                                  "name": "spot1Meta1",
+                                  "fill": "#FFFFFFAA",
+                                  "content": "42 sightings",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 10,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "jM0XP",
+                                  "name": "spot1Meta2",
+                                  "fill": "#FFFFFFAA",
+                                  "content": "12 species",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 10,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "uWfHg",
+                      "name": "Spot Card - Blue Hole",
+                      "width": "fill_container",
+                      "fill": "rgba(255,255,255,0.06)",
+                      "cornerRadius": 14,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "rgba(255,255,255,0.12)"
+                      },
+                      "gap": 12,
+                      "padding": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Kvsj1",
+                          "name": "Spot Thumb",
+                          "width": 52,
+                          "height": 52,
+                          "fill": "rgba(255,255,255,0.18)",
+                          "cornerRadius": 12
+                        },
+                        {
+                          "type": "frame",
+                          "id": "MEWYz",
+                          "name": "Spot Content",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "IMy5n",
+                              "name": "spot2Name",
+                              "fill": "#FFFFFF",
+                              "content": "Blue Hole",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "XgZ3D",
+                              "name": "spot2Sub",
+                              "fill": "#FFFFFF88",
+                              "content": "Dahab · sinkhole drop-off",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Dc5uh",
+                              "name": "Spot Meta",
+                              "gap": 10,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Rklmz",
+                                  "name": "spot2Meta1",
+                                  "fill": "#FFFFFFAA",
+                                  "content": "26 sightings",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 10,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "Y6m23",
+                                  "name": "spot2Meta2",
+                                  "fill": "#FFFFFFAA",
+                                  "content": "9 species",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 10,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "hurHz",
+                      "name": "Spot Card - Thistlegorm",
+                      "width": "fill_container",
+                      "fill": "rgba(255,255,255,0.06)",
+                      "cornerRadius": 14,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "rgba(255,255,255,0.12)"
+                      },
+                      "gap": 12,
+                      "padding": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "7kuJz",
+                          "name": "Spot Thumb",
+                          "width": 52,
+                          "height": 52,
+                          "fill": "rgba(255,255,255,0.18)",
+                          "cornerRadius": 12
+                        },
+                        {
+                          "type": "frame",
+                          "id": "hvxIA",
+                          "name": "Spot Content",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "uqeeK",
+                              "name": "spot3Name",
+                              "fill": "#FFFFFF",
+                              "content": "Thistlegorm Wreck",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "jHjs5",
+                              "name": "spot3Sub",
+                              "fill": "#FFFFFF88",
+                              "content": "WWII cargo ship · giant corals",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "GV0x8",
+                              "name": "Spot Meta",
+                              "gap": 10,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "px5BR",
+                                  "name": "spot3Meta1",
+                                  "fill": "#FFFFFFAA",
+                                  "content": "18 sightings",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 10,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "rU2J4",
+                                  "name": "spot3Meta2",
+                                  "fill": "#FFFFFFAA",
+                                  "content": "14 species",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 10,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

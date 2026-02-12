@@ -108,18 +108,9 @@ export function ScanForm({ onSubmit }: ScanFormProps) {
           <label className="text-xs font-medium text-white/70 tracking-wider mb-2 block">
             Upload Photo
           </label>
-          <DropZone onFile={handleFile} disabled={isUploading} />
+          <DropZone onFile={handleFile} disabled={isUploading} previewUrl={previewUrl} />
           {file && (
             <p className="mt-2 text-xs text-white/60 truncate">{file.name}</p>
-          )}
-          {previewUrl && (
-            <div className="mt-3 rounded-xl overflow-hidden border border-white/12 bg-white/5">
-              <img
-                src={previewUrl}
-                alt="Preview"
-                className="w-full h-48 object-cover"
-              />
-            </div>
           )}
         </div>
 

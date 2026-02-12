@@ -39,12 +39,9 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
     }
   }, [detections, pointsEarned, addPoints]);
 
-  const extractedUrl = detections?.find((d) => d.croppedUrl)?.croppedUrl ?? null;
-  const previewUrls = [
-    image?.url ?? null,
-    image?.recoloredUrl ?? null,
-    extractedUrl,
-  ].filter((url): url is string => Boolean(url));
+  const previewUrls = [image?.url ?? null].filter(
+    (url): url is string => Boolean(url)
+  );
   usePreloadImages(previewUrls);
 
   return (
@@ -56,35 +53,23 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
     >
       <div className="flex flex-col gap-2">
         <p className="text-xs font-medium text-white/70 tracking-wider">
-          Scan Previews
+          Scan Preview
         </p>
-        <div className="grid grid-cols-3 gap-2">
-          {[
-            { label: "Original", url: image?.url ?? null },
-            { label: "Recolored", url: image?.recoloredUrl ?? null },
-            { label: "Extracted", url: extractedUrl },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="rounded-xl border border-white/12 bg-white/8 p-2 flex flex-col gap-2"
-            >
-              <div className="h-16 rounded-lg bg-white/15 overflow-hidden">
-                {item.url ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={item.url}
-                    alt={item.label}
-                    className="w-full h-full object-cover"
-                    loading="eager"
-                    decoding="async"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-white/10" />
-                )}
-              </div>
-              <p className="text-[11px] text-white/70 font-medium">{item.label}</p>
-            </div>
-          ))}
+        <div className="rounded-xl border border-white/12 bg-white/8 p-2">
+          <div className="h-40 rounded-lg bg-white/15 overflow-hidden">
+            {image?.url ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={image.url}
+                alt="Original"
+                className="w-full h-full object-cover"
+                loading="eager"
+                decoding="async"
+              />
+            ) : (
+              <div className="w-full h-full bg-white/10" />
+            )}
+          </div>
         </div>
       </div>
 

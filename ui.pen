@@ -1395,7 +1395,7 @@
                       "id": "3SsJF",
                       "name": "Drop Zone",
                       "width": "fill_container",
-                      "height": 140,
+                      "height": 160,
                       "fill": "rgba(255,255,255,0.04)",
                       "cornerRadius": 12,
                       "stroke": {
@@ -1403,17 +1403,20 @@
                         "thickness": 1.5,
                         "fill": "rgba(255,255,255,0.15)"
                       },
-                      "layout": "vertical",
-                      "gap": 8,
-                      "justifyContent": "center",
+                      "gap": 16,
+                      "padding": [
+                        14,
+                        16
+                      ],
+                      "justifyContent": "space_between",
                       "alignItems": "center",
                       "children": [
                         {
                           "type": "icon_font",
                           "id": "N4TAe",
                           "name": "dzIcon",
-                          "width": 32,
-                          "height": 32,
+                          "width": 28,
+                          "height": 28,
                           "iconFontName": "upload",
                           "iconFontFamily": "lucide",
                           "fill": "#FFFFFF66"
@@ -1425,7 +1428,7 @@
                           "fill": "#FFFFFF99",
                           "content": "Drag & drop or tap to browse",
                           "fontFamily": "Inter",
-                          "fontSize": 13,
+                          "fontSize": 12,
                           "fontWeight": "normal"
                         },
                         {
@@ -1435,140 +1438,34 @@
                           "fill": "#FFFFFF55",
                           "content": "JPEG, PNG, HEIC up to 25MB",
                           "fontFamily": "Inter",
-                          "fontSize": 11,
+                          "fontSize": 10,
                           "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "ZmYJq",
-                      "name": "previewLabel",
-                      "fill": "#FFFFFFAA",
-                      "content": "Scan Previews",
-                      "fontFamily": "Inter",
-                      "fontSize": 12,
-                      "fontWeight": "500",
-                      "letterSpacing": 0.5
-                    },
-                    {
-                      "type": "frame",
-                      "id": "mgWIi",
-                      "name": "Preview Row",
-                      "width": "fill_container",
-                      "height": 110,
-                      "gap": 10,
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "auDLK",
-                          "name": "Preview Card - Original",
-                          "width": "fill_container",
-                          "height": "fill_container",
-                          "fill": "rgba(255,255,255,0.06)",
-                          "cornerRadius": 12,
-                          "stroke": {
-                            "align": "inside",
-                            "thickness": 1,
-                            "fill": "rgba(255,255,255,0.12)"
-                          },
-                          "layout": "vertical",
-                          "gap": 8,
-                          "padding": 10,
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "iX3zK",
-                              "name": "Preview Thumb",
-                              "width": "fill_container",
-                              "height": 64,
-                              "fill": "rgba(255,255,255,0.12)",
-                              "cornerRadius": 10
-                            },
-                            {
-                              "type": "text",
-                              "id": "3MFF9",
-                              "name": "Preview Label",
-                              "fill": "#FFFFFFAA",
-                              "content": "Original",
-                              "fontFamily": "Inter",
-                              "fontSize": 11,
-                              "fontWeight": "500"
-                            }
-                          ]
                         },
                         {
                           "type": "frame",
-                          "id": "THDJv",
-                          "name": "Preview Card - Recolored",
-                          "width": "fill_container",
-                          "height": "fill_container",
-                          "fill": "rgba(255,255,255,0.06)",
-                          "cornerRadius": 12,
-                          "stroke": {
-                            "align": "inside",
-                            "thickness": 1,
-                            "fill": "rgba(255,255,255,0.12)"
-                          },
+                          "id": "dkDxt",
+                          "name": "Inline Preview",
+                          "width": 160,
                           "layout": "vertical",
                           "gap": 8,
-                          "padding": 10,
                           "children": [
                             {
                               "type": "frame",
-                              "id": "KgAzZ",
+                              "id": "2ML1H",
                               "name": "Preview Thumb",
                               "width": "fill_container",
-                              "height": 64,
+                              "height": 100,
                               "fill": "rgba(255,255,255,0.12)",
                               "cornerRadius": 10
                             },
                             {
                               "type": "text",
-                              "id": "TzQfZ",
-                              "name": "Preview Label",
+                              "id": "e4P09",
+                              "name": "Preview Caption",
                               "fill": "#FFFFFFAA",
-                              "content": "Recolored",
+                              "content": "Selected",
                               "fontFamily": "Inter",
-                              "fontSize": 11,
-                              "fontWeight": "500"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "H3ToB",
-                          "name": "Preview Card - Extracted",
-                          "width": "fill_container",
-                          "height": "fill_container",
-                          "fill": "rgba(255,255,255,0.06)",
-                          "cornerRadius": 12,
-                          "stroke": {
-                            "align": "inside",
-                            "thickness": 1,
-                            "fill": "rgba(255,255,255,0.12)"
-                          },
-                          "layout": "vertical",
-                          "gap": 8,
-                          "padding": 10,
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "sI4Cz",
-                              "name": "Preview Thumb",
-                              "width": "fill_container",
-                              "height": 64,
-                              "fill": "rgba(255,255,255,0.12)",
-                              "cornerRadius": 10
-                            },
-                            {
-                              "type": "text",
-                              "id": "T1Yuc",
-                              "name": "Preview Label",
-                              "fill": "#FFFFFFAA",
-                              "content": "Extracted",
-                              "fontFamily": "Inter",
-                              "fontSize": 11,
+                              "fontSize": 10,
                               "fontWeight": "500"
                             }
                           ]
@@ -2098,15 +1995,15 @@
                         "thickness": 1,
                         "fill": "rgba(255,255,255,0.12)"
                       },
-                      "gap": 12,
-                      "padding": 12,
+                      "gap": 10,
+                      "padding": 10,
                       "children": [
                         {
                           "type": "frame",
                           "id": "CWY0P",
                           "name": "Fish Thumb",
-                          "width": 44,
-                          "height": 44,
+                          "width": 36,
+                          "height": 36,
                           "fill": "rgba(255,255,255,0.18)",
                           "cornerRadius": 100
                         },
@@ -2194,15 +2091,15 @@
                         "thickness": 1,
                         "fill": "rgba(255,255,255,0.12)"
                       },
-                      "gap": 12,
-                      "padding": 12,
+                      "gap": 10,
+                      "padding": 10,
                       "children": [
                         {
                           "type": "frame",
                           "id": "8cF6a",
                           "name": "Fish Thumb",
-                          "width": 44,
-                          "height": 44,
+                          "width": 36,
+                          "height": 36,
                           "fill": "rgba(255,255,255,0.18)",
                           "cornerRadius": 100
                         },
@@ -2290,15 +2187,15 @@
                         "thickness": 1,
                         "fill": "rgba(255,255,255,0.12)"
                       },
-                      "gap": 12,
-                      "padding": 12,
+                      "gap": 10,
+                      "padding": 10,
                       "children": [
                         {
                           "type": "frame",
                           "id": "KX9Fq",
                           "name": "Fish Thumb",
-                          "width": 44,
-                          "height": 44,
+                          "width": 36,
+                          "height": 36,
                           "fill": "rgba(255,255,255,0.18)",
                           "cornerRadius": 100
                         },

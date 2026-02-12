@@ -1,57 +1,108 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { OceanLayout } from "@/components/layout/OceanLayout";
-import { HubHeader } from "@/components/hub/HubHeader";
-import { ImageCarousel } from "@/components/hub/ImageCarousel";
-import { PointsCard } from "@/components/hub/PointsCard";
-import { ChallengesCard } from "@/components/hub/ChallengesCard";
-import { RewardsSection } from "@/components/hub/RewardsSection";
-import { WaterSurface } from "@/components/hub/WaterSurface";
-import { StewardshipModal } from "@/components/hub/StewardshipModal";
-import { RewardDetailPopup } from "@/components/hub/RewardDetailPopup";
-import { motion } from "framer-motion";
+import Header from "@/components/header";
+import StewardshipModal from "@/components/rewards/stewardship-modal";
+import PointsAndChallenges from "@/components/rewards/points-and-challenges";
+import RewardsTable from "@/components/rewards/rewards-table";
+import RewardDetailModal from "@/components/rewards/reward-detail-modal";
+import DirectRedeemConfirmation from "@/components/rewards/direct-redeem-confirmation";
+import VoucherView from "@/components/rewards/voucher-view";
+import WaterFooter from "@/components/rewards/water-footer";
+import ImageCarousel from "@/components/rewards/image-carousel";
+import { useRewardsContext } from "@/app/RewardsProvider";
+import { REWARDS } from "@/lib/mockData";
 
 export default function HubPage() {
   const router = useRouter();
-  const [isWaveHovered, setIsWaveHovered] = useState(false);
-  const [selectedReward, setSelectedReward] = useState<string | null>(null);
+  const { points, redeemReward } = useRewardsContext();
+  const [showStewardship, setShowStewardship] = useState(true);
+  const [selectedReward, setSelectedReward] = useState<(typeof REWARDS)[number] | null>(null);
+  const [showDirectRedeemConfirm, setShowDirectRedeemConfirm] = useState(false);
+  const [voucherData, setVoucherData] = useState<(typeof REWARDS)[number] | null>(null);
+
+  useEffect(() => {
+    const hasSeen = localStorage.getItem("stewardship_seen");
+    if (hasSeen) setShowStewardship(false);
+  }, []);
+
+  const handleStewardshipAgree = () => {
+    localStorage.setItem("stewardship_seen", "true");
+    setShowStewardship(false);
+  };
+
+  const handleRedeemConfirm = (reward: (typeof REWARDS)[number]) => {
+    const code = redeemReward(reward.id);
+    if (!code) return;
+    setVoucherData(reward);
+    setSelectedReward(null);
+    setShowDirectRedeemConfirm(false);
+  };
+
+  const handleDirectRedeemClick = (reward: (typeof REWARDS)[number]) => {
+    setSelectedReward(reward);
+    setShowDirectRedeemConfirm(true);
+  };
+
+  const handleCloseVoucher = () => {
+    setVoucherData(null);
+  };
 
   return (
-    <OceanLayout className="flex flex-col min-h-screen overflow-hidden">
-      <StewardshipModal />
+    <div className="min-h-screen bg-gradient-to-b from-[#0A1F3C] via-[#0F3057] to-[#0B3C6D]">
+      <Header />
 
-      <motion.div
-        className="flex flex-col flex-1"
-        animate={{ opacity: isWaveHovered ? 0.15 : 1 }}
-        transition={{ duration: 0.2 }}
-      >
-        <HubHeader />
+      {showStewardship && <StewardshipModal onAgree={handleStewardshipAgree} />}
 
-        <ImageCarousel />
+      {voucherData ? (
+        <VoucherView reward={voucherData} onClose={handleCloseVoucher} />
+      ) : (
+        <>
+          <main className="space-y-6 max-w-7xl mx-auto">
+            <div className="px-6 pt-8">
+              <ImageCarousel />
+            </div>
+            <div className="px-6 pt-2">
+              <PointsAndChallenges totalPoints={points} />
+            </div>
+            <div className="px-6 pb-12">
+              <RewardsTable
+                onSelectReward={setSelectedReward}
+                totalPoints={points}
+                onDirectRedeem={handleDirectRedeemClick}
+              />
+            </div>
+          </main>
 
-        <div className="flex gap-3 px-5 py-3">
-          <PointsCard />
-          <ChallengesCard />
-        </div>
+          <WaterFooter
+            onCenterBubbleClick={() => router.push("/scan")}
+            onLeftBubbleClick={() => router.push("/fishdex")}
+            onRightBubbleClick={() => router.push("/map")}
+          />
+        </>
+      )}
 
-        <RewardsSection onRewardClick={setSelectedReward} />
-      </motion.div>
+      {selectedReward && !voucherData && !showDirectRedeemConfirm && (
+        <RewardDetailModal
+          reward={selectedReward}
+          totalPoints={points}
+          onClose={() => setSelectedReward(null)}
+          onConfirm={handleRedeemConfirm}
+        />
+      )}
 
-      <WaterSurface
-        isHovered={isWaveHovered}
-        onHoverStart={() => setIsWaveHovered(true)}
-        onHoverEnd={() => setIsWaveHovered(false)}
-        onScanClick={() => router.push("/scan")}
-        onFishdexClick={() => router.push("/fishdex")}
-        onMapClick={() => router.push("/map")}
-      />
-
-      <RewardDetailPopup
-        rewardId={selectedReward}
-        onClose={() => setSelectedReward(null)}
-      />
-    </OceanLayout>
+      {selectedReward && showDirectRedeemConfirm && (
+        <DirectRedeemConfirmation
+          reward={selectedReward}
+          totalPoints={points}
+          onConfirm={handleRedeemConfirm}
+          onCancel={() => {
+            setSelectedReward(null);
+            setShowDirectRedeemConfirm(false);
+          }}
+        />
+      )}
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useQuery } from "convex/react";
@@ -32,6 +32,42 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
   const fishdexStats = useQuery(api.fishDetections.getFishdexStats, { limit: 5 });
 
   const pointsEarned = (detections?.length ?? 0) * 50;
+  const primaryDetection = useMemo(() => {
+    if (!detections || detections.length === 0) return null;
+    return [...detections].sort((a, b) => (b.confidence ?? 0) - (a.confidence ?? 0))[0];
+  }, [detections]);
+
+  const funFacts = useMemo(() => {
+    if (!primaryDetection?.classificationDetails) {
+      return {
+        depth: "unknown",
+        packs: "unknown",
+        aggression: "unknown",
+        ecosystemImpact: "unknown",
+      };
+    }
+    try {
+      const parsed = JSON.parse(primaryDetection.classificationDetails) as {
+        depth?: string;
+        packs?: string;
+        aggression?: string;
+        ecosystemImpact?: string;
+      };
+      return {
+        depth: parsed.depth ?? "unknown",
+        packs: parsed.packs ?? "unknown",
+        aggression: parsed.aggression ?? "unknown",
+        ecosystemImpact: parsed.ecosystemImpact ?? "unknown",
+      };
+    } catch {
+      return {
+        depth: "unknown",
+        packs: "unknown",
+        aggression: "unknown",
+        ecosystemImpact: "unknown",
+      };
+    }
+  }, [primaryDetection?.classificationDetails]);
 
   useEffect(() => {
     if (!hasRewarded.current && detections && detections.length > 0) {
@@ -89,7 +125,7 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
       </h2>
 
       <div className="flex flex-col gap-3">
-        {detections?.map((d: { _id: string; speciesName?: string; species?: string; confidence?: number; classificationDetails?: string }, i: number) => (
+        {detections?.map((d: { _id: string; speciesName?: string; species?: string; commonName?: string; confidence?: number; classificationDetails?: string }, i: number) => (
           (() => {
             let reasoning: string | undefined;
             if (d.classificationDetails) {
@@ -114,8 +150,8 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
       </div>
 
       <div className="flex flex-col gap-2">
-        <p className="text-xs font-medium text-white/70 tracking-wider">
-          Scan Preview
+        <p className="text-sm font-semibold text-white">
+          {primaryDetection?.commonName ?? primaryDetection?.species ?? "Fish Preview"}
         </p>
         <div className="rounded-xl border border-white/12 bg-white/8 p-2">
           <div
@@ -138,6 +174,20 @@ export function ScanResults({ imageId, onReset }: ScanResultsProps) {
                 }
               }}
             />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-[11px] text-white/70">
+          <div className="rounded-lg bg-white/10 px-2 py-1.5">
+            Depth: <span className="text-white">{funFacts.depth}</span>
+          </div>
+          <div className="rounded-lg bg-white/10 px-2 py-1.5">
+            Packs: <span className="text-white">{funFacts.packs}</span>
+          </div>
+          <div className="rounded-lg bg-white/10 px-2 py-1.5">
+            Aggression: <span className="text-white">{funFacts.aggression}</span>
+          </div>
+          <div className="rounded-lg bg-white/10 px-2 py-1.5">
+            Ecosystem: <span className="text-white">{funFacts.ecosystemImpact}</span>
           </div>
         </div>
       </div>

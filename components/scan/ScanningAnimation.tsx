@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
+import { motion } from "framer-motion";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { FISH_SILHOUETTES } from "@/lib/mockData";
 import { Fish } from "lucide-react";
 import type { Id } from "@/convex/_generated/dataModel";
 
@@ -14,18 +13,9 @@ interface ScanningAnimationProps {
 }
 
 export function ScanningAnimation({ imageId, onComplete }: ScanningAnimationProps) {
-  const [fishIndex, setFishIndex] = useState(0);
   const image = useQuery(api.images.getById, { imageId: imageId as Id<"images"> });
   const status = image?.pipelineStatus ?? "uploaded";
   const currentStage = image?.currentStage ?? "Initializing pipeline";
-
-  // Cycle through fish silhouettes
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFishIndex((prev) => (prev + 1) % FISH_SILHOUETTES.length);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, []);
 
   // Auto-transition when pipeline completes
   useEffect(() => {
@@ -91,29 +81,6 @@ export function ScanningAnimation({ imageId, onComplete }: ScanningAnimationProp
         >
           <Fish className="w-10 h-10 text-white/90" />
         </motion.div>
-
-        {/* Holographic fish */}
-        <AnimatePresence mode="wait">
-          <motion.svg
-            key={fishIndex}
-            viewBox="0 0 160 160"
-            className="w-full h-full neon-glow"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <motion.path
-              d={FISH_SILHOUETTES[fishIndex]}
-              fill="none"
-              stroke="#00E5FF"
-              strokeWidth="2"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-            />
-          </motion.svg>
-        </AnimatePresence>
       </div>
 
       {/* Status */}

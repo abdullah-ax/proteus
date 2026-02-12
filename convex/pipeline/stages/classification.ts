@@ -58,7 +58,11 @@ Return ONLY valid JSON in this exact format:
   "confidence": 0.85,
   "family": "Family name",
   "characteristics": "Key identifying features",
-  "reasoning": "Why this species was chosen"
+  "reasoning": "Why this species was chosen",
+  "depth": "Typical depth range in meters",
+  "packs": "Solo/pairs/schools (keep short)",
+  "aggression": "Low/medium/high (short)",
+  "ecosystemImpact": "One short phrase on ecosystem benefit/impact"
 }
 
 CRITICAL RULES:
@@ -104,6 +108,10 @@ CRITICAL RULES:
                 ? "Species not found in Red Sea database"
                 : "Confidence below threshold (0.7)",
               characteristics: parsed.characteristics,
+              depth: parsed.depth,
+              packs: parsed.packs,
+              aggression: parsed.aggression,
+              ecosystemImpact: parsed.ecosystemImpact,
             }),
           });
         } else {
@@ -117,6 +125,10 @@ CRITICAL RULES:
               family: redSeaSpecies?.family ?? parsed.family,
               characteristics: parsed.characteristics,
               reasoning: parsed.reasoning,
+              depth: parsed.depth,
+              packs: parsed.packs,
+              aggression: parsed.aggression,
+              ecosystemImpact: parsed.ecosystemImpact,
             }),
           });
         }
